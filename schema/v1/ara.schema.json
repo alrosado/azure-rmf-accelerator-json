@@ -1,0 +1,209 @@
+{
+    "definitions": {},
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "$id": "https://microsoft.com/ARA/rmf.schema.json",
+    "type": "object",
+    "title": "Azure RMF Accelerator schema",
+    "required": [
+        "roles",
+        "tests",
+        "resources"
+    ],
+    "properties": {
+        "roles": {
+            "$id": "#/roles",
+            "type": "array",
+            "title": "Roles used within Data Fabric",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "$id": "#/title",
+                        "type": "string"
+                    },
+                    "active": {
+                        "$id": "#/active",
+                        "type": "boolean"
+                    },
+                    "description": {
+                        "$id": "#/description",
+                        "type": "string"
+                    },
+                    "permissions": {
+                        "$id": "#/permissions",
+                        "type": "object",
+                        "properties": {
+                            "development": {
+                                "$id": "#/development",
+                                "type": "array"
+                            },
+                            "test": {
+                                "$id": "#/test",
+                                "type": "array"
+                            },
+                            "production": {
+                                "$id": "#/production",
+                                "type": "array"
+                            }
+                        },
+                        "required": [
+                            "production"
+                        ]
+                    },
+                    "resourcegroups": {
+                        "$id": "#/resourcegroups",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "title",
+                    "description",
+                    "permissions",
+                    "active",
+                    "resourcegroups"
+                ]
+            }
+        },
+        "resources": {
+            "$id": "#/resources",
+            "type": "array",
+            "title": "Azure resources used within Data Fabric",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "$id": "#/type",
+                        "type": "string",
+                        "pattern": "Microsoft[.].+[\/].+"
+                    },
+                    "name": {
+                        "$id": "#/name",
+                        "type": "string"
+                    },
+                    "description": {
+                        "$id": "#/description",
+                        "type": "string"
+                    },
+                    "active": {
+                        "$id": "#/active",
+                        "type": "boolean"
+                    },
+                    "resourcegroup": {
+                        "$id": "#/resourcegroup",
+                        "type": "string"
+                    },
+                    "bicepModule": {
+                        "$id": "#/bicepModule",
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "$id": "#/name",
+                                "type": "string"
+                            },
+                            "path": {
+                                "$id": "#/path",
+                                "type": "string",
+                                "pattern": ".+[.]bicep"
+                            }
+                        },
+                        "required": [
+                            "name",
+                            "path"
+                        ]
+                    }
+                },
+                "required": [
+                    "type",
+                    "description",
+                    "active",
+                    "resourcegroup"
+                ]
+            }
+        },
+        "tests": {
+            "$id": "#/tests",
+            "type": "object",
+            "title": "Test definitions for solution",
+            "properties": {
+                "prefix": {
+                    "$id": "#/prefix",
+                    "type": "string",
+                    "default": "datafabric"
+                },
+                "version": {
+                    "$id": "#/version",
+                    "type": "string",
+                    "default": "0.1"
+                },
+                "sit": {
+                    "$id": "#/sit",
+                    "type": "object",
+                    "title": "System Integration Testing test definitions for solution",
+                    "properties": {
+                        "steps": {
+                            "$id": "#/steps",
+                            "type": "string",
+                            "title": "Steps to manually validate test results"
+                        },
+                        "outcome": {
+                            "$id": "#/outcome",
+                            "type": "string",
+                            "title": "Desired outcome of test"
+                        }
+                    },
+                    "required": [
+                        "steps",
+                        "outcome"
+                    ]
+                },
+                "at": {
+                    "$id": "#/at",
+                    "type": "object",
+                    "title": "Acceptance Testing test definitions for solution",
+                    "properties": {
+                        "steps": {
+                            "$id": "#/steps",
+                            "type": "string",
+                            "title": "Steps to manually validate test results"
+                        },
+                        "outcome": {
+                            "$id": "#/outcome",
+                            "type": "string",
+                            "title": "Desired outcome of test"
+                        }
+                    },
+                    "required": [
+                        "steps",
+                        "outcome"
+                    ]
+                },
+                "ot": {
+                    "$id": "#/ot",
+                    "type": "object",
+                    "title": "Operational Testing test definitions for solution",
+                    "properties": {
+                        "steps": {
+                            "$id": "#/steps",
+                            "type": "string",
+                            "title": "Steps to manually validate test results"
+                        },
+                        "outcome": {
+                            "$id": "#/outcome",
+                            "type": "string",
+                            "title": "Desired outcome of test"
+                        }
+                    },
+                    "required": [
+                        "steps",
+                        "outcome"
+                    ]
+                }
+            },
+            "required": [
+                "sit",
+                "at",
+                "ot"
+            ]
+        }
+    }
+}
