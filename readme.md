@@ -81,7 +81,10 @@ The schema is intended to evolve as additional artifact generators and data sour
 ```text
 .
 ├── schema/
-│   └── ara.schema.json
+│   └── v1
+│       └── ara.schema.json
+│   └── latest
+│       └── ara.schema.json
 │
 ├── examples/
 │   └── simple-system.json
@@ -121,6 +124,60 @@ Future schema areas may include:
 - Privacy Information
 - SBOM Definitions
 - Evidence Mappings
+
+## Schema Versions
+
+Azure RMF Accelerator schemas are versioned to ensure compatibility between generated artifacts and schema definitions.
+
+### Current Versions
+
+| Version | Path |
+|----------|----------|
+| Latest | `schema/latest/ara.schema.json` |
+| V1 | `schema/v1/ara.schema.json` |
+
+### Schema URLs
+
+#### Stable Version
+
+```text
+https://github.com/alrosado/azure-rmf-accelerator-json/schema/v1/ara.schema.json
+```
+
+#### Latest Version
+
+```text
+https://github.com/alrosado/azure-rmf-accelerator-json/schema/latest/ara.schema.json
+```
+
+### Versioning Strategy
+
+Azure RMF Accelerator follows semantic versioning:
+
+```text
+MAJOR.MINOR.PATCH
+```
+
+Examples:
+
+```text
+1.0.0 Initial Release
+1.1.0 New Optional Properties
+1.2.0 Additional Artifact Support
+2.0.0 Breaking Changes
+```
+
+Breaking changes will result in the creation of a new version folder.
+
+For example:
+
+```text
+schema/v1/ara.schema.json
+schema/v2/ara.schema.json
+```
+
+Consumers should reference a specific schema version whenever long-term stability is required.
+``
 
 ## AI Usage
 

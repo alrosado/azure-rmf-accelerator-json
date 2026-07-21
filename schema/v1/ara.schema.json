@@ -1,9 +1,11 @@
 {
     "definitions": {},
     "$schema": "https://json-schema.org/draft-07/schema#",
-    "$id": "https://microsoft.com/ARA/rmf.schema.json",
+    "$id": "https://github.com/alrosado/azure-rmf-accelerator-json/schema/v1/ara.schema.json",
     "type": "object",
     "title": "Azure RMF Accelerator schema",
+    "version": "1.0.0",
+    "description": "Canonical schema for Azure RMF Accelerator artifact generation.",
     "required": [
         "roles",
         "tests",
