@@ -1,0 +1,100 @@
+{
+  "roles": [
+    {
+      "title": "System Administrator",
+      "active": true,
+      "description": "Responsible for administration, configuration, and maintenance of Azure resources.",
+      "permissions": {
+        "development": [
+          "Contributor"
+        ],
+        "test": [
+          "Contributor"
+        ],
+        "production": [
+          "Contributor"
+        ]
+      },
+      "resourcegroups": [
+        "rg-ara-dev",
+        "rg-ara-test",
+        "rg-ara-prod"
+      ]
+    },
+    {
+      "title": "Security Administrator",
+      "active": true,
+      "description": "Responsible for managing security controls, policies, and monitoring solutions.",
+      "permissions": {
+        "production": [
+          "Security Admin"
+        ]
+      },
+      "resourcegroups": [
+        "rg-ara-prod"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "stazurermf001",
+      "description": "Primary storage account used for solution artifacts and generated documentation.",
+      "active": true,
+      "resourcegroup": "rg-ara-prod",
+      "bicepModule": {
+        "name": "storageAccount",
+        "path": "modules/storage/storageAccount.bicep"
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults",
+      "name": "kv-azure-rmf",
+      "description": "Stores secrets, keys, and certificates used by the solution.",
+      "active": true,
+      "resourcegroup": "rg-ara-prod",
+      "bicepModule": {
+        "name": "keyVault",
+        "path": "modules/security/keyVault.bicep"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "name": "app-azure-rmf",
+      "description": "Web application hosting the Azure RMF Accelerator portal.",
+      "active": true,
+      "resourcegroup": "rg-ara-prod",
+      "bicepModule": {
+        "name": "webApp",
+        "path": "modules/web/webApp.bicep"
+      }
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "name": "aoai-azure-rmf",
+      "description": "Azure OpenAI resource used for optional narrative generation and documentation enrichment.",
+      "active": true,
+      "resourcegroup": "rg-ara-prod",
+      "bicepModule": {
+        "name": "azureOpenAI",
+        "path": "modules/ai/azureOpenAI.bicep"
+      }
+    }
+  ],
+  "tests": {
+    "prefix": "azure-rmf-accelerator",
+    "version": "0.1",
+    "sit": {
+      "steps": "Deploy infrastructure using Bicep templates. Validate resource deployment, connectivity, and configuration against expected outputs.",
+      "outcome": "All required Azure resources are successfully deployed and operational."
+    },
+    "at": {
+      "steps": "Generate RMF artifacts from normalized JSON data and verify content generation and template population.",
+      "outcome": "Required RMF artifacts are generated successfully with complete and traceable content."
+    },
+    "ot": {
+      "steps": "Execute end-to-end artifact generation process using production-like configuration data and review outputs.",
+      "outcome": "Solution consistently produces accreditation-ready artifacts suitable for review and downstream eMASS import preparation."
+    }
+  }
+}
