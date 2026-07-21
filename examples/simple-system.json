@@ -1,101 +1,251 @@
 {
   "$schema": "../schema/v1/ara.schema.json",
+  "system": "Contoso System",
+  "version": "1.0.0",
+
   "roles": [
     {
       "title": "System Administrator",
+      "key": "sysadmin",
+      "group": "ARA-System-Admins",
       "active": true,
-      "description": "Responsible for administration, configuration, and maintenance of Azure resources.",
-      "permissions": {
-        "development": [
-          "Contributor"
-        ],
-        "test": [
-          "Contributor"
-        ],
-        "production": [
-          "Contributor"
-        ]
-      },
-      "resourcegroups": [
-        "rg-ara-dev",
-        "rg-ara-test",
-        "rg-ara-prod"
+      "description": "Responsible for administration of Contoso System resources.",
+      "members": [
+        "admin1@contoso.com",
+        "admin2@contoso.com"
       ]
     },
     {
       "title": "Security Administrator",
+      "key": "securityadmin",
+      "group": "ARA-Security-Admins",
       "active": true,
-      "description": "Responsible for managing security controls, policies, and monitoring solutions.",
-      "permissions": {
-        "production": [
-          "Security Admin"
-        ]
-      },
-      "resourcegroups": [
-        "rg-ara-prod"
+      "description": "Responsible for security monitoring and compliance activities.",
+      "members": [
+        "security@contoso.com"
       ]
     }
   ],
-  "resources": [
+
+  "resources": {
+    "dev": {
+      "resourcegroups": [
+        {
+          "name": "rg-ara-dev",
+          "roles": [
+            {
+              "role": "sysadmin",
+              "aadrole": "Contributor"
+            }
+          ],
+          "resources": [
+            {
+              "type": "Microsoft.Storage/storageAccounts",
+              "name": "staradev001",
+              "friendlyname": "Storage Account",
+              "description": "Stores generated RMF artifacts.",
+              "active": true,
+              "bicepModule": {
+                "name": "storage",
+                "path": "modules/storage/storage.bicep"
+              },
+              "roles": [
+                {
+                  "role": "sysadmin",
+                  "aadrole": "Storage Blob Data Contributor"
+                }
+              ],
+              "software": [
+                {
+                  "name": "Azure Storage",
+                  "version": "Current",
+                  "description": "Azure Storage Account service."
+                }
+              ],
+              "resources": []
+            }
+          ]
+        }
+      ]
+    },
+
+    "test": {
+      "resourcegroups": [
+        {
+          "name": "rg-ara-test",
+          "roles": [
+            {
+              "role": "sysadmin",
+              "aadrole": "Contributor"
+            }
+          ],
+          "resources": [
+            {
+              "type": "Microsoft.Web/sites",
+              "name": "app-ara-test",
+              "friendlyname": "Web Application",
+              "description": "Hosts the Azure RMF Accelerator UI.",
+              "active": true,
+              "bicepModule": {
+                "name": "webapp",
+                "path": "modules/web/webapp.bicep"
+              },
+              "roles": [
+                {
+                  "role": "sysadmin",
+                  "aadrole": "Contributor",
+                  "scope": "Resource"
+                }
+              ],
+              "software": [
+                {
+                  "name": "Azure App Service",
+                  "version": "Current",
+                  "description": "Application hosting platform."
+                }
+              ],
+              "resources": []
+            }
+          ]
+        }
+      ]
+    },
+
+    "prod": {
+      "resourcegroups": [
+        {
+          "name": "rg-ara-prod",
+          "roles": [
+            {
+              "role": "sysadmin",
+              "aadrole": "Contributor"
+            },
+            {
+              "role": "securityadmin",
+              "aadrole": "Security Admin"
+            }
+          ],
+          "resources": [
+            {
+              "type": "Microsoft.KeyVault/vaults",
+              "name": "kv-ara-prod",
+              "friendlyname": "Key Vault",
+              "description": "Stores secrets and certificates.",
+              "active": true,
+              "bicepModule": {
+                "name": "keyvault",
+                "path": "modules/security/keyvault.bicep"
+              },
+              "roles": [
+                {
+                  "role": "securityadmin",
+                  "aadrole": "Key Vault Administrator",
+                  "scope": "Resource"
+                }
+              ],
+              "software": [
+                {
+                  "name": "Azure Key Vault",
+                  "version": "Current",
+                  "description": "Secrets management service."
+                }
+              ],
+              "resources": []
+            },
+            {
+              "type": "Microsoft.Sql/servers",
+              "name": "sql-ara-prod",
+              "friendlyname": "Azure SQL Server",
+              "description": "Hosts Azure RMF Accelerator data.",
+              "active": true,
+              "resources": [
+                {
+                  "type": "Microsoft.Sql/servers/databases",
+                  "name": "ara",
+                  "description": "Primary application database.",
+                  "active": true,
+                  "resources": []
+                }
+              ],
+              "roles": [],
+              "software": [
+                {
+                  "name": "Azure SQL Database",
+                  "version": "Current",
+                  "description": "Managed relational database platform."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+
+  "software": [
     {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "stazurermf001",
-      "description": "Primary storage account used for solution artifacts and generated documentation.",
-      "active": true,
-      "resourcegroup": "rg-ara-prod",
-      "bicepModule": {
-        "name": "storageAccount",
-        "path": "modules/storage/storageAccount.bicep"
-      }
+      "name": "Azure Storage",
+      "version": "Current",
+      "description": "Cloud storage platform.",
+      "type": "Platform"
     },
     {
-      "type": "Microsoft.KeyVault/vaults",
-      "name": "kv-azure-rmf",
-      "description": "Stores secrets, keys, and certificates used by the solution.",
-      "active": true,
-      "resourcegroup": "rg-ara-prod",
-      "bicepModule": {
-        "name": "keyVault",
-        "path": "modules/security/keyVault.bicep"
-      }
+      "name": "Azure SQL Database",
+      "version": "Current",
+      "description": "Managed database platform.",
+      "type": "Database"
     },
     {
-      "type": "Microsoft.Web/sites",
-      "name": "app-azure-rmf",
-      "description": "Web application hosting the Azure RMF Accelerator portal.",
-      "active": true,
-      "resourcegroup": "rg-ara-prod",
-      "bicepModule": {
-        "name": "webApp",
-        "path": "modules/web/webApp.bicep"
-      }
-    },
-    {
-      "type": "Microsoft.CognitiveServices/accounts",
-      "name": "aoai-azure-rmf",
-      "description": "Azure OpenAI resource used for optional narrative generation and documentation enrichment.",
-      "active": true,
-      "resourcegroup": "rg-ara-prod",
-      "bicepModule": {
-        "name": "azureOpenAI",
-        "path": "modules/ai/azureOpenAI.bicep"
-      }
+      "name": "Azure Key Vault",
+      "version": "Current",
+      "description": "Secrets management service.",
+      "type": "Security"
     }
   ],
-  "tests": {
-    "prefix": "azure-rmf-accelerator",
-    "version": "0.1",
-    "sit": {
-      "steps": "Deploy infrastructure using Bicep templates. Validate resource deployment, connectivity, and configuration against expected outputs.",
-      "outcome": "All required Azure resources are successfully deployed and operational."
+
+  "stigs": {
+    "Microsoft.Sql/servers": {
+      "stig": "SQL Server STIG",
+      "applier": "securityadmin"
     },
-    "at": {
-      "steps": "Generate RMF artifacts from normalized JSON data and verify content generation and template population.",
-      "outcome": "Required RMF artifacts are generated successfully with complete and traceable content."
-    },
-    "ot": {
-      "steps": "Execute end-to-end artifact generation process using production-like configuration data and review outputs.",
-      "outcome": "Solution consistently produces accreditation-ready artifacts suitable for review and downstream eMASS import preparation."
+    "Windows Server 2022": {
+      "stig": "Windows Server 2022 STIG",
+      "applier": "sysadmin"
     }
+  },
+
+  "resourcetypes": {
+    "Microsoft.Storage/storageAccounts": "Azure Storage Account",
+    "Microsoft.KeyVault/vaults": "Azure Key Vault",
+    "Microsoft.Sql/servers": "Azure SQL Server",
+    "Microsoft.Sql/servers/databases": "Azure SQL Database"
+  },
+
+  "strings": {
+    "tests_version": "1.0",
+    "tests_prefix": "ARA",
+
+    "sit_testname": "Infrastructure Deployment Validation",
+    "sit_steps": "Deploy all infrastructure and verify successful provisioning.",
+    "sit_outcome": "All resources deploy successfully.",
+
+    "at_resourcegroup_testname": "Resource Group Validation",
+    "at_resourcegroup_steps": "Validate required resources exist.",
+    "at_resourcegroup_outcome": "All required resources are present.",
+
+    "at_resource_testname": "Resource Validation",
+    "at_resource_steps": "Validate resource configuration.",
+    "at_resource_outcome": "Resource meets expected configuration.",
+
+    "at_database_testname": "Database Validation",
+    "at_database_steps": "Validate database connectivity and schema.",
+    "at_database_outcome": "Database functions correctly.",
+
+    "ot_steps": "Execute operational workflow end-to-end.",
+    "ot_outcome": "Solution operates successfully.",
+
+    "ot_stig_testname": "STIG Compliance Review",
+    "ot_stig_steps": "Validate STIG implementation and documentation.",
+    "ot_stig_outcome": "All required STIG controls are satisfied."
   }
 }

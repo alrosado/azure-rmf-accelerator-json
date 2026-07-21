@@ -1,211 +1,812 @@
 {
-    "definitions": {},
     "$schema": "https://json-schema.org/draft-07/schema#",
     "$id": "https://github.com/alrosado/azure-rmf-accelerator-json/schema/v1/ara.schema.json",
-    "type": "object",
     "title": "Azure RMF Accelerator schema",
     "version": "1.0.0",
     "description": "Canonical schema for Azure RMF Accelerator artifact generation.",
-    "required": [
-        "roles",
-        "tests",
-        "resources"
-    ],
+    "type": "object",
     "properties": {
+        "system": {
+            "type": "string"
+        },
+        "version": {
+            "type": "string"
+        },
         "roles": {
-            "$id": "#/roles",
             "type": "array",
-            "title": "Roles used within Data Fabric",
             "items": {
                 "type": "object",
                 "properties": {
                     "title": {
-                        "$id": "#/title",
+                        "type": "string"
+                    },
+                    "key": {
+                        "type": "string"
+                    },
+                    "group": {
                         "type": "string"
                     },
                     "active": {
-                        "$id": "#/active",
                         "type": "boolean"
                     },
                     "description": {
-                        "$id": "#/description",
                         "type": "string"
                     },
-                    "permissions": {
-                        "$id": "#/permissions",
-                        "type": "object",
-                        "properties": {
-                            "development": {
-                                "$id": "#/development",
-                                "type": "array"
-                            },
-                            "test": {
-                                "$id": "#/test",
-                                "type": "array"
-                            },
-                            "production": {
-                                "$id": "#/production",
-                                "type": "array"
-                            }
-                        },
-                        "required": [
-                            "production"
-                        ]
-                    },
-                    "resourcegroups": {
-                        "$id": "#/resourcegroups",
-                        "type": "array"
+                    "members": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 },
                 "required": [
                     "title",
-                    "description",
-                    "permissions",
+                    "key",
+                    "group",
                     "active",
-                    "resourcegroups"
+                    "description",
+                    "members"
                 ]
             }
         },
         "resources": {
-            "$id": "#/resources",
+            "type": "object",
+            "properties": {
+                "dev": {
+                    "type": "object",
+                    "properties": {
+                        "resourcegroups": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "roles": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "role": {
+                                                    "type": "string"
+                                                },
+                                                "aadrole": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "role",
+                                                "aadrole"
+                                            ]
+                                        }
+                                    },
+                                    "resources": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "type": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "description": {
+                                                    "type": "string"
+                                                },
+                                                "bicepModule": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string"
+                                                        },
+                                                        "path": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "active": {
+                                                    "type": "boolean"
+                                                },
+                                                "resources": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "type": {
+                                                                "type": "string"
+                                                            },
+                                                            "name": {
+                                                                "type": "string"
+                                                            },
+                                                            "description": {
+                                                                "type": "string"
+                                                            },
+                                                            "active": {
+                                                                "type": "boolean"
+                                                            },
+                                                            "resources": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "type": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "name": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "description": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "active": {
+                                                                            "type": "boolean"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "type",
+                                                                        "name",
+                                                                        "description",
+                                                                        "active"
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "type",
+                                                            "name",
+                                                            "description",
+                                                            "active",
+                                                            "resources"
+                                                        ]
+                                                    }
+                                                },
+                                                "friendlyname": {
+                                                    "type": "string"
+                                                },
+                                                "roles": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "role": {
+                                                                "type": "string"
+                                                            },
+                                                            "aadrole": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "role",
+                                                            "aadrole"
+                                                        ]
+                                                    }
+                                                },
+                                                "software": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "name": {
+                                                                "type": "string"
+                                                            },
+                                                            "version": {
+                                                                "type": "string"
+                                                            },
+                                                            "description": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "name"
+                                                        ]
+                                                    }
+                                                }
+                                            },
+                                            "required": [
+                                                "type",
+                                                "name",
+                                                "description",
+                                                "active"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "roles",
+                                    "resources"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "test": {
+                    "type": "object",
+                    "properties": {
+                        "resourcegroups": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "roles": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "role": {
+                                                    "type": "string"
+                                                },
+                                                "aadrole": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "role",
+                                                "aadrole"
+                                            ]
+                                        }
+                                    },
+                                    "resources": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "type": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "description": {
+                                                    "type": "string"
+                                                },
+                                                "bicepModule": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string"
+                                                        },
+                                                        "path": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "active": {
+                                                    "type": "boolean"
+                                                },
+                                                "resources": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "type": {
+                                                                "type": "string"
+                                                            },
+                                                            "name": {
+                                                                "type": "string"
+                                                            },
+                                                            "description": {
+                                                                "type": "string"
+                                                            },
+                                                            "active": {
+                                                                "type": "boolean"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "type",
+                                                            "name",
+                                                            "description",
+                                                            "active"
+                                                        ]
+                                                    }
+                                                },
+                                                "friendlyname": {
+                                                    "type": "string"
+                                                },
+                                                "software": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "name": {
+                                                                "type": "string"
+                                                            },
+                                                            "version": {
+                                                                "type": "string"
+                                                            },
+                                                            "description": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "name"
+                                                        ]
+                                                    }
+                                                },
+                                                "roles": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "role": {
+                                                                "type": "string"
+                                                            },
+                                                            "aadrole": {
+                                                                "type": "string"
+                                                            },
+                                                            "scope": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "role",
+                                                            "aadrole",
+                                                            "scope"
+                                                        ]
+                                                    }
+                                                }
+                                            },
+                                            "required": [
+                                                "type",
+                                                "name",
+                                                "description",
+                                                "active"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "roles",
+                                    "resources"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "prod": {
+                    "type": "object",
+                    "properties": {
+                        "resourcegroups": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "roles": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "role": {
+                                                    "type": "string"
+                                                },
+                                                "aadrole": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "role",
+                                                "aadrole"
+                                            ]
+                                        }
+                                    },
+                                    "resources": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "type": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "description": {
+                                                    "type": "string"
+                                                },
+                                                "bicepModule": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string"
+                                                        },
+                                                        "path": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "active": {
+                                                    "type": "boolean"
+                                                },
+                                                "resources": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "type": {
+                                                                "type": "string"
+                                                            },
+                                                            "name": {
+                                                                "type": "string"
+                                                            },
+                                                            "description": {
+                                                                "type": "string"
+                                                            },
+                                                            "active": {
+                                                                "type": "boolean"
+                                                            },
+                                                            "resources": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "type": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "name": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "description": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "active": {
+                                                                            "type": "boolean"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "type",
+                                                                        "name",
+                                                                        "description",
+                                                                        "active"
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "type",
+                                                            "name",
+                                                            "description",
+                                                            "active",
+                                                            "resources"
+                                                        ]
+                                                    }
+                                                },
+                                                "friendlyname": {
+                                                    "type": "string"
+                                                },
+                                                "software": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "name": {
+                                                                "type": "string"
+                                                            },
+                                                            "version": {
+                                                                "type": "string"
+                                                            },
+                                                            "description": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "name"
+                                                        ]
+                                                    }
+                                                },
+                                                "roles": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "role": {
+                                                                "type": "string"
+                                                            },
+                                                            "aadrole": {
+                                                                "type": "string"
+                                                            },
+                                                            "scope": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "role",
+                                                            "aadrole",
+                                                            "scope"
+                                                        ]
+                                                    }
+                                                }
+                                            },
+                                            "required": [
+                                                "type",
+                                                "name",
+                                                "description",
+                                                "active"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "roles",
+                                    "resources"
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "software": {
             "type": "array",
-            "title": "Azure resources used within Data Fabric",
             "items": {
                 "type": "object",
                 "properties": {
-                    "type": {
-                        "$id": "#/type",
-                        "type": "string",
-                        "pattern": "Microsoft[.].+[\/].+"
-                    },
                     "name": {
-                        "$id": "#/name",
+                        "type": "string"
+                    },
+                    "version": {
                         "type": "string"
                     },
                     "description": {
-                        "$id": "#/description",
                         "type": "string"
                     },
-                    "active": {
-                        "$id": "#/active",
-                        "type": "boolean"
-                    },
-                    "resourcegroup": {
-                        "$id": "#/resourcegroup",
+                    "type": {
                         "type": "string"
-                    },
-                    "bicepModule": {
-                        "$id": "#/bicepModule",
-                        "type": "object",
-                        "properties": {
-                            "name": {
-                                "$id": "#/name",
-                                "type": "string"
-                            },
-                            "path": {
-                                "$id": "#/path",
-                                "type": "string",
-                                "pattern": ".+[.]bicep"
-                            }
-                        },
-                        "required": [
-                            "name",
-                            "path"
-                        ]
                     }
                 },
                 "required": [
-                    "type",
-                    "description",
-                    "active",
-                    "resourcegroup"
+                    "name",
+                    "version",
+                    "description"
                 ]
             }
         },
-        "tests": {
-            "$id": "#/tests",
+        "stigs": {
             "type": "object",
-            "title": "Test definitions for solution",
             "properties": {
-                "prefix": {
-                    "$id": "#/prefix",
-                    "type": "string",
-                    "default": "datafabric"
-                },
-                "version": {
-                    "$id": "#/version",
-                    "type": "string",
-                    "default": "0.1"
-                },
-                "sit": {
-                    "$id": "#/sit",
+                "Microsoft.Sql/servers": {
                     "type": "object",
-                    "title": "System Integration Testing test definitions for solution",
                     "properties": {
-                        "steps": {
-                            "$id": "#/steps",
-                            "type": "string",
-                            "title": "Steps to manually validate test results"
+                        "stig": {
+                            "type": "string"
                         },
-                        "outcome": {
-                            "$id": "#/outcome",
-                            "type": "string",
-                            "title": "Desired outcome of test"
+                        "applier": {
+                            "type": "string"
                         }
-                    },
-                    "required": [
-                        "steps",
-                        "outcome"
-                    ]
+                    }
                 },
-                "at": {
-                    "$id": "#/at",
+                "Microsoft.Synapse/workspaces": {
                     "type": "object",
-                    "title": "Acceptance Testing test definitions for solution",
                     "properties": {
-                        "steps": {
-                            "$id": "#/steps",
-                            "type": "string",
-                            "title": "Steps to manually validate test results"
+                        "stig": {
+                            "type": "string"
                         },
-                        "outcome": {
-                            "$id": "#/outcome",
-                            "type": "string",
-                            "title": "Desired outcome of test"
+                        "applier": {
+                            "type": "string"
                         }
-                    },
-                    "required": [
-                        "steps",
-                        "outcome"
-                    ]
+                    }
                 },
-                "ot": {
-                    "$id": "#/ot",
+                "Microsoft.Synapse/workspaces/sqlPools": {
                     "type": "object",
-                    "title": "Operational Testing test definitions for solution",
                     "properties": {
-                        "steps": {
-                            "$id": "#/steps",
-                            "type": "string",
-                            "title": "Steps to manually validate test results"
+                        "stig": {
+                            "type": "string"
                         },
-                        "outcome": {
-                            "$id": "#/outcome",
-                            "type": "string",
-                            "title": "Desired outcome of test"
+                        "applier": {
+                            "type": "string"
                         }
-                    },
-                    "required": [
-                        "steps",
-                        "outcome"
-                    ]
+                    }
+                },
+                "Microsoft.Sql/servers/databases": {
+                    "type": "object",
+                    "properties": {
+                        "stig": {
+                            "type": "string"
+                        },
+                        "applier": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "Oracle Database 19c": {
+                    "type": "object",
+                    "properties": {
+                        "stig": {
+                            "type": "string"
+                        },
+                        "applier": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "Windows Server 2022": {
+                    "type": "object",
+                    "properties": {
+                        "stig": {
+                            "type": "string"
+                        },
+                        "applier": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "RHEL 8": {
+                    "type": "object",
+                    "properties": {
+                        "stig": {
+                            "type": "string"
+                        },
+                        "applier": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "Edge": {
+                    "type": "object",
+                    "properties": {
+                        "stig": {
+                            "type": "string"
+                        },
+                        "applier": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "Microsoft Defender for Endpoint": {
+                    "type": "object",
+                    "properties": {
+                        "stig": {
+                            "type": "string"
+                        },
+                        "applier": {
+                            "type": "string"
+                        }
+                    }
+                },
+                ".NET Framework": {
+                    "type": "object",
+                    "properties": {
+                        "stig": {
+                            "type": "string"
+                        },
+                        "applier": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "Trellix Agent": {
+                    "type": "object",
+                    "properties": {
+                        "stig": {
+                            "type": "string"
+                        },
+                        "applier": {
+                            "type": "string"
+                        }
+                    }
                 }
-            },
-            "required": [
-                "sit",
-                "at",
-                "ot"
-            ]
+            }
+        },
+        "resourcetypes": {
+            "type": "object",
+            "properties": {
+                "Microsoft.Storage/storageAccounts": {
+                    "type": "string"
+                },
+                "Microsoft.OperationalInsights/workspaces": {
+                    "type": "string"
+                },
+                "Microsoft.ManagedIdentity/userAssignedIdentities": {
+                    "type": "string"
+                },
+                "Microsoft.KeyVault/vaults": {
+                    "type": "string"
+                },
+                "Microsoft.DataFactory/factories": {
+                    "type": "string"
+                },
+                "Microsoft.Sql/servers": {
+                    "type": "string"
+                },
+                "Microsoft.Synapse/workspaces": {
+                    "type": "string"
+                },
+                "Microsoft.Compute/virtualMachines": {
+                    "type": "string"
+                },
+                "Microsoft.Network/privateEndpoints": {
+                    "type": "string"
+                },
+                "Microsoft.Sql/servers/databases": {
+                    "type": "string"
+                },
+                "Microsoft.DataFactory/factories/integrationRuntimes": {
+                    "type": "string"
+                },
+                "Microsoft.Network/networkInterfaces": {
+                    "type": "string"
+                },
+                "Microsoft.Synapse/workspaces/bigDataPools": {
+                    "type": "string"
+                },
+                "Microsoft.Synapse/workspaces/sqlPools": {
+                    "type": "string"
+                },
+                "Microsoft.MachineLearningServices/workspaces": {
+                    "type": "string"
+                }
+            }
+        },
+        "strings": {
+            "type": "object",
+            "properties": {
+                "tests_version": {
+                    "type": "string"
+                },
+                "tests_prefix": {
+                    "type": "string"
+                },
+                "sit_testname": {
+                    "type": "string"
+                },
+                "sit_steps": {
+                    "type": "string"
+                },
+                "sit_outcome": {
+                    "type": "string"
+                },
+                "at_resourcegroup_testname": {
+                    "type": "string"
+                },
+                "at_resourcegroup_steps": {
+                    "type": "string"
+                },
+                "at_resourcegroup_outcome": {
+                    "type": "string"
+                },
+                "at_resource_testname": {
+                    "type": "string"
+                },
+                "at_resource_steps": {
+                    "type": "string"
+                },
+                "at_resource_outcome": {
+                    "type": "string"
+                },
+                "at_database_testname": {
+                    "type": "string"
+                },
+                "at_database_steps": {
+                    "type": "string"
+                },
+                "at_database_outcome": {
+                    "type": "string"
+                },
+                "ot_steps": {
+                    "type": "string"
+                },
+                "ot_outcome": {
+                    "type": "string"
+                },
+                "ot_stig_testname": {
+                    "type": "string"
+                },
+                "ot_stig_steps": {
+                    "type": "string"
+                },
+                "ot_stig_outcome": {
+                    "type": "string"
+                }
+            }
         }
     }
 }
