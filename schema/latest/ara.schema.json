@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft-07/schema#",
-    "$id": "https://github.com/alrosado/azure-rmf-accelerator-json/schema/v1/ara.schema.json",
+    "$id": "https://raw.githubusercontent.com/alrosado/azure-rmf-accelerator-json/refs/heads/main/schema/v1/ara.schema.json",
     "title": "Azure RMF Accelerator schema",
     "version": "1.0.0",
     "description": "Canonical schema for Azure RMF Accelerator artifact generation.",

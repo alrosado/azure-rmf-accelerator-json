@@ -1,5 +1,5 @@
 {
-  "$schema": "../schema/v1/ara.schema.json",
+  "$schema": "https://raw.githubusercontent.com/alrosado/azure-rmf-accelerator-json/refs/heads/main/schema/v1/ara.schema.json",
   "system": "Contoso System",
   "version": "1.0.0",
 
