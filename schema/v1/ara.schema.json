@@ -18,22 +18,28 @@
                 "type": "object",
                 "properties": {
                     "title": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Title of the role"
                     },
                     "key": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Key identifier of the role. This is used in other parts of the json file to link the role to specific access."
                     },
                     "group": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Name of the group that is primarily linked to this role."
                     },
                     "active": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the role is currently active."
                     },
                     "description": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Description about what the purpose of the role is"
                     },
                     "members": {
                         "type": "array",
+                        "description": "Initial members of the role. Not required; this is only in the case that a customer needs an explicit list of users defined early.",
                         "items": {
                             "type": "string"
                         }
@@ -44,8 +50,7 @@
                     "key",
                     "group",
                     "active",
-                    "description",
-                    "members"
+                    "description"
                 ]
             }
         },

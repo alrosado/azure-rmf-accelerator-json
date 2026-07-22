@@ -9,21 +9,14 @@
       "key": "sysadmin",
       "group": "ARA-System-Admins",
       "active": true,
-      "description": "Responsible for administration of Contoso System resources.",
-      "members": [
-        "admin1@contoso.com",
-        "admin2@contoso.com"
-      ]
+      "description": "Responsible for administration of Contoso System resources."
     },
     {
       "title": "Security Administrator",
       "key": "securityadmin",
       "group": "ARA-Security-Admins",
       "active": true,
-      "description": "Responsible for security monitoring and compliance activities.",
-      "members": [
-        "security@contoso.com"
-      ]
+      "description": "Responsible for security monitoring and compliance activities."
     }
   ],
 
