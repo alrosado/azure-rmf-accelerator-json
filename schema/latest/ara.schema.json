@@ -7,13 +7,20 @@
     "type": "object",
     "properties": {
         "system": {
-            "type": "string"
+            "type": "string",
+            "description": "Name of the system being modeled."
         },
         "version": {
-            "type": "string"
+            "type": "string",
+            "description": "Version of the system being modeled."
+        },
+        "customer": {
+            "type": "string",
+            "description": "Name of the customer for which this system is being modeled."
         },
         "roles": {
             "type": "array",
+            "description": "List of roles that are defined for the system. These roles are used to define access to resources in the system.",
             "items": {
                 "type": "object",
                 "properties": {
@@ -54,497 +61,178 @@
                 ]
             }
         },
-        "resources": {
-            "type": "object",
-            "properties": {
-                "dev": {
-                    "type": "object",
-                    "properties": {
-                        "resourcegroups": {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "roles": {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "object",
-                                            "properties": {
-                                                "role": {
-                                                    "type": "string"
-                                                },
-                                                "aadrole": {
-                                                    "type": "string"
+        "environments": {
+            "type": "array",
+            "description": "Environments contained within the system.",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "description": "Key identifier of the environment. This is used in other parts of the json file to link resources to specific environments."
+                    },
+                    "resourcegroups": {
+                        "type": "array",
+                        "description": "Resource groups contained within the environment.",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "description": "Name of the resource group"
+                                },
+                                "roles": {
+                                    "type": "array",
+                                    "description": "Roles that have access to the resource group.",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "role": {
+                                                "type": "string",
+                                                "description": "Key identifier of the role that has access to the resource group."
+                                            },
+                                            "icamRole": {
+                                                "type": "string",
+                                                "description": "Name of the ICAM system role that is assigned to the role for access to the resource group."
+                                            }
+                                        },
+                                        "required": [
+                                            "role",
+                                            "icamRole"
+                                        ]
+                                    }
+                                },
+                                "resources": {
+                                    "type": "array",
+                                    "description": "Resources contained within the resource group.",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "type": {
+                                                "type": "string",
+                                                "description": "Type of the resource."
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "description": "Name of the resource."
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "description": "Description of the resource."
+                                            },
+                                            "iacModule": {
+                                                "type": "object",
+                                                "description": "Infrastructure as Code module that is used to deploy the resource.",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "description": "Name of the IaC module"
+                                                    },
+                                                    "path": {
+                                                        "type": "string",
+                                                        "description": "Path to the IaC module. This is relative to the root of the repository."
+                                                    }
                                                 }
                                             },
-                                            "required": [
-                                                "role",
-                                                "aadrole"
-                                            ]
-                                        }
-                                    },
-                                    "resources": {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "object",
-                                            "properties": {
-                                                "type": {
-                                                    "type": "string"
-                                                },
-                                                "name": {
-                                                    "type": "string"
-                                                },
-                                                "description": {
-                                                    "type": "string"
-                                                },
-                                                "bicepModule": {
+                                            "active": {
+                                                "type": "boolean",
+                                                "description": "Whether the resource is currently active."
+                                            },
+                                            "linkedResources": {
+                                                "type": "array",
+                                                "description": "Resources that are linked to this resource. This is used to model dependencies between resources. For simplicity, this should be a one way linked relationship. Example: If resource A is linked to resource B, then resource B should not be linked to resource A.",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "type": {
+                                                            "type": "string",
+                                                            "description": "Type of the resource."
+                                                        },
+                                                        "name": {
+                                                            "type": "string",
+                                                            "description": "Name of the resource."
+                                                        },
+                                                        "description": {
+                                                            "type": "string",
+                                                            "description": "Description of the relationship to this resource. Examples: 'Child', 'Networking', 'Logging', 'Depends on', 'Uses', 'Is used by', etc."
+                                                        },
+                                                        "active": {
+                                                            "type": "boolean",
+                                                            "description": "Whether the link to this resource is currently active."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "type",
+                                                        "name",
+                                                        "description",
+                                                        "active"
+                                                    ]
+                                                }
+                                            },
+                                            "friendlyName": {
+                                                "type": "string",
+                                                "description": "Friendly name of the resource. This is used in documentation and other places where a more human-readable name is desired."
+                                            },
+                                            "roles": {
+                                                "type": "array",
+                                                "description": "Roles that have access to the resource.",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "role": {
+                                                            "type": "string",
+                                                            "description": "Key identifier of the role that has access to the resource."
+                                                        },
+                                                        "icamRole": {
+                                                            "type": "string",
+                                                            "description": "Name of the ICAM system role that is assigned to the role for access to the resource."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "role",
+                                                        "icamRole"
+                                                    ]
+                                                }
+                                            },
+                                            "software": {
+                                                "type": "array",
+                                                "description": "Software that is used in the resource. This is used to track what software is being used in the resource and what version.",
+                                                "items": {
                                                     "type": "object",
                                                     "properties": {
                                                         "name": {
-                                                            "type": "string"
+                                                            "type": "string",
+                                                            "description": "Name of the software"
                                                         },
-                                                        "path": {
-                                                            "type": "string"
+                                                        "version": {
+                                                            "type": "string",
+                                                            "description": "Version of the software being used in this solution"
+                                                        },
+                                                        "description": {
+                                                            "type": "string",
+                                                            "description": "Description of the software being used in this solution"
                                                         }
-                                                    }
-                                                },
-                                                "active": {
-                                                    "type": "boolean"
-                                                },
-                                                "resources": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "type": {
-                                                                "type": "string"
-                                                            },
-                                                            "name": {
-                                                                "type": "string"
-                                                            },
-                                                            "description": {
-                                                                "type": "string"
-                                                            },
-                                                            "active": {
-                                                                "type": "boolean"
-                                                            },
-                                                            "resources": {
-                                                                "type": "array",
-                                                                "items": {
-                                                                    "type": "object",
-                                                                    "properties": {
-                                                                        "type": {
-                                                                            "type": "string"
-                                                                        },
-                                                                        "name": {
-                                                                            "type": "string"
-                                                                        },
-                                                                        "description": {
-                                                                            "type": "string"
-                                                                        },
-                                                                        "active": {
-                                                                            "type": "boolean"
-                                                                        }
-                                                                    },
-                                                                    "required": [
-                                                                        "type",
-                                                                        "name",
-                                                                        "description",
-                                                                        "active"
-                                                                    ]
-                                                                }
-                                                            }
-                                                        },
-                                                        "required": [
-                                                            "type",
-                                                            "name",
-                                                            "description",
-                                                            "active",
-                                                            "resources"
-                                                        ]
-                                                    }
-                                                },
-                                                "friendlyname": {
-                                                    "type": "string"
-                                                },
-                                                "roles": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "role": {
-                                                                "type": "string"
-                                                            },
-                                                            "aadrole": {
-                                                                "type": "string"
-                                                            }
-                                                        },
-                                                        "required": [
-                                                            "role",
-                                                            "aadrole"
-                                                        ]
-                                                    }
-                                                },
-                                                "software": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "name": {
-                                                                "type": "string"
-                                                            },
-                                                            "version": {
-                                                                "type": "string"
-                                                            },
-                                                            "description": {
-                                                                "type": "string"
-                                                            }
-                                                        },
-                                                        "required": [
-                                                            "name"
-                                                        ]
-                                                    }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
                                                 }
-                                            },
-                                            "required": [
-                                                "type",
-                                                "name",
-                                                "description",
-                                                "active"
-                                            ]
-                                        }
+                                            }
+                                        },
+                                        "required": [
+                                            "type",
+                                            "name",
+                                            "description",
+                                            "active"
+                                        ]
                                     }
-                                },
-                                "required": [
-                                    "name",
-                                    "roles",
-                                    "resources"
-                                ]
-                            }
-                        }
-                    }
-                },
-                "test": {
-                    "type": "object",
-                    "properties": {
-                        "resourcegroups": {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "roles": {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "object",
-                                            "properties": {
-                                                "role": {
-                                                    "type": "string"
-                                                },
-                                                "aadrole": {
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "required": [
-                                                "role",
-                                                "aadrole"
-                                            ]
-                                        }
-                                    },
-                                    "resources": {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "object",
-                                            "properties": {
-                                                "type": {
-                                                    "type": "string"
-                                                },
-                                                "name": {
-                                                    "type": "string"
-                                                },
-                                                "description": {
-                                                    "type": "string"
-                                                },
-                                                "bicepModule": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "name": {
-                                                            "type": "string"
-                                                        },
-                                                        "path": {
-                                                            "type": "string"
-                                                        }
-                                                    }
-                                                },
-                                                "active": {
-                                                    "type": "boolean"
-                                                },
-                                                "resources": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "type": {
-                                                                "type": "string"
-                                                            },
-                                                            "name": {
-                                                                "type": "string"
-                                                            },
-                                                            "description": {
-                                                                "type": "string"
-                                                            },
-                                                            "active": {
-                                                                "type": "boolean"
-                                                            }
-                                                        },
-                                                        "required": [
-                                                            "type",
-                                                            "name",
-                                                            "description",
-                                                            "active"
-                                                        ]
-                                                    }
-                                                },
-                                                "friendlyname": {
-                                                    "type": "string"
-                                                },
-                                                "software": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "name": {
-                                                                "type": "string"
-                                                            },
-                                                            "version": {
-                                                                "type": "string"
-                                                            },
-                                                            "description": {
-                                                                "type": "string"
-                                                            }
-                                                        },
-                                                        "required": [
-                                                            "name"
-                                                        ]
-                                                    }
-                                                },
-                                                "roles": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "role": {
-                                                                "type": "string"
-                                                            },
-                                                            "aadrole": {
-                                                                "type": "string"
-                                                            },
-                                                            "scope": {
-                                                                "type": "string"
-                                                            }
-                                                        },
-                                                        "required": [
-                                                            "role",
-                                                            "aadrole",
-                                                            "scope"
-                                                        ]
-                                                    }
-                                                }
-                                            },
-                                            "required": [
-                                                "type",
-                                                "name",
-                                                "description",
-                                                "active"
-                                            ]
-                                        }
-                                    }
-                                },
-                                "required": [
-                                    "name",
-                                    "roles",
-                                    "resources"
-                                ]
-                            }
-                        }
-                    }
-                },
-                "prod": {
-                    "type": "object",
-                    "properties": {
-                        "resourcegroups": {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "roles": {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "object",
-                                            "properties": {
-                                                "role": {
-                                                    "type": "string"
-                                                },
-                                                "aadrole": {
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "required": [
-                                                "role",
-                                                "aadrole"
-                                            ]
-                                        }
-                                    },
-                                    "resources": {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "object",
-                                            "properties": {
-                                                "type": {
-                                                    "type": "string"
-                                                },
-                                                "name": {
-                                                    "type": "string"
-                                                },
-                                                "description": {
-                                                    "type": "string"
-                                                },
-                                                "bicepModule": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "name": {
-                                                            "type": "string"
-                                                        },
-                                                        "path": {
-                                                            "type": "string"
-                                                        }
-                                                    }
-                                                },
-                                                "active": {
-                                                    "type": "boolean"
-                                                },
-                                                "resources": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "type": {
-                                                                "type": "string"
-                                                            },
-                                                            "name": {
-                                                                "type": "string"
-                                                            },
-                                                            "description": {
-                                                                "type": "string"
-                                                            },
-                                                            "active": {
-                                                                "type": "boolean"
-                                                            },
-                                                            "resources": {
-                                                                "type": "array",
-                                                                "items": {
-                                                                    "type": "object",
-                                                                    "properties": {
-                                                                        "type": {
-                                                                            "type": "string"
-                                                                        },
-                                                                        "name": {
-                                                                            "type": "string"
-                                                                        },
-                                                                        "description": {
-                                                                            "type": "string"
-                                                                        },
-                                                                        "active": {
-                                                                            "type": "boolean"
-                                                                        }
-                                                                    },
-                                                                    "required": [
-                                                                        "type",
-                                                                        "name",
-                                                                        "description",
-                                                                        "active"
-                                                                    ]
-                                                                }
-                                                            }
-                                                        },
-                                                        "required": [
-                                                            "type",
-                                                            "name",
-                                                            "description",
-                                                            "active",
-                                                            "resources"
-                                                        ]
-                                                    }
-                                                },
-                                                "friendlyname": {
-                                                    "type": "string"
-                                                },
-                                                "software": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "name": {
-                                                                "type": "string"
-                                                            },
-                                                            "version": {
-                                                                "type": "string"
-                                                            },
-                                                            "description": {
-                                                                "type": "string"
-                                                            }
-                                                        },
-                                                        "required": [
-                                                            "name"
-                                                        ]
-                                                    }
-                                                },
-                                                "roles": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "role": {
-                                                                "type": "string"
-                                                            },
-                                                            "aadrole": {
-                                                                "type": "string"
-                                                            },
-                                                            "scope": {
-                                                                "type": "string"
-                                                            }
-                                                        },
-                                                        "required": [
-                                                            "role",
-                                                            "aadrole",
-                                                            "scope"
-                                                        ]
-                                                    }
-                                                }
-                                            },
-                                            "required": [
-                                                "type",
-                                                "name",
-                                                "description",
-                                                "active"
-                                            ]
-                                        }
-                                    }
-                                },
-                                "required": [
-                                    "name",
-                                    "roles",
-                                    "resources"
-                                ]
-                            }
+                                }
+                            },
+                            "required": [
+                                "name",
+                                "roles",
+                                "resources"
+                            ]
                         }
                     }
                 }
@@ -552,20 +240,25 @@
         },
         "software": {
             "type": "array",
+            "description": "List of software used in the system. This is used to track what software is being used in the system and what version.",
             "items": {
                 "type": "object",
                 "properties": {
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Name of the software"
                     },
                     "version": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Version of the software being used in this solution"
                     },
                     "description": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Description of the software being used in this solution"
                     },
                     "type": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Type of software. Examples: Application, Library, etc."
                     }
                 },
                 "required": [
@@ -576,240 +269,57 @@
             }
         },
         "stigs": {
-            "type": "object",
-            "properties": {
-                "Microsoft.Sql/servers": {
-                    "type": "object",
-                    "properties": {
-                        "stig": {
-                            "type": "string"
-                        },
-                        "applier": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "Microsoft.Synapse/workspaces": {
-                    "type": "object",
-                    "properties": {
-                        "stig": {
-                            "type": "string"
-                        },
-                        "applier": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "Microsoft.Synapse/workspaces/sqlPools": {
-                    "type": "object",
-                    "properties": {
-                        "stig": {
-                            "type": "string"
-                        },
-                        "applier": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "Microsoft.Sql/servers/databases": {
-                    "type": "object",
-                    "properties": {
-                        "stig": {
-                            "type": "string"
-                        },
-                        "applier": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "Oracle Database 19c": {
-                    "type": "object",
-                    "properties": {
-                        "stig": {
-                            "type": "string"
-                        },
-                        "applier": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "Windows Server 2022": {
-                    "type": "object",
-                    "properties": {
-                        "stig": {
-                            "type": "string"
-                        },
-                        "applier": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "RHEL 8": {
-                    "type": "object",
-                    "properties": {
-                        "stig": {
-                            "type": "string"
-                        },
-                        "applier": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "Edge": {
-                    "type": "object",
-                    "properties": {
-                        "stig": {
-                            "type": "string"
-                        },
-                        "applier": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "Microsoft Defender for Endpoint": {
-                    "type": "object",
-                    "properties": {
-                        "stig": {
-                            "type": "string"
-                        },
-                        "applier": {
-                            "type": "string"
-                        }
-                    }
-                },
-                ".NET Framework": {
-                    "type": "object",
-                    "properties": {
-                        "stig": {
-                            "type": "string"
-                        },
-                        "applier": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "Trellix Agent": {
-                    "type": "object",
-                    "properties": {
-                        "stig": {
-                            "type": "string"
-                        },
-                        "applier": {
-                            "type": "string"
-                        }
+            "type": "array",
+            "description": "STIGs that are applicable to this system.",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "resourceType": {
+                        "type": "string",
+                        "description": "Resource type that this STIG applies to."
+                    },
+                    "stig": {
+                        "type": "string",
+                        "description": "Identifier for the STIG that is applicable within this system."
+                    },
+                    "applier": {
+                        "type": "string",
+                        "description": "Key identifier of the role that is responsible for applying this STIG."
                     }
                 }
             }
         },
         "resourcetypes": {
-            "type": "object",
-            "properties": {
-                "Microsoft.Storage/storageAccounts": {
-                    "type": "string"
-                },
-                "Microsoft.OperationalInsights/workspaces": {
-                    "type": "string"
-                },
-                "Microsoft.ManagedIdentity/userAssignedIdentities": {
-                    "type": "string"
-                },
-                "Microsoft.KeyVault/vaults": {
-                    "type": "string"
-                },
-                "Microsoft.DataFactory/factories": {
-                    "type": "string"
-                },
-                "Microsoft.Sql/servers": {
-                    "type": "string"
-                },
-                "Microsoft.Synapse/workspaces": {
-                    "type": "string"
-                },
-                "Microsoft.Compute/virtualMachines": {
-                    "type": "string"
-                },
-                "Microsoft.Network/privateEndpoints": {
-                    "type": "string"
-                },
-                "Microsoft.Sql/servers/databases": {
-                    "type": "string"
-                },
-                "Microsoft.DataFactory/factories/integrationRuntimes": {
-                    "type": "string"
-                },
-                "Microsoft.Network/networkInterfaces": {
-                    "type": "string"
-                },
-                "Microsoft.Synapse/workspaces/bigDataPools": {
-                    "type": "string"
-                },
-                "Microsoft.Synapse/workspaces/sqlPools": {
-                    "type": "string"
-                },
-                "Microsoft.MachineLearningServices/workspaces": {
-                    "type": "string"
+            "type": "array",
+            "description": "Friendly names of official resource type names",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "description": "Official resource type name"
+                    },
+                    "friendlyName": {
+                        "type": "string",
+                        "description": "Friendly name of the resource type"
+                    }
                 }
             }
         },
         "strings": {
-            "type": "object",
-            "properties": {
-                "tests_version": {
-                    "type": "string"
-                },
-                "tests_prefix": {
-                    "type": "string"
-                },
-                "sit_testname": {
-                    "type": "string"
-                },
-                "sit_steps": {
-                    "type": "string"
-                },
-                "sit_outcome": {
-                    "type": "string"
-                },
-                "at_resourcegroup_testname": {
-                    "type": "string"
-                },
-                "at_resourcegroup_steps": {
-                    "type": "string"
-                },
-                "at_resourcegroup_outcome": {
-                    "type": "string"
-                },
-                "at_resource_testname": {
-                    "type": "string"
-                },
-                "at_resource_steps": {
-                    "type": "string"
-                },
-                "at_resource_outcome": {
-                    "type": "string"
-                },
-                "at_database_testname": {
-                    "type": "string"
-                },
-                "at_database_steps": {
-                    "type": "string"
-                },
-                "at_database_outcome": {
-                    "type": "string"
-                },
-                "ot_steps": {
-                    "type": "string"
-                },
-                "ot_outcome": {
-                    "type": "string"
-                },
-                "ot_stig_testname": {
-                    "type": "string"
-                },
-                "ot_stig_steps": {
-                    "type": "string"
-                },
-                "ot_stig_outcome": {
-                    "type": "string"
+            "type": "array",
+            "description": "Strings used in the system. This is used to track what strings are being used in the system and what version.",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "description": "Key for the string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "Value of the string"
+                    }
                 }
             }
         }
