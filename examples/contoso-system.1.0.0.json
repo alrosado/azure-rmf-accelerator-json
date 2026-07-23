@@ -1,0 +1,293 @@
+{
+  "$schema": "https://raw.githubusercontent.com/alrosado/azure-rmf-accelerator-json/refs/heads/main/schema/v1/ara.schema.json",
+  "system": "Contoso System",
+  "version": "1.0.0",
+  "customer": "Contoso",
+  "roles": [
+    {
+      "name": "System Administrator",
+      "key": "sysadmin",
+      "group": "ARA-System-Admins",
+      "active": true,
+      "description": "Responsible for administration of Contoso System resources.",
+      "members": [
+        "john.doe@example.com",
+        "john.deer@example.com"
+      ]
+    },
+    {
+      "name": "Security Administrator",
+      "key": "securityadmin",
+      "group": "ARA-Security-Admins",
+      "active": true,
+      "description": "Responsible for security monitoring and compliance activities."
+    }
+  ],
+  "environments": [
+    {
+      "key": "dev",
+      "resourcegroups": [
+        {
+          "name": "rg-ara-dev",
+          "roles": [
+            {
+              "role": "sysadmin",
+              "icamRole": "Contributor"
+            }
+          ],
+          "resources": [
+            {
+              "type": "Microsoft.Storage/storageAccounts",
+              "name": "staradev001",
+              "friendlyName": "Storage Account",
+              "description": "Stores generated RMF artifacts.",
+              "active": true,
+              "iacModule": {
+                "name": "storage",
+                "path": "modules/storage/storage.bicep"
+              },
+              "roles": [
+                {
+                  "role": "sysadmin",
+                  "icamRole": "Storage Blob Data Contributor"
+                }
+              ],
+              "software": [
+                {
+                  "name": "Azure Storage",
+                  "version": "Current",
+                  "description": "Azure Storage Account service."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "test",
+      "resourcegroups": [
+        {
+          "name": "rg-ara-test",
+          "roles": [
+            {
+              "role": "sysadmin",
+              "icamRole": "Contributor"
+            }
+          ],
+          "resources": [
+            {
+              "type": "Microsoft.Web/sites",
+              "name": "app-ara-test",
+              "friendlyName": "Web Application",
+              "description": "Hosts the Azure RMF Accelerator UI.",
+              "active": true,
+              "iacModule": {
+                "name": "webapp",
+                "path": "modules/web/webapp.bicep"
+              },
+              "roles": [
+                {
+                  "role": "sysadmin",
+                  "icamRole": "Contributor",
+                  "scope": "Resource"
+                }
+              ],
+              "software": [
+                {
+                  "name": "Azure App Service",
+                  "version": "Current",
+                  "description": "Application hosting platform."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "prod",
+      "resourcegroups": [
+        {
+          "name": "rg-ara-prod",
+          "roles": [
+            {
+              "role": "sysadmin",
+              "icamRole": "Contributor"
+            },
+            {
+              "role": "securityadmin",
+              "icamRole": "Security Admin"
+            }
+          ],
+          "resources": [
+            {
+              "type": "Microsoft.KeyVault/vaults",
+              "name": "kv-ara-prod",
+              "friendlyName": "Key Vault",
+              "description": "Stores secrets and certificates.",
+              "active": true,
+              "iacModule": {
+                "name": "keyvault",
+                "path": "modules/security/keyvault.bicep"
+              },
+              "roles": [
+                {
+                  "role": "securityadmin",
+                  "icamRole": "Key Vault Administrator",
+                  "scope": "Resource"
+                }
+              ],
+              "software": [
+                {
+                  "name": "Azure Key Vault",
+                  "version": "Current",
+                  "description": "Secrets management service."
+                }
+              ]
+            },
+            {
+              "type": "Microsoft.Sql/servers",
+              "name": "sql-ara-prod",
+              "friendlyName": "Azure SQL Server",
+              "description": "Hosts Azure RMF Accelerator data.",
+              "active": true,
+              "linkedResources": [
+                {
+                  "type": "Microsoft.Sql/servers/databases",
+                  "name": "ara",
+                  "linkType": "Database",
+                  "active": true
+                }
+              ],
+              "roles": []
+            },
+            {
+              "type": "Microsoft.Sql/servers/databases",
+              "name": "ara",
+              "friendlyName": "Azure SQL Database",
+              "linkType": "Child",
+              "description": "Hosts Azure RMF Accelerator data.",
+              "active": true,
+              "roles": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "software": [
+    {
+      "name": "Azure Storage",
+      "version": "Current",
+      "description": "Cloud storage platform.",
+      "type": "Platform"
+    },
+    {
+      "name": "Azure SQL Database",
+      "version": "Current",
+      "description": "Managed database platform.",
+      "type": "Database"
+    },
+    {
+      "name": "Azure Key Vault",
+      "version": "Current",
+      "description": "Secrets management service.",
+      "type": "Security"
+    }
+  ],
+  "stigs": {
+    "Microsoft.Sql/servers": {
+      "stig": "SQL Server STIG",
+      "applier": "securityadmin"
+    },
+    "Windows Server 2022": {
+      "stig": "Windows Server 2022 STIG",
+      "applier": "sysadmin"
+    }
+  },
+  "resourcetypes": {
+    "Microsoft.Storage/storageAccounts": "Azure Storage Account",
+    "Microsoft.KeyVault/vaults": "Azure Key Vault",
+    "Microsoft.Sql/servers": "Azure SQL Server",
+    "Microsoft.Sql/servers/databases": "Azure SQL Database"
+  },
+  "strings": [
+    {
+      "key": "tests_version",
+      "value": "1.0"
+    },
+    {
+      "key": "tests_prefix",
+      "value": "ARA"
+    },
+    {
+      "key": "sit_testname",
+      "value": "Infrastructure Deployment Validation"
+    },
+    {
+      "key": "sit_steps",
+      "value": "Deploy all infrastructure and verify successful provisioning."
+    },
+    {
+      "key": "sit_outcome",
+      "value": "All resources deploy successfully."
+    },
+    {
+      "key": "at_resourcegroup_testname",
+      "value": "Resource Group Validation"
+    },
+    {
+      "key": "at_resourcegroup_steps",
+      "value": "Validate required resources exist."
+    },
+    {
+      "key": "at_resourcegroup_outcome",
+      "value": "All required resources are present."
+    },
+    {
+      "key": "at_resource_testname",
+      "value": "Resource Validation"
+    },
+    {
+      "key": "at_resource_steps",
+      "value": "Validate resource configuration."
+    },
+    {
+      "key": "at_resource_outcome",
+      "value": "Resource meets expected configuration."
+    },
+    {
+      "key": "at_database_testname",
+      "value": "Database Validation"
+    },
+    {
+      "key": "at_database_steps",
+      "value": "Validate database connectivity and schema."
+    },
+    {
+      "key": "at_database_outcome",
+      "value": "Database functions correctly."
+    },
+    {
+      "key": "ot_steps",
+      "value": "Execute operational workflow end-to-end."
+    },
+    {
+      "key": "ot_outcome",
+      "value": "Solution operates successfully."
+    },
+    {
+      "key": "ot_stig_testname",
+      "value": "STIG Compliance Review"
+    },
+    {
+      "key": "ot_stig_steps",
+      "value": "Validate STIG implementation and documentation."
+    },
+    {
+      "key": "ot_stig_outcome",
+      "value": "All required STIG controls are satisfied."
+    }
+  ]
+}
