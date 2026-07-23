@@ -323,5 +323,15 @@
                 }
             }
         }
-    }
+    },
+    "required": [
+        "system",
+        "version",
+        "customer",
+        "roles",
+        "environments",
+        "software",
+        "stigs",
+        "resourcetypes"
+    ]
 }
