@@ -94,6 +94,10 @@
                                             "icamRole": {
                                                 "type": "string",
                                                 "description": "Name of the ICAM system role that is assigned to the role for access to the resource group."
+                                            },
+                                            "scope": {
+                                                "type": "string",
+                                                "description": "Scope of the role assignment for access to the resource group. Examples: 'Resource', 'Database', 'VM'."
                                             }
                                         },
                                         "required": [
@@ -152,9 +156,13 @@
                                                             "type": "string",
                                                             "description": "Name of the resource."
                                                         },
+                                                        "linkType": {
+                                                            "type": "string",
+                                                            "description": "The type of relationship linked to this resource. Examples: 'Child', 'Database', 'Networking', 'Logging', 'Depends on', 'Uses', 'Is used by', etc."
+                                                        },
                                                         "description": {
                                                             "type": "string",
-                                                            "description": "Description of the relationship to this resource. Examples: 'Child', 'Networking', 'Logging', 'Depends on', 'Uses', 'Is used by', etc."
+                                                            "description": "Description of the relationship to this resource."
                                                         },
                                                         "active": {
                                                             "type": "boolean",
@@ -164,7 +172,7 @@
                                                     "required": [
                                                         "type",
                                                         "name",
-                                                        "description",
+                                                        "linkType",
                                                         "active"
                                                     ]
                                                 }

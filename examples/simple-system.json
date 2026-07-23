@@ -2,14 +2,18 @@
   "$schema": "https://raw.githubusercontent.com/alrosado/azure-rmf-accelerator-json/refs/heads/main/schema/v1/ara.schema.json",
   "system": "Contoso System",
   "version": "1.0.0",
-
+  "customer": "LOGCOM CDAO",
   "roles": [
     {
       "title": "System Administrator",
       "key": "sysadmin",
       "group": "ARA-System-Admins",
       "active": true,
-      "description": "Responsible for administration of Contoso System resources."
+      "description": "Responsible for administration of Contoso System resources.",
+      "members": [
+        "john.doe@example.com",
+        "john.deer@example.com"
+      ]
     },
     {
       "title": "Security Administrator",
@@ -19,33 +23,33 @@
       "description": "Responsible for security monitoring and compliance activities."
     }
   ],
-
-  "resources": {
-    "dev": {
+  "environments": [
+    {
+      "key": "dev",
       "resourcegroups": [
         {
           "name": "rg-ara-dev",
           "roles": [
             {
               "role": "sysadmin",
-              "aadrole": "Contributor"
+              "icamRole": "Contributor"
             }
           ],
           "resources": [
             {
               "type": "Microsoft.Storage/storageAccounts",
               "name": "staradev001",
-              "friendlyname": "Storage Account",
+              "friendlyName": "Storage Account",
               "description": "Stores generated RMF artifacts.",
               "active": true,
-              "bicepModule": {
+              "iacModule": {
                 "name": "storage",
                 "path": "modules/storage/storage.bicep"
               },
               "roles": [
                 {
                   "role": "sysadmin",
-                  "aadrole": "Storage Blob Data Contributor"
+                  "icamRole": "Storage Blob Data Contributor"
                 }
               ],
               "software": [
@@ -54,39 +58,38 @@
                   "version": "Current",
                   "description": "Azure Storage Account service."
                 }
-              ],
-              "resources": []
+              ]
             }
           ]
         }
       ]
     },
-
-    "test": {
+    {
+      "key": "test",
       "resourcegroups": [
         {
           "name": "rg-ara-test",
           "roles": [
             {
               "role": "sysadmin",
-              "aadrole": "Contributor"
+              "icamRole": "Contributor"
             }
           ],
           "resources": [
             {
               "type": "Microsoft.Web/sites",
               "name": "app-ara-test",
-              "friendlyname": "Web Application",
+              "friendlyName": "Web Application",
               "description": "Hosts the Azure RMF Accelerator UI.",
               "active": true,
-              "bicepModule": {
+              "iacModule": {
                 "name": "webapp",
                 "path": "modules/web/webapp.bicep"
               },
               "roles": [
                 {
                   "role": "sysadmin",
-                  "aadrole": "Contributor",
+                  "icamRole": "Contributor",
                   "scope": "Resource"
                 }
               ],
@@ -96,43 +99,42 @@
                   "version": "Current",
                   "description": "Application hosting platform."
                 }
-              ],
-              "resources": []
+              ]
             }
           ]
         }
       ]
     },
-
-    "prod": {
+    {
+      "key": "prod",
       "resourcegroups": [
         {
           "name": "rg-ara-prod",
           "roles": [
             {
               "role": "sysadmin",
-              "aadrole": "Contributor"
+              "icamRole": "Contributor"
             },
             {
               "role": "securityadmin",
-              "aadrole": "Security Admin"
+              "icamRole": "Security Admin"
             }
           ],
           "resources": [
             {
               "type": "Microsoft.KeyVault/vaults",
               "name": "kv-ara-prod",
-              "friendlyname": "Key Vault",
+              "friendlyName": "Key Vault",
               "description": "Stores secrets and certificates.",
               "active": true,
-              "bicepModule": {
+              "iacModule": {
                 "name": "keyvault",
                 "path": "modules/security/keyvault.bicep"
               },
               "roles": [
                 {
                   "role": "securityadmin",
-                  "aadrole": "Key Vault Administrator",
+                  "icamRole": "Key Vault Administrator",
                   "scope": "Resource"
                 }
               ],
@@ -142,39 +144,38 @@
                   "version": "Current",
                   "description": "Secrets management service."
                 }
-              ],
-              "resources": []
+              ]
             },
             {
               "type": "Microsoft.Sql/servers",
               "name": "sql-ara-prod",
-              "friendlyname": "Azure SQL Server",
+              "friendlyName": "Azure SQL Server",
               "description": "Hosts Azure RMF Accelerator data.",
               "active": true,
-              "resources": [
+              "linkedResources": [
                 {
                   "type": "Microsoft.Sql/servers/databases",
                   "name": "ara",
-                  "description": "Primary application database.",
-                  "active": true,
-                  "resources": []
+                  "linkType": "Database",
+                  "active": true
                 }
               ],
-              "roles": [],
-              "software": [
-                {
-                  "name": "Azure SQL Database",
-                  "version": "Current",
-                  "description": "Managed relational database platform."
-                }
-              ]
+              "roles": []
+            },
+            {
+              "type": "Microsoft.Sql/servers/databases",
+              "name": "ara",
+              "friendlyName": "Azure SQL Database",
+              "linkType": "Child",
+              "description": "Hosts Azure RMF Accelerator data.",
+              "active": true,
+              "roles": []
             }
           ]
         }
       ]
     }
-  },
-
+  ],
   "software": [
     {
       "name": "Azure Storage",
@@ -195,7 +196,6 @@
       "type": "Security"
     }
   ],
-
   "stigs": {
     "Microsoft.Sql/servers": {
       "stig": "SQL Server STIG",
@@ -206,39 +206,88 @@
       "applier": "sysadmin"
     }
   },
-
   "resourcetypes": {
     "Microsoft.Storage/storageAccounts": "Azure Storage Account",
     "Microsoft.KeyVault/vaults": "Azure Key Vault",
     "Microsoft.Sql/servers": "Azure SQL Server",
     "Microsoft.Sql/servers/databases": "Azure SQL Database"
   },
-
-  "strings": {
-    "tests_version": "1.0",
-    "tests_prefix": "ARA",
-
-    "sit_testname": "Infrastructure Deployment Validation",
-    "sit_steps": "Deploy all infrastructure and verify successful provisioning.",
-    "sit_outcome": "All resources deploy successfully.",
-
-    "at_resourcegroup_testname": "Resource Group Validation",
-    "at_resourcegroup_steps": "Validate required resources exist.",
-    "at_resourcegroup_outcome": "All required resources are present.",
-
-    "at_resource_testname": "Resource Validation",
-    "at_resource_steps": "Validate resource configuration.",
-    "at_resource_outcome": "Resource meets expected configuration.",
-
-    "at_database_testname": "Database Validation",
-    "at_database_steps": "Validate database connectivity and schema.",
-    "at_database_outcome": "Database functions correctly.",
-
-    "ot_steps": "Execute operational workflow end-to-end.",
-    "ot_outcome": "Solution operates successfully.",
-
-    "ot_stig_testname": "STIG Compliance Review",
-    "ot_stig_steps": "Validate STIG implementation and documentation.",
-    "ot_stig_outcome": "All required STIG controls are satisfied."
-  }
+  "strings": [
+    {
+      "key": "tests_version",
+      "value": "1.0"
+    },
+    {
+      "key": "tests_prefix",
+      "value": "ARA"
+    },
+    {
+      "key": "sit_testname",
+      "value": "Infrastructure Deployment Validation"
+    },
+    {
+      "key": "sit_steps",
+      "value": "Deploy all infrastructure and verify successful provisioning."
+    },
+    {
+      "key": "sit_outcome",
+      "value": "All resources deploy successfully."
+    },
+    {
+      "key": "at_resourcegroup_testname",
+      "value": "Resource Group Validation"
+    },
+    {
+      "key": "at_resourcegroup_steps",
+      "value": "Validate required resources exist."
+    },
+    {
+      "key": "at_resourcegroup_outcome",
+      "value": "All required resources are present."
+    },
+    {
+      "key": "at_resource_testname",
+      "value": "Resource Validation"
+    },
+    {
+      "key": "at_resource_steps",
+      "value": "Validate resource configuration."
+    },
+    {
+      "key": "at_resource_outcome",
+      "value": "Resource meets expected configuration."
+    },
+    {
+      "key": "at_database_testname",
+      "value": "Database Validation"
+    },
+    {
+      "key": "at_database_steps",
+      "value": "Validate database connectivity and schema."
+    },
+    {
+      "key": "at_database_outcome",
+      "value": "Database functions correctly."
+    },
+    {
+      "key": "ot_steps",
+      "value": "Execute operational workflow end-to-end."
+    },
+    {
+      "key": "ot_outcome",
+      "value": "Solution operates successfully."
+    },
+    {
+      "key": "ot_stig_testname",
+      "value": "STIG Compliance Review"
+    },
+    {
+      "key": "ot_stig_steps",
+      "value": "Validate STIG implementation and documentation."
+    },
+    {
+      "key": "ot_stig_outcome",
+      "value": "All required STIG controls are satisfied."
+    }
+  ]
 }
