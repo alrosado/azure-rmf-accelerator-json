@@ -235,7 +235,11 @@
                             ]
                         }
                     }
-                }
+                },
+                "required": [
+                    "key",
+                    "resourcegroups"
+                ]
             }
         },
         "software": {
@@ -286,7 +290,12 @@
                         "type": "string",
                         "description": "Key identifier of the role that is responsible for applying this STIG."
                     }
-                }
+                },
+                "required": [
+                    "resourceType",
+                    "stig",
+                    "applier"
+                ]
             }
         },
         "resourcetypes": {
@@ -303,7 +312,11 @@
                         "type": "string",
                         "description": "Friendly name of the resource type"
                     }
-                }
+                },
+                "required": [
+                    "key",
+                    "friendlyName"
+                ]
             }
         },
         "strings": {
@@ -320,7 +333,11 @@
                         "type": "string",
                         "description": "Value of the string"
                     }
-                }
+                },
+                "required": [
+                    "key",
+                    "value"
+                ]
             }
         }
     },
