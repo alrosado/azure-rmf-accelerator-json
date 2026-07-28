@@ -226,7 +226,8 @@
                                                         }
                                                     },
                                                     "required": [
-                                                        "name"
+                                                        "name",
+                                                        "version"
                                                     ]
                                                 }
                                             }
