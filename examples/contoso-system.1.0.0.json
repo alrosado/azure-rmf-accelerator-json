@@ -196,22 +196,41 @@
       "type": "Security"
     }
   ],
-  "stigs": {
-    "Microsoft.Sql/servers": {
-      "stig": "SQL Server STIG",
-      "applier": "securityadmin"
+  "stigs": [
+    {
+      "resourceType": "Microsoft.Sql/servers",
+      "stig": "U_MS_SQL_Server_V3R3_SRG",
+      "applier": "dba"
     },
-    "Windows Server 2022": {
-      "stig": "Windows Server 2022 STIG",
-      "applier": "sysadmin"
+    {
+      "resourceType": "Microsoft.Synapse/workspaces",
+      "stig": "U_MS_SQL_Server_V3R3_SRG",
+      "applier": "dba"
+    },
+    {
+      "resourceType": "Microsoft.Synapse/workspaces/sqlPools",
+      "stig": "U_MS_Azure_SQL_DB_V1R2_STIG",
+      "applier": "dba"
     }
-  },
-  "resourcetypes": {
-    "Microsoft.Storage/storageAccounts": "Azure Storage Account",
-    "Microsoft.KeyVault/vaults": "Azure Key Vault",
-    "Microsoft.Sql/servers": "Azure SQL Server",
-    "Microsoft.Sql/servers/databases": "Azure SQL Database"
-  },
+  ],
+  "resourcetypes": [
+    {
+      "key": "Microsoft.Storage/storageAccounts",
+      "friendlyName": "Azure Storage Account"
+    },
+    {
+      "key": "Microsoft.KeyVault/vaults",
+      "friendlyName": "Azure Key Vault"
+    },
+    {
+      "key": "Microsoft.Sql/servers",
+      "friendlyName": "Azure SQL Server"
+    },
+    {
+      "key": "Microsoft.Sql/servers/databases",
+      "friendlyName": "Azure SQL Database"
+    }
+  ],
   "strings": [
     {
       "key": "tests_version",

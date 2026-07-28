@@ -194,6 +194,10 @@
                                                         "icamRole": {
                                                             "type": "string",
                                                             "description": "Name of the ICAM system role that is assigned to the role for access to the resource."
+                                                        },
+                                                        "scope": {
+                                                            "type": "string",
+                                                            "description": "Scope of the role assignment for access to the resource. Examples: 'Resource', 'Database', 'VM'."
                                                         }
                                                     },
                                                     "required": [
@@ -294,6 +298,10 @@
                         "type": "string",
                         "description": "Identifier for the STIG that is applicable within this system."
                     },
+                    "description": {
+                        "type": "string",
+                        "description": "Description on why the STIG is applicable within this system."
+                    },
                     "applier": {
                         "type": "string",
                         "description": "Key identifier of the role that is responsible for applying this STIG."
@@ -308,7 +316,7 @@
         },
         "resourcetypes": {
             "type": "array",
-            "description": "Friendly names of official resource type names",
+            "description": "Friendly names of official resource type names used within this system. This is also used to track what resource types are being used in the system.",
             "items": {
                 "type": "object",
                 "properties": {
