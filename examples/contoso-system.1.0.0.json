@@ -154,6 +154,7 @@
               "active": true,
               "linkedResources": [
                 {
+                  "resourceGroup": "rg-ara-prod",
                   "type": "Microsoft.Sql/servers/databases",
                   "name": "ara",
                   "linkType": "Database",
