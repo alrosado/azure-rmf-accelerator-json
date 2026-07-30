@@ -148,6 +148,10 @@
                                                 "items": {
                                                     "type": "object",
                                                     "properties": {
+                                                        "resourceGroup": {
+                                                            "type": "string",
+                                                            "description": "Resource group that the resource belongs to."
+                                                        },
                                                         "type": {
                                                             "type": "string",
                                                             "description": "Type of the resource."
@@ -170,6 +174,7 @@
                                                         }
                                                     },
                                                     "required": [
+                                                        "resourceGroup",
                                                         "type",
                                                         "name",
                                                         "linkType",
@@ -237,7 +242,7 @@
                                             "name",
                                             "description",
                                             "active"
-                                        ]
+                                        ]                                        
                                     }
                                 }
                             },
