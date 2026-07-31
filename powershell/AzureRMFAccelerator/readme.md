@@ -1,7 +1,7 @@
-# ARA PowerShell Module (`AzureRMFAccelerator.psm1`)
+# ARA PowerShell Module (`AzureRMFAccelerator`)
 
 ## Purpose
-`AzureRMFAccelerator.psm1` is the domain module for managing Azure RMF Accelerator (ARA) data as strongly typed PowerShell objects and JSON.
+`AzureRMFAccelerator` is the domain module for managing Azure RMF Accelerator (ARA) data as strongly typed PowerShell objects and JSON.
 
 It provides:
 - Class models for ARA concepts (roles, environments, resource groups, resources, software, STIGs, and configuration strings)

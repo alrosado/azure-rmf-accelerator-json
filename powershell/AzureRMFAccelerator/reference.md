@@ -1,6 +1,6 @@
 # ARA PowerShell Module — Cmdlet Reference
 
-Module: **ARA.psm1**  
+Module: **AzureRMFAccelerator**  
 The ARA PowerShell module provides cmdlets for creating, loading, validating, and managing Azure RMF Accelerator (ARA) JSON files. Commands follow the standard PowerShell `Verb-Noun` naming convention and are grouped by the resource type they manage.
 
 ---
