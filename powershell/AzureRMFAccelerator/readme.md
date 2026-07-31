@@ -1,3 +1,5 @@
+![ARA Logo](ARA%20Logo.png)
+
 # ARA PowerShell Module (`AzureRMFAccelerator`)
 
 ## Purpose
