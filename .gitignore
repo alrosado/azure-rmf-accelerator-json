@@ -1,0 +1,4 @@
+AzuriteConfig
+__blobstorage__/*
+__azurite_*.json
+Foo.*.json

@@ -162,7 +162,16 @@
                                                         },
                                                         "linkType": {
                                                             "type": "string",
-                                                            "description": "The type of relationship linked to this resource. Examples: 'Child', 'Database', 'Networking', 'Logging', 'Depends on', 'Uses', 'Is used by', etc."
+                                                            "description": "The type of relationship linked to this resource. Examples: 'Child', 'Database', 'Networking', 'Logging', 'Depends on', 'Uses', 'Is used by', etc.",
+                                                            "enum": [
+                                                                "Child",
+                                                                "Database",
+                                                                "Networking",
+                                                                "Logging",
+                                                                "Depends on",
+                                                                "Uses",
+                                                                "Is used by"
+                                                            ]
                                                         },
                                                         "description": {
                                                             "type": "string",
@@ -266,6 +275,10 @@
             "items": {
                 "type": "object",
                 "properties": {
+                    "key": {
+                        "type": "string",
+                        "description": "Unique identifier of the software and version. This is used in other parts of the json file to link the software to specific resources."
+                    },
                     "name": {
                         "type": "string",
                         "description": "Name of the software"
@@ -284,6 +297,7 @@
                     }
                 },
                 "required": [
+                    "key",
                     "name",
                     "version",
                     "description"
@@ -296,9 +310,17 @@
             "items": {
                 "type": "object",
                 "properties": {
-                    "resourceType": {
+                    "targetKey": {
                         "type": "string",
-                        "description": "Resource type that this STIG applies to."
+                        "description": "Unique identifier for object that this STIG applies to. This can be a resource type key or software key."
+                    },
+                    "targetType": {
+                        "type": "string",
+                        "description": "Type of target. This is either resourceType or software.",
+                        "enum": [
+                            "resourceType",
+                            "software"
+                        ]
                     },
                     "stig": {
                         "type": "string",
@@ -314,7 +336,8 @@
                     }
                 },
                 "required": [
-                    "resourceType",
+                    "targetKey",
+                    "targetType",
                     "stig",
                     "applier"
                 ]
