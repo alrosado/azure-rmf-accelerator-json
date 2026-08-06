@@ -1,5 +1,9 @@
 # Release Notes
 
+## 1.0.1 — Initial Release
+
+Bug fixes and changes based on json schema updates.
+
 ## 1.0.0 — Initial Release
 
 First public release of the **AzureRMFAccelerator** PowerShell module.

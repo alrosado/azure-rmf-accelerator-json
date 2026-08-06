@@ -987,35 +987,40 @@ Remove-ARAResourceType -key "vm"
 
 ### Get-ARASoftware
 
-Retrieves a specific software component by name and version, or all software if no filter is provided.
+Retrieves a specific software component by key, by name/version, or returns a dictionary list.
 
 #### Syntax
 
 ```powershell
 Get-ARASoftware
+    [-key <String>]
     [-name <String>]
     [-version <String>]
+    [-list]
 ```
 
 #### Parameters
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `name` | String | No | Software name. Must be combined with `version` to retrieve a specific entry. |
-| `version` | String | No | Software version. Must be combined with `name` to retrieve a specific entry. |
+| `key` | String | No | Unique software key. |
+| `name` | String | No | Software name. Use with `version` to retrieve a specific entry. |
+| `version` | String | No | Software version. Use with `name` to retrieve a specific entry. |
+| `list` | Switch | No | Returns a dictionary of software entries, optionally filtered by `name` and/or `version`. |
 
 #### Example
 
 ```powershell
+Get-ARASoftware -key "windows-server-2022"
 Get-ARASoftware -name "Windows Server" -version "2022"
-Get-ARASoftware
+Get-ARASoftware -list
 ```
 
 ---
 
 ### Add-ARASoftware
 
-Adds a new software component to the ARA file. Throws if the name/version combination already exists.
+Adds a new software component to the ARA file. Throws if the key already exists.
 
 #### Syntax
 
@@ -1026,6 +1031,7 @@ Add-ARASoftware
 
 # Properties parameter set
 Add-ARASoftware
+    -key <String>
     -name <String>
     -version <String>
     -description <String>
@@ -1037,6 +1043,7 @@ Add-ARASoftware
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `software` | ARASoftware | Yes (Object) | Pre-constructed software object. |
+| `key` | String | Yes (Properties) | Unique software key. |
 | `name` | String | Yes (Properties) | Software name. |
 | `version` | String | Yes (Properties) | Software version. |
 | `description` | String | Yes (Properties) | Software description. |
@@ -1045,14 +1052,14 @@ Add-ARASoftware
 #### Example
 
 ```powershell
-Add-ARASoftware -name "Windows Server" -version "2022" -description "Server OS" -type "OS"
+Add-ARASoftware -key "windows-server-2022" -name "Windows Server" -version "2022" -description "Server OS" -type "OS"
 ```
 
 ---
 
 ### Set-ARASoftware
 
-Updates an existing software component. Throws if the name/version combination does not exist.
+Updates an existing software component. Throws if the key does not exist.
 
 #### Syntax
 
@@ -1063,8 +1070,7 @@ Set-ARASoftware
 
 # Properties parameter set
 Set-ARASoftware
-    -name <String>
-    -version <String>
+    -key <String>
     [-description <String>]
     [-type <String>]
 ```
@@ -1074,42 +1080,39 @@ Set-ARASoftware
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `software` | ARASoftware | Yes (Object) | Updated software object. |
-| `name` | String | Yes (Properties) | Software name. |
-| `version` | String | Yes (Properties) | Software version. |
+| `key` | String | Yes (Properties) | Software key. |
 | `description` | String | No | Updated description. |
 | `type` | String | No | Updated type classification. |
 
 #### Example
 
 ```powershell
-Set-ARASoftware -name "Windows Server" -version "2022" -description "Updated OS description"
+Set-ARASoftware -key "windows-server-2022" -description "Updated OS description"
 ```
 
 ---
 
 ### Remove-ARASoftware
 
-Removes a software component from the ARA file. Throws if the name/version combination does not exist.
+Removes a software component from the ARA file. Throws if the key does not exist.
 
 #### Syntax
 
 ```powershell
 Remove-ARASoftware
-    -name <String>
-    -version <String>
+    -key <String>
 ```
 
 #### Parameters
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `name` | String | Yes | Software name. |
-| `version` | String | Yes | Software version. |
+| `key` | String | Yes | Software key. |
 
 #### Example
 
 ```powershell
-Remove-ARASoftware -name "Windows Server" -version "2022"
+Remove-ARASoftware -key "windows-server-2022"
 ```
 
 ---
@@ -1132,7 +1135,7 @@ New-ARASTIG
 
 ```powershell
 $stig = New-ARASTIG
-$stig.resourceType = Get-ARAResourceType -key "vm"
+$stig.target       = Get-ARAResourceType -key "vm"
 $stig.stig         = "V-93369"
 $stig.applier      = Get-ARARole -key "admin"
 Add-ARASTIG -stigObject $stig
@@ -1142,25 +1145,25 @@ Add-ARASTIG -stigObject $stig
 
 ### Get-ARASTIG
 
-Retrieves a specific STIG requirement by resource type key, or all STIGs if no key is provided.
+Retrieves a specific STIG requirement by target key, or all STIGs if no key is provided.
 
 #### Syntax
 
 ```powershell
 Get-ARASTIG
-    [-resourceTypeKey <String>]
+    [-targetKey <String>]
 ```
 
 #### Parameters
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `resourceTypeKey` | String | No | Resource type key. Omit to return all STIGs. |
+| `targetKey` | String | No | Target key (resource type or software). Omit to return all STIGs. |
 
 #### Example
 
 ```powershell
-Get-ARASTIG -resourceTypeKey "vm"
+Get-ARASTIG -targetKey "vm"
 Get-ARASTIG
 ```
 
@@ -1168,7 +1171,7 @@ Get-ARASTIG
 
 ### Add-ARASTIG
 
-Adds a new STIG requirement to the ARA file. Throws if a STIG for the resource type already exists.
+Adds a new STIG requirement to the ARA file. Throws if a STIG for the target key already exists.
 
 #### Syntax
 
@@ -1179,7 +1182,8 @@ Add-ARASTIG
 
 # Properties parameter set
 Add-ARASTIG
-    -resourceType <String | ARAResourceType>
+    -targetKey <String>
+    -targetType <String>
     -stig <String>
     -applier <String | ARARole>
     [-description <String>]
@@ -1190,7 +1194,8 @@ Add-ARASTIG
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `stigObject` | ARAStig | Yes (Object) | Pre-constructed STIG object. |
-| `resourceType` | String or ARAResourceType | Yes (Properties) | Resource type key or object. |
+| `targetKey` | String | Yes (Properties) | Target key within `resourceTypes` or `software`. |
+| `targetType` | String | Yes (Properties) | Target type. Must be `resourceType` or `software`. |
 | `stig` | String | Yes (Properties) | STIG identifier. |
 | `applier` | String or ARARole | Yes (Properties) | Role key or object responsible for applying the STIG. |
 | `description` | String | No | STIG description. |
@@ -1198,7 +1203,7 @@ Add-ARASTIG
 #### Example
 
 ```powershell
-Add-ARASTIG -resourceType "vm" -stig "V-93369" -description "OS Hardening" -applier "admin"
+Add-ARASTIG -targetKey "vm" -targetType "resourceType" -stig "V-93369" -description "OS Hardening" -applier "admin"
 ```
 
 ---
@@ -1213,11 +1218,10 @@ Updates an existing STIG requirement. Throws if the STIG does not exist.
 # Object parameter set
 Set-ARASTIG
     -stigObject <ARAStig>
-    -resourceType <String | ARAResourceType>
 
 # Properties parameter set
 Set-ARASTIG
-    -resourceType <String | ARAResourceType>
+    -targetKey <String>
     [-stig <String>]
     [-description <String>]
     [-applier <String | ARARole>]
@@ -1228,7 +1232,7 @@ Set-ARASTIG
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `stigObject` | ARAStig | Yes (Object) | Updated STIG object. |
-| `resourceType` | String or ARAResourceType | Yes | Resource type key or object identifying the STIG to update. |
+| `targetKey` | String | Yes (Properties) | Target key identifying the STIG to update. |
 | `stig` | String | No | Updated STIG identifier. |
 | `description` | String | No | Updated description. |
 | `applier` | String or ARARole | No | Updated applier role. |
@@ -1236,7 +1240,7 @@ Set-ARASTIG
 #### Example
 
 ```powershell
-Set-ARASTIG -resourceType "vm" -description "Updated OS hardening requirement" -applier "secops"
+Set-ARASTIG -targetKey "vm" -description "Updated OS hardening requirement" -applier "secops"
 ```
 
 ---
@@ -1249,19 +1253,19 @@ Removes a STIG requirement from the ARA file. Throws if the STIG does not exist.
 
 ```powershell
 Remove-ARASTIG
-    -resourceTypeKey <String>
+    -targetKey <String>
 ```
 
 #### Parameters
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `resourceTypeKey` | String | Yes | Resource type key identifying the STIG to remove. |
+| `targetKey` | String | Yes | Target key identifying the STIG to remove. |
 
 #### Example
 
 ```powershell
-Remove-ARASTIG -resourceTypeKey "vm"
+Remove-ARASTIG -targetKey "vm"
 ```
 
 ---
