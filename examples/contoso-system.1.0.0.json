@@ -26,7 +26,7 @@
   "environments": [
     {
       "key": "dev",
-      "resourcegroups": [
+      "resourceGroups": [
         {
           "name": "rg-ara-dev",
           "roles": [
@@ -66,7 +66,7 @@
     },
     {
       "key": "test",
-      "resourcegroups": [
+      "resourceGroups": [
         {
           "name": "rg-ara-test",
           "roles": [
@@ -107,7 +107,7 @@
     },
     {
       "key": "prod",
-      "resourcegroups": [
+      "resourceGroups": [
         {
           "name": "rg-ara-prod",
           "roles": [
@@ -167,7 +167,6 @@
               "type": "Microsoft.Sql/servers/databases",
               "name": "ara",
               "friendlyName": "Azure SQL Database",
-              "linkType": "Child",
               "description": "Hosts Azure RMF Accelerator data.",
               "active": true,
               "roles": []
@@ -179,42 +178,25 @@
   ],
   "software": [
     {
-      "name": "Azure Storage",
-      "version": "Current",
-      "description": "Cloud storage platform.",
-      "type": "Platform"
+      "key": "ssms-19.3",
+      "name": "SQL Server Management Studio",
+      "version": "19.3",
+      "description": "Integrated environment for managing any SQL infrastructure."
     },
     {
-      "name": "Azure SQL Database",
-      "version": "Current",
-      "description": "Managed database platform.",
-      "type": "Database"
+      "key": "azure-cli-2.58.",
+      "name": "Azure CLI",
+      "version": "2.58.0",
+      "description": "Cross-platform command-line tool to connect to Azure and execute administrative commands on Azure resources."
     },
     {
-      "name": "Azure Key Vault",
-      "version": "Current",
-      "description": "Secrets management service.",
-      "type": "Security"
+      "key": "dotnet-framework-4.7.2",
+      "name": ".NET Framework",
+      "version": "4.7.2",
+      "description": "Framework for building client and server applications."
     }
   ],
-  "stigs": [
-    {
-      "resourceType": "Microsoft.Sql/servers",
-      "stig": "U_MS_SQL_Server_V3R3_SRG",
-      "applier": "dba"
-    },
-    {
-      "resourceType": "Microsoft.Synapse/workspaces",
-      "stig": "U_MS_SQL_Server_V3R3_SRG",
-      "applier": "dba"
-    },
-    {
-      "resourceType": "Microsoft.Synapse/workspaces/sqlPools",
-      "stig": "U_MS_Azure_SQL_DB_V1R2_STIG",
-      "applier": "dba"
-    }
-  ],
-  "resourcetypes": [
+  "resourceTypes": [
     {
       "key": "Microsoft.Storage/storageAccounts",
       "friendlyName": "Azure Storage Account"
@@ -232,6 +214,7 @@
       "friendlyName": "Azure SQL Database"
     }
   ],
+  "stigs": [],
   "strings": [
     {
       "key": "tests_version",
