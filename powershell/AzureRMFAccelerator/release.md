@@ -1,6 +1,6 @@
 # Release Notes
 
-## 1.0.1 — Initial Release
+## 1.0.1
 
 Bug fixes and changes based on json schema updates.
 
