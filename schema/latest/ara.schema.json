@@ -404,7 +404,6 @@
             }
         }
     },
-    "additionalProperties": false,
     "required": [
         "system",
         "version",
