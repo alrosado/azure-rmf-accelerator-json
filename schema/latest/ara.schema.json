@@ -52,6 +52,7 @@
                         }
                     }
                 },
+                "additionalProperties": false,
                 "required": [
                     "name",
                     "key",
@@ -71,7 +72,7 @@
                         "type": "string",
                         "description": "Key identifier of the environment. This is used in other parts of the json file to link resources to specific environments."
                     },
-                    "resourcegroups": {
+                    "resourceGroups": {
                         "type": "array",
                         "description": "Resource groups contained within the environment.",
                         "items": {
@@ -87,6 +88,7 @@
                                     "items": {
                                         "type": "object",
                                         "properties": {
+                                            "additionalProperties": false,
                                             "role": {
                                                 "type": "string",
                                                 "description": "Key identifier of the role that has access to the resource group."
@@ -100,6 +102,7 @@
                                                 "description": "Scope of the role assignment for access to the resource group. Examples: 'Resource', 'Database', 'VM'."
                                             }
                                         },
+                                        "additionalProperties": false,
                                         "required": [
                                             "role",
                                             "icamRole"
@@ -136,7 +139,12 @@
                                                         "type": "string",
                                                         "description": "Path to the IaC module. This is relative to the root of the repository."
                                                     }
-                                                }
+                                                },
+                                                "additionalProperties": false,
+                                                "required": [
+                                                    "name",
+                                                    "path"
+                                                ]
                                             },
                                             "active": {
                                                 "type": "boolean",
@@ -182,6 +190,7 @@
                                                             "description": "Whether the link to this resource is currently active."
                                                         }
                                                     },
+                                                    "additionalProperties": false,
                                                     "required": [
                                                         "resourceGroup",
                                                         "type",
@@ -214,6 +223,7 @@
                                                             "description": "Scope of the role assignment for access to the resource. Examples: 'Resource', 'Database', 'VM'."
                                                         }
                                                     },
+                                                    "additionalProperties": false,
                                                     "required": [
                                                         "role",
                                                         "icamRole"
@@ -239,6 +249,7 @@
                                                             "description": "Description of the software being used in this solution"
                                                         }
                                                     },
+                                                    "additionalProperties": false,
                                                     "required": [
                                                         "name",
                                                         "version"
@@ -246,15 +257,17 @@
                                                 }
                                             }
                                         },
+                                        "additionalProperties": false,
                                         "required": [
                                             "type",
                                             "name",
                                             "description",
                                             "active"
-                                        ]                                        
+                                        ]
                                     }
                                 }
                             },
+                            "additionalProperties": false,
                             "required": [
                                 "name",
                                 "roles",
@@ -263,9 +276,10 @@
                         }
                     }
                 },
+                "additionalProperties": false,
                 "required": [
                     "key",
-                    "resourcegroups"
+                    "resourceGroups"
                 ]
             }
         },
@@ -296,6 +310,7 @@
                         "description": "Type of software. Examples: Application, Library, etc."
                     }
                 },
+                "additionalProperties": false,
                 "required": [
                     "key",
                     "name",
@@ -335,6 +350,7 @@
                         "description": "Key identifier of the role that is responsible for applying this STIG."
                     }
                 },
+                "additionalProperties": false,
                 "required": [
                     "targetKey",
                     "targetType",
@@ -343,7 +359,7 @@
                 ]
             }
         },
-        "resourcetypes": {
+        "resourceTypes": {
             "type": "array",
             "description": "Friendly names of official resource type names used within this system. This is also used to track what resource types are being used in the system.",
             "items": {
@@ -358,6 +374,7 @@
                         "description": "Friendly name of the resource type"
                     }
                 },
+                "additionalProperties": false,
                 "required": [
                     "key",
                     "friendlyName"
@@ -379,6 +396,7 @@
                         "description": "Value of the string"
                     }
                 },
+                "additionalProperties": false,
                 "required": [
                     "key",
                     "value"
@@ -386,6 +404,7 @@
             }
         }
     },
+    "additionalProperties": false,
     "required": [
         "system",
         "version",
@@ -394,6 +413,6 @@
         "environments",
         "software",
         "stigs",
-        "resourcetypes"
+        "resourceTypes"
     ]
 }
