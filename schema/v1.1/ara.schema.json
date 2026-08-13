@@ -512,7 +512,7 @@
                             "targetKey",
                             "targetType",
                             "stig",
-                            "applier"
+                            "applierRoleKey"
                         ]
                     }
                 }
