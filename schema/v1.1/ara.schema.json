@@ -191,11 +191,6 @@
         "definition": {
             "type": "object",
             "description": "Information about the definition of the system being modeled.",
-            "required": [
-                "mission",
-                "scope",
-                "requirements"
-            ],
             "properties": {
                 "mission": {
                     "type": "object",
@@ -975,10 +970,7 @@
                     "additionalProperties": false
                 }
             },
-            "additionalProperties": false,
-            "required": [
-                "support"
-            ]
+            "additionalProperties": false
         },
         "artifactManifest": {
             "$ref": "#/$defs/nonEmptyString",
