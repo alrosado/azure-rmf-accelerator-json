@@ -2,7 +2,7 @@
     "$schema": "https://raw.githubusercontent.com/alrosado/azure-rmf-accelerator-json/refs/heads/main/schema/v1.1/artifacts/artifactContent.schema.json",
     "$id": "https://raw.githubusercontent.com/alrosado/azure-rmf-accelerator-json/refs/heads/main/schema/v1.1/artifacts/artifact/sdsd.schema.json",
     "title": "System Design Specification Document (SDSD) Schema",
-    "version": "1.1.0",
+    "$comment": "1.1.0",
     "description": "Schema for defining and generating System Design Specification Documents that comprehensively describe solution architecture, requirements, security controls, and operational considerations for Azure-based systems.",
     "type": "object",
     "properties": {
