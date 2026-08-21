@@ -17,7 +17,8 @@
         },
         "$ref": {
             "type": "string",
-            "description": "A reference to another schema to include."
+            "description": "A reference to another schema to include.",
+            "format": "uri-reference"
         },
         "$comment": {
             "type": "string",
