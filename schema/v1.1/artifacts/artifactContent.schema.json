@@ -1,6 +1,13 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$id": "https://raw.githubusercontent.com/alrosado/azure-rmf-accelerator-json/refs/heads/main/schema/v1.1/artifacts/artifactContent.schema.json",
+    "$vocabulary": {
+        "https://json-schema.org/draft/2020-12/vocab/core": true,
+        "https://json-schema.org/draft/2020-12/vocab/applicator": true,
+        "https://json-schema.org/draft/2020-12/vocab/validation": true,
+        "https://json-schema.org/draft/2020-12/vocab/meta-data": true,
+        "https://json-schema.org/draft/2020-12/vocab/format-annotation": true
+    },
     "title": "Artifact Content Schema",
     "version": "1.1.0",
     "description": "Meta-schema that defines the structure and validation rules for artifact generation schemas. This schema ensures artifact schemas conform to the required pattern for defining artifact type, output format, data properties, and generation settings.",
