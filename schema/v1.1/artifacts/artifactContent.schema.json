@@ -15,11 +15,6 @@
             "type": "string",
             "description": "A unique identifier for the schema."
         },
-        "$ref": {
-            "type": "string",
-            "description": "A reference to another schema to include.",
-            "format": "uri-reference"
-        },
         "$comment": {
             "type": "string",
             "description": "Comments from schema authors to readers or maintainers of the schema."

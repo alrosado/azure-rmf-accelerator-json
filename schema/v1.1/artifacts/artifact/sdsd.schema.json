@@ -1,6 +1,5 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$ref": "https://raw.githubusercontent.com/alrosado/azure-rmf-accelerator-json/refs/heads/main/schema/v1.1/artifacts/artifactContent.schema.json",
+    "$schema": "https://raw.githubusercontent.com/alrosado/azure-rmf-accelerator-json/refs/heads/main/schema/v1.1/artifacts/artifactContent.schema.json",
     "$id": "https://raw.githubusercontent.com/alrosado/azure-rmf-accelerator-json/refs/heads/main/schema/v1.1/artifacts/artifact/sdsd.schema.json",
     "title": "System Design Specification Document (SDSD) Schema",
     "version": "1.1.0",
