@@ -89,6 +89,11 @@ The schema is intended to evolve as additional artifact generators and data sour
 ├── examples/
 │   └── simple-system.json
 │
+├── powershell/
+│   └── AzureRMFAccelerator/
+│       ├── docs/
+│       └── ...
+│
 └── README.md
 ```
 
@@ -99,6 +104,10 @@ Defines the Azure RMF Accelerator canonical data model.
 ### simple-system.json
 
 Reference implementation demonstrating schema usage.
+
+### AzureRMFAccelerator PowerShell Module
+
+The PowerShell module provides cmdlets for working with the Azure RMF Accelerator JSON schema. For complete reference documentation, see the [AzureRMFAccelerator docs folder](powershell/AzureRMFAccelerator/docs/).
 
 ### README.md
 

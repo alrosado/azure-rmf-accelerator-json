@@ -1,0 +1,81 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://raw.githubusercontent.com/alrosado/azure-rmf-accelerator-json/refs/heads/main/schema/v1.1/artifacts/manifest.schema.json",
+    "title": "Azure RMF Accelerator manifest schema",
+    "version": "1.1.0",
+    "description": "Schema for the Azure RMF Accelerator manifest.",
+    "properties": {
+        "$schema": {
+            "type": "string",
+            "description": "The schema to verify this document against.",
+            "format": "uri-reference"
+        },
+        "system": {
+            "type": "string",
+            "description": "The system associated with the artifact manifest."
+        },
+        "version": {
+            "type": "string",
+            "description": "The system version associated with the artifact manifest."
+        },
+        "artifacts": {
+            "type": "array",
+            "description": "A list of artifacts associated with the artifact manifest.",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "artifactJsonUri": {
+                        "type": "string",
+                        "description": "The URI of the artifact JSON file for generating the artifact.",
+                        "format": "uri-reference"
+                    },
+                    "template": {
+                        "type": "string",
+                        "description": "The URI of the template file.",
+                        "format": "uri-reference"
+                    },
+                    "artifactUri": {
+                        "type": "string",
+                        "description": "The URI of the artifact file.",
+                        "format": "uri-reference"
+                    },
+                    "audit": {
+                        "type": "object",
+                        "description": "Auditing information about a component of the system being modeled.",
+                        "properties": {
+                            "updatedBy": {
+                                "$ref": "#/$defs/nonEmptyString",
+                                "description": "Name of the person or system that last updated the component."
+                            },
+                            "updatedOn": {
+                                "$ref": "#/$defs/nonEmptyString",
+                                "format": "date-time",
+                                "description": "Date and time when the component was last updated."
+                            },
+                            "aiUsed": {
+                                "type": "boolean",
+                                "description": "Indicates whether AI was used to generate or modify the component."
+                            }
+                        },
+                        "required": [
+                            "updatedBy",
+                            "updatedOn",
+                            "aiUsed"
+                        ],
+                        "additionalProperties": false
+                    }
+                },
+                "required": [
+                    "artifactJsonUri"
+                ]
+            }
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "$schema",
+        "system",
+        "version",
+        "artifacts"
+    ]
+}

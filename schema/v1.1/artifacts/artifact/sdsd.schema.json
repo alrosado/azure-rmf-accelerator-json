@@ -1,0 +1,227 @@
+{
+    "$schema": "https://raw.githubusercontent.com/alrosado/azure-rmf-accelerator-json/refs/heads/main/schema/v1.1/artifacts/artifactContent.schema.json",
+    "$id": "https://raw.githubusercontent.com/alrosado/azure-rmf-accelerator-json/refs/heads/main/schema/v1.1/artifacts/artifact/sdsd.schema.json",
+    "title": "System Design Specification Document (SDSD) Schema",
+    "version": "1.1.0",
+    "description": "Schema for defining and generating System Design Specification Documents that comprehensively describe solution architecture, requirements, security controls, and operational considerations for Azure-based systems.",
+    "type": "object",
+    "properties": {
+        "$schema": {
+            "type": "string",
+            "description": "The schema to verify this document against.",
+            "format": "uri-reference"
+        },
+        "$id": {
+            "type": "string",
+            "description": "A unique identifier for the schema."
+        },
+        "$comment": {
+            "type": "string",
+            "description": "Comments from schema authors to readers or maintainers of the schema."
+        },
+        "title": {
+            "type": "string",
+            "description": "The title of the artifact when generated."
+        },
+        "artifactType": {
+            "type": "string",
+            "description": "The type of the artifact to be generated.",
+            "enum": [
+                "sdsd"
+            ]
+        },
+        "outputType": {
+            "type": "string",
+            "description": "The output type of the artifact when generated.",
+            "enum": [
+                "docx"
+            ]
+        },
+        "data": {
+            "type": "object",
+            "description": "Data to use for artifact generation.",
+            "properties": {
+                "Subject": {
+                    "type": "string",
+                    "description": "Subject of the system design specification document."
+                },
+                "Customer": {
+                    "type": "string",
+                    "description": "Customer name for the system design specification document."
+                },
+                "executiveSummary": {
+                    "type": "string",
+                    "description": "Executive summary of the system design specification document. Use this section to briefly summarize the solution, business need, target users, major capabilities, and expected value. Add a concise overview that a reviewer can read first to understand why the system exists, what it does, and what decision or approval the document supports."
+                },
+                "projectVisionScopeSummary": {
+                    "type": "string",
+                    "description": "Project vision and scope summary of the system design specification document. Use this section to define the project vision, scope, and intended outcomes. Add the problem statement, mission or business objectives, in-scope capabilities, out-of-scope items, key stakeholders, and any constraints that shape the design."
+                },
+                "projectJustificationDesignGoals": {
+                    "type": "string",
+                    "description": "Project justification and design goals of the system design specification document. Use this section to explain why the project is needed and what design goals will guide the solution. Add the drivers for change, operational gaps, compliance needs, success criteria, guiding principles, and design priorities such as security, scalability, usability, maintainability, or interoperability."
+                },
+                "requirements": {
+                    "type": "string",
+                    "description": "Requirements of the system design specification document. Use this section to organize the requirements that the solution must satisfy. Add business, user, system, operational, integration, supportability, legal, regulatory, and security-related requirements at the appropriate level of detail for design and authorization review."
+                },
+                "businessRequirements": {
+                    "type": "array",
+                    "description": "Business requirements of the system design specification document. Use this section to list the business requirements that the solution must satisfy. Add a table or list of business requirements, including category, requirement, and details.",
+                    "items": {
+                        "properties": {
+                            "businessRequirementCategory": {
+                                "type": "string",
+                                "description": "Business requirements category."
+                            },
+                            "businessRequirementId": {
+                                "type": "string",
+                                "description": "Business requirement ID."
+                            },
+                            "businessRequirementDetail": {
+                                "type": "string",
+                                "description": "Business requirement detail."
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                },
+                "userRequirementsSummary": {
+                    "type": "string",
+                    "description": "User requirements summary of the system design specification document. Use this section to summarize what users need from the solution. Add user roles, user groups, key workflows, usability needs, accessibility considerations, permissions expectations, and user-facing capabilities required to complete mission or business tasks."
+                },
+                "systemRequirementsSummary": {
+                    "type": "string",
+                    "description": "System requirements summary of the system design specification document. Use this section to summarize technical and functional system requirements. Add required services, performance needs, availability expectations, data handling requirements, security requirements, logging, monitoring, automation, and system behavior that must be implemented."
+                },
+                "operationsRequirmentsSummary": {
+                    "type": "string",
+                    "description": "Operations requirements summary of the system design specification document. Use this section to describe operational requirements for running and maintaining the solution. Add requirements for administration, monitoring, incident response, backup and recovery, patching, configuration management, continuity of operations, and routine support activities."
+                },
+                "installationSetupRequirementsSummary": {
+                    "type": "string",
+                    "description": "Installation and setup requirements summary of the system design specification document. Use this section to describe what is required to install, deploy, or configure the solution. Add prerequisites, deployment steps, environment assumptions, required access, configuration inputs, validation checks, and any dependencies needed before the system can operate."
+                },
+                "uninstallationRequirementsSummary": {
+                    "type": "string",
+                    "description": "Uninstallation requirements summary of the system design specification document. Use this section to describe how the solution can be removed, disabled, or decommissioned safely. Add required uninstall steps, data retention expectations, rollback considerations, credential or access cleanup, dependent service impacts, and post-removal validation activities."
+                },
+                "integrationRequirementsSummary": {
+                    "type": "string",
+                    "description": "Integration requirements summary of the system design specification document. Use this section to summarize integration requirements with internal systems, external services, data sources, APIs, identity providers, or partner environments. Add interface dependencies, data exchange patterns, protocols, authentication methods, and integration constraints."
+                },
+                "supportabilitySummary": {
+                    "type": "string",
+                    "description": "Supportability summary of the system design specification document. Use this section to describe how the solution will be supported over time. Add support roles, escalation paths, service levels, maintenance windows, documentation needs, training needs, troubleshooting expectations, and sustainment responsibilities."
+                },
+                "legalRegulatoryRequirementsSummary": {
+                    "type": "string",
+                    "description": "Legal and regulatory requirements summary of the system design specification document. Use this section to identify legal, regulatory, policy, and compliance requirements that apply to the solution. Add applicable laws, DoD or organizational policies, privacy requirements, records management needs, RMF considerations, data protection obligations, and required approvals."
+                },
+                "solutionArchitecture": {
+                    "type": "string",
+                    "description": "Solution architecture summary of the system design specification document. Use this section to describe the overall solution architecture and how major components work together. Add architecture context, core services, hosting model, security boundaries, data flows, integration points, operational model, and any diagrams or references needed to explain the design."
+                },
+                "systemBoundary": {
+                    "type": "string",
+                    "description": "System boundary summary of the system design specification document. Use this section to define what is inside and outside the system boundary. Add included components, excluded components, managed services, inherited services, external dependencies, authorization boundary assumptions, data ingress and egress points, and ownership responsibilities."
+                },
+                "identityAccessArchitecture": {
+                    "type": "string",
+                    "description": "Identity and access architecture summary of the system design specification document. Use this section to describe how identity and access management is implemented. Add authentication methods, authorization models, role definitions, group memberships, credential management, identity providers, and any federated or external access considerations."
+                },
+                "dataArchitecture": {
+                    "type": "string",
+                    "description": "Data architecture summary of the system design specification document. Use this section to describe how data is collected, stored, processed, protected, shared, and retained. Add data sources, data classifications, schemas, storage locations, lifecycle management, encryption, lineage, quality controls, access patterns, and data governance responsibilities."
+                },
+                "securityArchitecture": {
+                    "type": "string",
+                    "description": "Security architecture summary of the system design specification document. Use this section to describe the security architecture and control approach. Add security boundaries, threat considerations, encryption, key management, logging and monitoring, vulnerability management, secure configuration, incident response integration, and how security controls are implemented or inherited."
+                },
+                "externalInterfaceSpecifications": {
+                    "type": "string",
+                    "description": "External interface specifications summary of the system design specification document. Use this section to document external interfaces used by the solution. Add interface names, owners, purpose, protocols, endpoints, data exchanged, authentication method, availability expectations, error handling, and any interface control documents or agreements."
+                },
+                "securityControlInheritance": {
+                    "type": "string",
+                    "description": "Security control inheritance summary of the system design specification document. Use this section to identify security controls inherited from platforms, environments, services, or enterprise providers. Add inherited control sources, provider responsibilities, customer responsibilities, evidence locations, assumptions, and any controls that require additional implementation by the system owner."
+                },
+                "plannedFeaturesCapabilitiesSummary": {
+                    "type": "string",
+                    "description": "Planned features and capabilities summary of the system design specification document. Use this section to describe planned or future capabilities beyond the current baseline. "
+                },
+                "plannedFeaturesCapabilities": {
+                    "type": "array",
+                    "description": "Planned features and capabilities of the system design specification document. Use this section to describe planned or future capabilities beyond the current baseline. Add feature names, descriptions, key capabilities, business value, expected services or tools, implementation priority, dependencies, and any assumptions about future releases.",
+                    "items": {
+                        "properties": {
+                            "plannedFeatureCapabilityName": {
+                                "type": "string",
+                                "description": "Planned feature or capability name."
+                            },
+                            "plannedFeatureCapabilityDescription": {
+                                "type": "string",
+                                "description": "Planned feature or capability description."
+                            },
+                            "plannedFeatureCapabilityKeyCapabilities": {
+                                "type": "string",
+                                "description": "Planned feature or capability key capabilities."
+                            },
+                            "plannedFeatureCapabilityBusinessValue": {
+                                "type": "string",
+                                "description": "Planned feature or capability business value."
+                            },
+                            "plannedFeatureCapabilityAzureServicesTools": {
+                                "type": "string",
+                                "description": "Planned feature or capability Azure services or tools."
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                },
+                "assumptionsDependencies": {
+                    "type": "string",
+                    "description": "Assumptions and dependencies summary of the system design specification document. Use this section to list assumptions and dependencies that affect the design or implementation. Add assumptions about environment readiness, stakeholder availability, data access, funding, approvals, inherited services, external systems, schedules, and technical dependencies."
+                },
+                "references": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "referenceItem": {
+                                "type": "string",
+                                "description": "Reference item."
+                            }
+                        },
+                        "additionalProperties": false
+                    },
+                    "description": "References summary of the system design specification document. Use this section to cite the authoritative sources used to prepare the document. Add policy references, standards, architecture documents, interface documents, design artifacts, requirements sources, security guidance, and other materials reviewers may need to validate the design."
+                },
+                "acronyms": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "acronymName": {
+                                "type": "string",
+                                "description": "Acronym name."
+                            },
+                            "acronymDefinition": {
+                                "type": "string",
+                                "description": "Acronym definition."
+                            }
+                        },
+                        "additionalProperties": false
+                    },
+                    "description": "Acronyms summary of the system design specification document. Use this section to define acronyms and abbreviations used throughout the document. Add each acronym, its full term, and any context needed to avoid ambiguity for reviewers who may not be familiar with the system or organization."
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "$schema",
+        "title",
+        "outputType",
+        "data"
+    ]
+}
