@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Set-ARAResource
 ---
@@ -13,7 +13,7 @@ title: Set-ARAResource
 
 ## SYNOPSIS
 
-Set operation for ARAResource
+Updates an existing ARA resource in the connected ARA file.
 
 ## SYNTAX
 
@@ -45,7 +45,7 @@ Updates an existing ARA resource in the connected ARA file.
 
 ### Example 1
 
-Set-ARAResource -Environment "MyEnvironment" -ResourceGroup "MyResourceGroup" -Type "MyResourceType" -Name "MyResourceName" -Description "UpdatedDescription" -FriendlyName "UpdatedFriendlyName" -IacModuleName "UpdatedIacModule" -IacModulePath "C:\New\Path\To\Module" -Roles $updatedRolesArray -Software $updatedSoftwareArray -LinkedResources $updatedLinkedResourcesArray -Connections $updatedConnectionsArray -InBoundary $false
+PS C:\\> Set-ARAResource
 
 Supports two parameter sets: provide a Resource object, or provide individual properties.
 
@@ -53,8 +53,7 @@ Supports two parameter sets: provide a Resource object, or provide individual pr
 
 ### -Connections
 
-The updated connections array.
-If not provided, existing value is unchanged.
+{{ Fill Connections Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.ResourceConnection[]
@@ -184,8 +183,7 @@ HelpMessage: ''
 
 ### -InBoundary
 
-Whether the resource is within the system boundary.
-If not provided, existing value is unchanged.
+{{ Fill InBoundary Description }}
 
 ```yaml
 Type: System.Boolean
@@ -206,8 +204,7 @@ HelpMessage: ''
 
 ### -LinkedResources
 
-The updated linked resources array.
-If not provided, existing value is unchanged.
+{{ Fill LinkedResources Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.LinkedResource[]
@@ -365,19 +362,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ### AzureRMFAccelerator.Core.Resource
 
-Represents a cloud resource with roles, software, and relationships.
+Accepted from the pipeline.
 
 ### AzureRMFAccelerator.Core.ResourceRole[]
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ### System.String[]
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ### AzureRMFAccelerator.Core.LinkedResource[]
 
@@ -395,21 +392,13 @@ Represents a cloud resource with roles, software, and relationships.
 
 ### System.Object
 
-{{ Fill in the Description }}
-
-### AzureRMFAccelerator.Core.ARAResult
-
-Result of running a command.
+See command description for output behavior.
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Add-ARABackupRecovery
 ---
@@ -13,7 +13,7 @@ title: Add-ARABackupRecovery
 
 ## SYNOPSIS
 
-Add operation for ARABackupRecovery
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -37,22 +37,19 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Adds a new backup and recovery configuration to the connected ARA file.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 
-Add-ARABackupRecovery -Strategy "Full" -BackupFrequency "Daily" -Retention "30 days" -RestoreTestFrequency "Weekly" -ResponsibleRoleKey "BackupAdmin" -Audit $auditObject
-
-Creates a new BackupRecovery object in the currently connected ARA file.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Audit
 
-The audit information for the backup and recovery configuration.
-Optional; if not provided, defaults to the system's default audit settings.
+{{ Fill Audit Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.Audit
@@ -73,8 +70,7 @@ HelpMessage: ''
 
 ### -BackupFrequency
 
-The frequency of backups.
-Mandatory if using the Properties parameter set.
+{{ Fill BackupFrequency Description }}
 
 ```yaml
 Type: System.String
@@ -95,8 +91,7 @@ HelpMessage: ''
 
 ### -BackupRecovery
 
-The BackupRecovery object to add.
-If provided, other parameters are ignored.
+{{ Fill BackupRecovery Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.BackupRecovery
@@ -117,8 +112,7 @@ HelpMessage: ''
 
 ### -ResponsibleRoleKey
 
-The key of the responsible role for backup and recovery.
-Optional; if not provided, defaults to the system's default responsible role.
+{{ Fill ResponsibleRoleKey Description }}
 
 ```yaml
 Type: System.String
@@ -139,8 +133,7 @@ HelpMessage: ''
 
 ### -RestoreTestFrequency
 
-The frequency of restore tests.
-Optional; if not provided, defaults to the system's default restore test frequency.
+{{ Fill RestoreTestFrequency Description }}
 
 ```yaml
 Type: System.String
@@ -161,8 +154,7 @@ HelpMessage: ''
 
 ### -Retention
 
-The retention period for backups.
-Optional; if not provided, defaults to the system's default retention policy.
+{{ Fill Retention Description }}
 
 ```yaml
 Type: System.String
@@ -183,7 +175,7 @@ HelpMessage: ''
 
 ### -Strategy
 
-The backup strategy to use.
+{{ Fill Strategy Description }}
 
 ```yaml
 Type: System.String
@@ -213,23 +205,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### AzureRMFAccelerator.Core.BackupRecovery
 
-Backup and recovery strategy for the system.
-This is used to define the backup and recovery strategy for the system and to set expectations for users.
+{{ Fill in the Description }}
 
 ## OUTPUTS
 
-### AzureRMFAccelerator.Core.ARAResult
+### System.Object
 
-Result of running a command.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
-
+{{ Fill in the Notes }}
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
+{{ Fill in the related links here }}
+

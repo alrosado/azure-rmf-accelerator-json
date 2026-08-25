@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Save-ARAFile
 ---
@@ -13,7 +13,7 @@ title: Save-ARAFile
 
 ## SYNOPSIS
 
-Save operation for ARAFile
+Saves pending changes to the connected ARA file and validates against the JSON schema.
 
 ## SYNTAX
 
@@ -36,10 +36,10 @@ Saves pending changes to the connected ARA file and validates against the JSON s
 
 ### Example 1
 
-Save-ARAFile
+PS C:\\> Save-ARAFile
 
 Returns EvaluationResults containing validation status and any errors or warnings.
-            Changes from all cmdlets are saved as a single transaction.
+Changes from all cmdlets are saved as a single transaction.
 
 ## PARAMETERS
 
@@ -78,7 +78,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Object
 
-{{ Fill in the Description }}
+See command description for output behavior.
 
 ### Json.Schema.EvaluationResults
 
@@ -86,13 +86,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

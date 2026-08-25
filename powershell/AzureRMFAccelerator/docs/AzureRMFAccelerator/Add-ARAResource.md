@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Add-ARAResource
 ---
@@ -13,7 +13,7 @@ title: Add-ARAResource
 
 ## SYNOPSIS
 
-Add operation for ARAResource
+Adds a new ARA resource to the connected ARA file.
 
 ## SYNTAX
 
@@ -45,7 +45,7 @@ Adds a new ARA resource to the connected ARA file.
 
 ### Example 1
 
-Add-ARAResource -Environment "MyEnvironment" -ResourceGroup "MyResourceGroup" -Type "MyResourceType" -Name "MyResourceName" -Description "MyDescription" -FriendlyName "MyFriendlyName" -IacModuleName "MyIacModule" -IacModulePath "C:\Path\To\Module" -Roles $rolesArray -Software $softwareArray -LinkedResources $linkedResourcesArray -Connections $connectionsArray -InBoundary $true
+PS C:\\> Add-ARAResource
 
 Supports two parameter sets: provide a Resource object, or provide individual properties.
 
@@ -357,51 +357,43 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ### AzureRMFAccelerator.Core.ResourceConnection[]
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ### System.Boolean
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ### AzureRMFAccelerator.Core.LinkedResource[]
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ### AzureRMFAccelerator.Core.Resource
 
-Represents a cloud resource with roles, software, and relationships.
+Accepted from the pipeline.
 
 ### AzureRMFAccelerator.Core.ResourceRole[]
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ### System.String[]
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
-
-### AzureRMFAccelerator.Core.ARAResult
-
-Result of running a command.
+See command description for output behavior.
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

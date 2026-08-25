@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Remove-ARAResource
 ---
@@ -13,7 +13,7 @@ title: Remove-ARAResource
 
 ## SYNOPSIS
 
-Remove operation for ARAResource
+Removes an ARA resource.
 
 ## SYNTAX
 
@@ -37,15 +37,15 @@ Removes an ARA resource.
 
 ### Example 1
 
-Remove-ARAResource -Environment "MyEnvironment" -ResourceGroup "MyResourceGroup" -Type "MyResourceType" -Name "MyResourceName"
+PS C:\\> Remove-ARAResource
 
-Deletes the existing Resource object from the currently connected ARA file.
+Removes an ARA resource.
 
 ## PARAMETERS
 
 ### -Environment
 
-The environment name of the resource to remove.
+{{ Fill Environment Description }}
 
 ```yaml
 Type: System.String
@@ -66,7 +66,7 @@ HelpMessage: ''
 
 ### -Name
 
-The resource name to remove.
+{{ Fill Name Description }}
 
 ```yaml
 Type: System.String
@@ -87,7 +87,7 @@ HelpMessage: ''
 
 ### -ResourceGroup
 
-The resource group name of the resource to remove.
+{{ Fill ResourceGroup Description }}
 
 ```yaml
 Type: System.String
@@ -108,7 +108,7 @@ HelpMessage: ''
 
 ### -Type
 
-The resource type of the resource to remove.
+{{ Fill Type Description }}
 
 ```yaml
 Type: System.String
@@ -144,21 +144,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Object
 
-{{ Fill in the Description }}
-
-### AzureRMFAccelerator.Core.ARAResult
-
-Result of running a command.
+See command description for output behavior.
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

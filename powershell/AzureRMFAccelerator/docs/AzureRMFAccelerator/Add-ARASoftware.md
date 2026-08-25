@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Add-ARASoftware
 ---
@@ -13,7 +13,7 @@ title: Add-ARASoftware
 
 ## SYNOPSIS
 
-Add operation for ARASoftware
+Adds a new ARA software component to the connected ARA file.
 
 ## SYNTAX
 
@@ -43,9 +43,9 @@ Adds a new ARA software component to the connected ARA file.
 
 ### Example 1
 
-Add-ARASoftware -Name "MySoftware" -Version "1.0" -Vendor "MyVendor" -Description "MyDescription" -Type "MyType"
+PS C:\\> Add-ARASoftware
 
-Supports two parameter sets: provide a Software object, or provide individual properties.
+Adds a new ARA software component to the connected ARA file.
 
 ## PARAMETERS
 
@@ -208,31 +208,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ### AzureRMFAccelerator.Core.Software
 
-Represents a software component or application.
+Accepted from the pipeline.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
-
-### AzureRMFAccelerator.Core.ARAResult
-
-Result of running a command.
+See command description for output behavior.
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

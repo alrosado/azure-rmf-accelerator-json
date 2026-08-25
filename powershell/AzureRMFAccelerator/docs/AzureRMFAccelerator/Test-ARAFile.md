@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Test-ARAFile
 ---
@@ -13,7 +13,7 @@ title: Test-ARAFile
 
 ## SYNOPSIS
 
-Test operation for ARAFile
+Validates the connected ARA file against its JSON schema without saving changes.
 
 ## SYNTAX
 
@@ -36,10 +36,10 @@ Validates the connected ARA file against its JSON schema without saving changes.
 
 ### Example 1
 
-Test-ARAFile
+PS C:\\> Test-ARAFile
 
 Returns EvaluationResults containing validation status, errors, and warnings.
-            No changes are persisted to disk by this cmdlet.
+No changes are persisted to disk by this cmdlet.
 
 ## PARAMETERS
 
@@ -56,21 +56,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Object
 
+See command description for output behavior.
+
+### Json.Schema.EvaluationResults
+
 {{ Fill in the Description }}
-
-### AzureRMFAccelerator.Core.ARAResult
-
-Result of running a command.
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

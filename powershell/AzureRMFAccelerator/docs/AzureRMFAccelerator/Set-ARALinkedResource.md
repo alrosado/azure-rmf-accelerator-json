@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Set-ARALinkedResource
 ---
@@ -13,7 +13,7 @@ title: Set-ARALinkedResource
 
 ## SYNOPSIS
 
-Set operation for ARALinkedResource
+Updates an existing link between two resources.
 
 ## SYNTAX
 
@@ -44,16 +44,15 @@ Updates an existing link between two resources.
 
 ### Example 1
 
-Set-ARALinkedResource -ParentResource $parentResource -LinkedResource $linkedResource
+PS C:\\> Set-ARALinkedResource
 
-Supports two parameter sets: provide Resource and LinkedResource objects, or provide individual properties.
+Updates an existing link between two resources.
 
 ## PARAMETERS
 
 ### -ChildName
 
-The name of the child resource.
-Mandatory if using the Properties parameter set.
+{{ Fill ChildName Description }}
 
 ```yaml
 Type: System.String
@@ -74,8 +73,7 @@ HelpMessage: ''
 
 ### -ChildResourceGroup
 
-The resource group of the child resource.
-Mandatory if using the Properties parameter set.
+{{ Fill ChildResourceGroup Description }}
 
 ```yaml
 Type: System.String
@@ -96,8 +94,7 @@ HelpMessage: ''
 
 ### -ChildType
 
-The type of the child resource.
-Mandatory if using the Properties parameter set.
+{{ Fill ChildType Description }}
 
 ```yaml
 Type: System.String
@@ -118,8 +115,7 @@ HelpMessage: ''
 
 ### -Connections
 
-Optional array of network connection details for the link.
-If not provided, the existing value is unchanged.
+{{ Fill Connections Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.ResourceConnection[]
@@ -140,8 +136,7 @@ HelpMessage: ''
 
 ### -Description
 
-Optional description of the link relationship.
-If not provided, the existing value is unchanged.
+{{ Fill Description Description }}
 
 ```yaml
 Type: System.String
@@ -162,8 +157,7 @@ HelpMessage: ''
 
 ### -Environment
 
-The environment containing both resources.
-Mandatory if using the Properties parameter set.
+{{ Fill Environment Description }}
 
 ```yaml
 Type: System.String
@@ -184,7 +178,7 @@ HelpMessage: ''
 
 ### -LinkedResource
 
-The linked resource object to be associated with the parent resource.
+{{ Fill LinkedResource Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.LinkedResource
@@ -205,8 +199,7 @@ HelpMessage: ''
 
 ### -LinkType
 
-The type of the link between the parent and child resources.
-Mandatory if using the Properties parameter set.
+{{ Fill LinkType Description }}
 
 ```yaml
 Type: System.String
@@ -227,8 +220,7 @@ HelpMessage: ''
 
 ### -ParentName
 
-The name of the parent resource.
-Mandatory if using the Properties parameter set.
+{{ Fill ParentName Description }}
 
 ```yaml
 Type: System.String
@@ -249,7 +241,7 @@ HelpMessage: ''
 
 ### -ParentResource
 
-The parent resource object that has the linked resource.
+{{ Fill ParentResource Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.Resource
@@ -270,8 +262,7 @@ HelpMessage: ''
 
 ### -ParentResourceGroup
 
-The resource group of the parent resource.
-Mandatory if using the Properties parameter set.
+{{ Fill ParentResourceGroup Description }}
 
 ```yaml
 Type: System.String
@@ -292,8 +283,7 @@ HelpMessage: ''
 
 ### -ParentType
 
-The type of the parent resource.
-Mandatory if using the Properties parameter set.
+{{ Fill ParentType Description }}
 
 ```yaml
 Type: System.String
@@ -323,11 +313,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### AzureRMFAccelerator.Core.Resource
 
-Represents a cloud resource with roles, software, and relationships.
+{{ Fill in the Description }}
 
 ### AzureRMFAccelerator.Core.LinkedResource
 
-Represents a directional link between two resources.
+{{ Fill in the Description }}
 
 ### System.String
 
@@ -341,21 +331,13 @@ Represents a directional link between two resources.
 
 ### System.Object
 
-{{ Fill in the Description }}
-
-### AzureRMFAccelerator.Core.ARAResult
-
-Result of running a command.
+See command description for output behavior.
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

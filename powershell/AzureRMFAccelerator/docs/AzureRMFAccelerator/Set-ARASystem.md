@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Set-ARASystem
 ---
@@ -13,7 +13,7 @@ title: Set-ARASystem
 
 ## SYNOPSIS
 
-Set operation for ARASystem
+Updates the ARA system metadata (customer name and RMF provider information).
 
 ## SYNTAX
 
@@ -36,10 +36,10 @@ Updates the ARA system metadata (customer name and RMF provider information).
 
 ### Example 1
 
-Set-ARASystem -Customer "New Customer Name" -RmfProvider $rmfProviderObject
+PS C:\\> Set-ARASystem
 
 Changes are stored in memory until saved using Save-ARAFile.
-            Connect-ARAFile must be called first to load an ARA file.
+Connect-ARAFile must be called first to load an ARA file.
 
 ## PARAMETERS
 
@@ -98,31 +98,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ### AzureRMFAccelerator.Core.RmfProvider
 
-Information about the RMF provider for the system being modeled.
+Accepted from the pipeline.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
-
-### AzureRMFAccelerator.Core.ARAResult
-
-Result of running a command.
+See command description for output behavior.
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

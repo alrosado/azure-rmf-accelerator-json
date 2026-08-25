@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Add-ARAMission
 ---
@@ -13,7 +13,7 @@ title: Add-ARAMission
 
 ## SYNOPSIS
 
-Add operation for ARAMission
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -37,22 +37,19 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Adds a new mission configuration to the connected ARA file.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 
-Add-ARAMission -Purpose "My Purpose" -ProblemStatement "My Problem Statement" -Outcomes "Outcome1","Outcome2" -StrategicAlignment "Alignment1","Alignment2" -Audit $auditObject
-
-Creates a new Mission object in the currently connected ARA file.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Audit
 
-The audit information for the mission to add.
-Optional if using the Properties parameter set.
+{{ Fill Audit Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.Audit
@@ -73,8 +70,7 @@ HelpMessage: ''
 
 ### -Mission
 
-The Mission object to add.
-If provided, other parameters are ignored.
+{{ Fill Mission Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.Mission
@@ -95,8 +91,7 @@ HelpMessage: ''
 
 ### -Outcomes
 
-The outcomes of the mission to add.
-Optional if using the Properties parameter set.
+{{ Fill Outcomes Description }}
 
 ```yaml
 Type: System.String[]
@@ -117,8 +112,7 @@ HelpMessage: ''
 
 ### -ProblemStatement
 
-The problem statement of the mission to add.
-Optional if using the Properties parameter set.
+{{ Fill ProblemStatement Description }}
 
 ```yaml
 Type: System.String
@@ -139,8 +133,7 @@ HelpMessage: ''
 
 ### -Purpose
 
-The purpose of the mission to add.
-Mandatory if using the Properties parameter set.
+{{ Fill Purpose Description }}
 
 ```yaml
 Type: System.String
@@ -161,8 +154,7 @@ HelpMessage: ''
 
 ### -StrategicAlignment
 
-The strategic alignment of the mission to add.
-Optional if using the Properties parameter set.
+{{ Fill StrategicAlignment Description }}
 
 ```yaml
 Type: System.String[]
@@ -192,22 +184,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### AzureRMFAccelerator.Core.Mission
 
-Information about the mission of the system being modeled.
+{{ Fill in the Description }}
 
 ## OUTPUTS
 
-### AzureRMFAccelerator.Core.ARAResult
+### System.Object
 
-Result of running a command.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
-
+{{ Fill in the Notes }}
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
+{{ Fill in the related links here }}
+

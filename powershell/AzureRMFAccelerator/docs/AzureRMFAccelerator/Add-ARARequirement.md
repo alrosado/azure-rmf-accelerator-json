@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Add-ARARequirement
 ---
@@ -13,7 +13,7 @@ title: Add-ARARequirement
 
 ## SYNOPSIS
 
-Add operation for ARARequirement
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -37,22 +37,19 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Adds a new requirement configuration to the connected ARA file.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 
-Add-ARARequirement -Category "MyCategory" -Id "MyId" -Name "MyName" -Description "MyDescription" -Priority "High" -Tests $testArray
-
-Creates a new Requirement object in the currently connected ARA file.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Category
 
-The category of the requirement to add.
-Mandatory if using the Properties parameter set.
+{{ Fill Category Description }}
 
 ```yaml
 Type: System.String
@@ -73,8 +70,7 @@ HelpMessage: ''
 
 ### -Description
 
-The description of the requirement to add.
-Optional if using the Properties parameter set.
+{{ Fill Description Description }}
 
 ```yaml
 Type: System.String
@@ -95,8 +91,7 @@ HelpMessage: ''
 
 ### -Id
 
-The ID of the requirement to add.
-Mandatory if using the Properties parameter set.
+{{ Fill Id Description }}
 
 ```yaml
 Type: System.String
@@ -117,8 +112,7 @@ HelpMessage: ''
 
 ### -Name
 
-The name of the requirement to add.
-Optional if using the Properties parameter set.
+{{ Fill Name Description }}
 
 ```yaml
 Type: System.String
@@ -139,8 +133,7 @@ HelpMessage: ''
 
 ### -Priority
 
-The priority of the requirement to add.
-Optional if using the Properties parameter set.
+{{ Fill Priority Description }}
 
 ```yaml
 Type: System.String
@@ -161,8 +154,7 @@ HelpMessage: ''
 
 ### -Requirement
 
-The Requirement object to add.
-If provided, other parameters are ignored.
+{{ Fill Requirement Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.Requirement
@@ -183,8 +175,7 @@ HelpMessage: ''
 
 ### -Tests
 
-The tests associated with the requirement to add.
-Optional if using the Properties parameter set.
+{{ Fill Tests Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.Test[]
@@ -214,22 +205,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### AzureRMFAccelerator.Core.Requirement
 
-List of requirements that are applicable to the system being modeled.
+{{ Fill in the Description }}
 
 ## OUTPUTS
 
-### AzureRMFAccelerator.Core.ARAResult
+### System.Object
 
-Result of running a command.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
-
+{{ Fill in the Notes }}
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
+{{ Fill in the related links here }}
+

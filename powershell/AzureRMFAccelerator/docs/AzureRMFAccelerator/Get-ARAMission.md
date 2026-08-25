@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Get-ARAMission
 ---
@@ -13,7 +13,7 @@ title: Get-ARAMission
 
 ## SYNOPSIS
 
-Get operation for ARAMission
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -30,15 +30,13 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Gets the mission settings from the connected ARA file.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 
-Get-ARAMission
-
-Returns the Mission object from the currently connected ARA file.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -55,16 +53,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### AzureRMFAccelerator.Core.Mission
 
-Information about the mission of the system being modeled.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
-
+{{ Fill in the Notes }}
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
+{{ Fill in the related links here }}
+

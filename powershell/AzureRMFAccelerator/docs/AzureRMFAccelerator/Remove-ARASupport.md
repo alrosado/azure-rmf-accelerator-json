@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Remove-ARASupport
 ---
@@ -13,7 +13,7 @@ title: Remove-ARASupport
 
 ## SYNOPSIS
 
-Remove operation for ARASupport
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -30,15 +30,13 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Removes the support configuration from the connected ARA file.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 
-Remove-ARASupport
-
-Deletes the existing Support object from the currently connected ARA file.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -53,18 +51,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### AzureRMFAccelerator.Core.ARAResult
+### System.Object
 
-Result of running a command.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
-
+{{ Fill in the Notes }}
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
+{{ Fill in the related links here }}
+

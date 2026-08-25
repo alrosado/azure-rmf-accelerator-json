@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Add-ARAResourceType
 ---
@@ -13,7 +13,7 @@ title: Add-ARAResourceType
 
 ## SYNOPSIS
 
-Add operation for ARAResourceType
+Adds a new ARA resource type to the connected ARA file.
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ Adds a new ARA resource type to the connected ARA file.
 
 ### Example 1
 
-Add-ARAResourceType -Key "Microsoft.Compute/virtualMachines" -Provider "Microsoft.Compute" -FriendlyName "Virtual Machines"
+PS C:\\> Add-ARAResourceType
 
 Supports two parameter sets: provide a ResourceType object, or provide individual properties.
 
@@ -143,31 +143,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ### AzureRMFAccelerator.Core.ResourceType
 
-Represents a resource type classification.
+Accepted from the pipeline.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
-
-### AzureRMFAccelerator.Core.ARAResult
-
-Result of running a command.
+See command description for output behavior.
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

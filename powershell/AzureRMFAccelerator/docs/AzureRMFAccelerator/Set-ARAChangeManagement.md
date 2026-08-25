@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Set-ARAChangeManagement
 ---
@@ -13,7 +13,7 @@ title: Set-ARAChangeManagement
 
 ## SYNOPSIS
 
-Set operation for ARAChangeManagement
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -38,22 +38,19 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Updates the change management settings in the connected ARA file.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 
-Set-ARAChangeManagement -Process "UpdatedProcess" -ApprovalAuthorityRoleKey "UpdatedRole" -SourceRepository "UpdatedRepo" -DeploymentMethod "UpdatedMethod" -ConfigurationBaseline "UpdatedBaseline" -Audit $updatedAuditObject
-
-Modifies the existing ChangeManagement object in the currently connected ARA file.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -ApprovalAuthorityRoleKey
 
-The key of the approval authority role for change management.
-Optional; if not provided, the existing value is unchanged.
+{{ Fill ApprovalAuthorityRoleKey Description }}
 
 ```yaml
 Type: System.String
@@ -74,8 +71,7 @@ HelpMessage: ''
 
 ### -Audit
 
-The audit information for the change management configuration.
-Optional; if not provided, the existing value is unchanged.
+{{ Fill Audit Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.Audit
@@ -96,8 +92,7 @@ HelpMessage: ''
 
 ### -ChangeManagement
 
-The ChangeManagement object to update.
-If provided, other parameters are ignored.
+{{ Fill ChangeManagement Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.ChangeManagement
@@ -118,8 +113,7 @@ HelpMessage: ''
 
 ### -ConfigurationBaseline
 
-The configuration baseline for change management.
-Optional; if not provided, the existing value is unchanged.
+{{ Fill ConfigurationBaseline Description }}
 
 ```yaml
 Type: System.String
@@ -140,8 +134,7 @@ HelpMessage: ''
 
 ### -DeploymentMethod
 
-The deployment method for change management.
-Optional; if not provided, the existing value is unchanged.
+{{ Fill DeploymentMethod Description }}
 
 ```yaml
 Type: System.String
@@ -162,8 +155,7 @@ HelpMessage: ''
 
 ### -Process
 
-The change management process to use.
-Optional; if not provided, the existing value is unchanged.
+{{ Fill Process Description }}
 
 ```yaml
 Type: System.String
@@ -184,8 +176,7 @@ HelpMessage: ''
 
 ### -SourceRepository
 
-The source repository for change management.
-Optional; if not provided, the existing value is unchanged.
+{{ Fill SourceRepository Description }}
 
 ```yaml
 Type: System.String
@@ -215,23 +206,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### AzureRMFAccelerator.Core.ChangeManagement
 
-Change management process for the system.
-This is used to define the change management process for the system and to set expectations for users.
+{{ Fill in the Description }}
 
 ## OUTPUTS
 
-### AzureRMFAccelerator.Core.ARAResult
+### System.Object
 
-Result of running a command.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
-
+{{ Fill in the Notes }}
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
+{{ Fill in the related links here }}
+

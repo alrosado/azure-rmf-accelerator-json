@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: New-ARAResourceRole
 ---
@@ -13,7 +13,7 @@ title: New-ARAResourceRole
 
 ## SYNOPSIS
 
-New operation for ARAResourceRole
+Creates an empty ResourceRole object that can be populated with properties.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Creates an empty ResourceRole object that can be populated with properties.
 
 ### Example 1
 
-New-ARAResourceRole
+PS C:\\> New-ARAResourceRole
 
 ResourceRole objects are typically used as properties within a Resource object to define role associations.
 
@@ -55,21 +55,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Object
 
-{{ Fill in the Description }}
+See command description for output behavior.
 
 ### AzureRMFAccelerator.Core.ResourceRole
 
-Represents a role assignment for a resource.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

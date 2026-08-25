@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Set-ARASupport
 ---
@@ -13,7 +13,7 @@ title: Set-ARASupport
 
 ## SYNOPSIS
 
-Set operation for ARASupport
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -38,22 +38,19 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Updates an existing support configuration in the connected ARA file.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 
-Set-ARASupport -SupportModel "UpdatedSupportModel" -ServiceOwnerRoleKey "UpdatedServiceOwnerRole" -TechnicalOwnerRoleKey "UpdatedTechnicalOwnerRole" -SecurityContactRoleKey "UpdatedSecurityContactRole" -EscalationPath "UpdatedEscalation1","UpdatedEscalation2" -DocumentStore "UpdatedDocumentStore" -Audit $updatedAuditObject
-
-Modifies the existing Support object in the currently connected ARA file.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Audit
 
-The audit information for support.
-Optional; if not provided, the existing value is unchanged.
+{{ Fill Audit Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.Audit
@@ -74,8 +71,7 @@ HelpMessage: ''
 
 ### -DocumentStore
 
-The path to the document store for support.
-Optional; if not provided, the existing value is unchanged.
+{{ Fill DocumentStore Description }}
 
 ```yaml
 Type: System.String
@@ -96,7 +92,7 @@ HelpMessage: ''
 
 ### -EscalationPath
 
-
+{{ Fill EscalationPath Description }}
 
 ```yaml
 Type: System.String[]
@@ -117,8 +113,7 @@ HelpMessage: ''
 
 ### -SecurityContactRoleKey
 
-The key of the security contact role for support.
-Optional; if not provided, the existing value is unchanged.
+{{ Fill SecurityContactRoleKey Description }}
 
 ```yaml
 Type: System.String
@@ -139,8 +134,7 @@ HelpMessage: ''
 
 ### -ServiceOwnerRoleKey
 
-The key of the service owner role for support.
-Optional; if not provided, the existing value is unchanged.
+{{ Fill ServiceOwnerRoleKey Description }}
 
 ```yaml
 Type: System.String
@@ -161,8 +155,7 @@ HelpMessage: ''
 
 ### -Support
 
-The Support object to update.
-If provided, other parameters are ignored.
+{{ Fill Support Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.Support
@@ -183,8 +176,7 @@ HelpMessage: ''
 
 ### -SupportModel
 
-The support model to update.
-Optional; if not provided, the existing value is unchanged.
+{{ Fill SupportModel Description }}
 
 ```yaml
 Type: System.String
@@ -205,8 +197,7 @@ HelpMessage: ''
 
 ### -TechnicalOwnerRoleKey
 
-The key of the technical owner role for support.
-Optional; if not provided, the existing value is unchanged.
+{{ Fill TechnicalOwnerRoleKey Description }}
 
 ```yaml
 Type: System.String
@@ -236,23 +227,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### AzureRMFAccelerator.Core.Support
 
-Support model for the system.
-This is used to define the support model for the system and to set expectations for users.
+{{ Fill in the Description }}
 
 ## OUTPUTS
 
-### AzureRMFAccelerator.Core.ARAResult
+### System.Object
 
-Result of running a command.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
-
+{{ Fill in the Notes }}
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
+{{ Fill in the related links here }}
+

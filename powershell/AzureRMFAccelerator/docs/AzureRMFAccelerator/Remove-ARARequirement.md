@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Remove-ARARequirement
 ---
@@ -13,14 +13,14 @@ title: Remove-ARARequirement
 
 ## SYNOPSIS
 
-Remove operation for ARARequirement
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-Remove-ARARequirement -Id <string>
+Remove-ARARequirement -Category <string> -Id <string>
 ```
 
 ## ALIASES
@@ -30,21 +30,40 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Removes an existing requirement configuration from the connected ARA file.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 
-Remove-ARARequirement -Id "MyId"
-
-Deletes the existing Requirement object from the currently connected ARA file.
+{{ Add example description here }}
 
 ## PARAMETERS
 
+### -Category
+
+{{ Fill Category Description }}
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
 ### -Id
 
-The ID of the requirement to remove.
+{{ Fill Id Description }}
 
 ```yaml
 Type: System.String
@@ -74,18 +93,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### AzureRMFAccelerator.Core.ARAResult
+### System.Object
 
-Result of running a command.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
-
+{{ Fill in the Notes }}
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
+{{ Fill in the related links here }}
+

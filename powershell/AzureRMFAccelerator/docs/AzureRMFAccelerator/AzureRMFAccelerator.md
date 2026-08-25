@@ -1,11 +1,11 @@
 ---
 document type: module
 Help Version: 1.0.0.0
-HelpInfoUri: .\azure-rmf-accelerator-dotnet\AzureRMFAccelerator.Module\bin\Debug\netstandard2.0\HelpInfo.xml
+HelpInfoUri: .\azure-rmf-accelerator-dotnet\AzureRMFAcceleratorModule.Cmdlet\bin\Debug\netstandard2.0\en-us\AzureRMFAcceleratorModule-help.xml
 Locale: en-US
 Module Guid: 3bd0e3b5-7c9d-489a-b850-02e83a653ca8
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: AzureRMFAccelerator Module
 ---
@@ -20,357 +20,361 @@ Azure RMF Accelerator - PowerShell module for managing ARA JSON files with roles
 
 ### [Add-ARAArchitectureDiagram](Add-ARAArchitectureDiagram.md)
 
-Add operation for ARAArchitectureDiagram
+{{ Fill in the Synopsis }}
 
 ### [Add-ARABackupRecovery](Add-ARABackupRecovery.md)
 
-Add operation for ARABackupRecovery
+{{ Fill in the Synopsis }}
 
 ### [Add-ARAChangeManagement](Add-ARAChangeManagement.md)
 
-Add operation for ARAChangeManagement
+{{ Fill in the Synopsis }}
 
 ### [Add-ARAEnvironment](Add-ARAEnvironment.md)
 
-Add operation for ARAEnvironment
+Adds a new ARA environment to the connected ARA file.
 
 ### [Add-ARALinkedResource](Add-ARALinkedResource.md)
 
-Add operation for ARALinkedResource
+Adds a link between two resources (creates a resource dependency relationship).
 
 ### [Add-ARAMission](Add-ARAMission.md)
 
-Add operation for ARAMission
+{{ Fill in the Synopsis }}
 
 ### [Add-ARARequirement](Add-ARARequirement.md)
 
-Add operation for ARARequirement
+{{ Fill in the Synopsis }}
 
 ### [Add-ARAResource](Add-ARAResource.md)
 
-Add operation for ARAResource
+Adds a new ARA resource to the connected ARA file.
 
 ### [Add-ARAResourceType](Add-ARAResourceType.md)
 
-Add operation for ARAResourceType
+Adds a new ARA resource type to the connected ARA file.
 
 ### [Add-ARARole](Add-ARARole.md)
 
-Add operation for ARARole
+Adds a new ARA role to the connected ARA file.
 
 ### [Add-ARAScope](Add-ARAScope.md)
 
-Add operation for ARAScope
+{{ Fill in the Synopsis }}
 
 ### [Add-ARASecurity](Add-ARASecurity.md)
 
-Add operation for ARASecurity
+{{ Fill in the Synopsis }}
 
 ### [Add-ARAServiceLevel](Add-ARAServiceLevel.md)
 
-Add operation for ARAServiceLevel
+{{ Fill in the Synopsis }}
 
 ### [Add-ARASoftware](Add-ARASoftware.md)
 
-Add operation for ARASoftware
+Adds a new ARA software component to the connected ARA file.
 
 ### [Add-ARAStig](Add-ARAStig.md)
 
-Add operation for ARAStig
+Adds a new ARA STIG requirement to the connected ARA file.
 
 ### [Add-ARASupport](Add-ARASupport.md)
 
-Add operation for ARASupport
+{{ Fill in the Synopsis }}
 
 ### [Add-ARATest](Add-ARATest.md)
 
-Add operation for ARATest
+{{ Fill in the Synopsis }}
 
 ### [Connect-ARAContext](Connect-ARAContext.md)
 
-Connect operation for ARAContext
+Initializes the ARA context for a directory where ARA files are stored.
 
 ### [Connect-ARAFile](Connect-ARAFile.md)
 
-Connect operation for ARAFile
+Creates the ARA context for a directory and optionally connects to an existing ARA file.
 
 ### [Get-ARAArchitectureDiagram](Get-ARAArchitectureDiagram.md)
 
-Get operation for ARAArchitectureDiagram
+{{ Fill in the Synopsis }}
 
 ### [Get-ARABackupRecovery](Get-ARABackupRecovery.md)
 
-Get operation for ARABackupRecovery
+{{ Fill in the Synopsis }}
 
 ### [Get-ARAChangeManagement](Get-ARAChangeManagement.md)
 
-Get operation for ARAChangeManagement
+{{ Fill in the Synopsis }}
 
 ### [Get-ARADefinition](Get-ARADefinition.md)
 
-Get operation for ARADefinition
+{{ Fill in the Synopsis }}
 
 ### [Get-ARAEnvironment](Get-ARAEnvironment.md)
 
-Get operation for ARAEnvironment
+Gets one or all ARA environments from the connected ARA file.
 
 ### [Get-ARAMission](Get-ARAMission.md)
 
-Get operation for ARAMission
+{{ Fill in the Synopsis }}
 
 ### [Get-ARAOperations](Get-ARAOperations.md)
 
-Get operation for ARAOperations
+{{ Fill in the Synopsis }}
 
 ### [Get-ARARequirement](Get-ARARequirement.md)
 
-Get operation for ARARequirement
+{{ Fill in the Synopsis }}
 
 ### [Get-ARAResource](Get-ARAResource.md)
 
-Get operation for ARAResource
+Gets one or all ARA resources from the connected ARA file.
 
 ### [Get-ARAResourceType](Get-ARAResourceType.md)
 
-Get operation for ARAResourceType
+Gets one or all ARA resource types from the connected ARA file.
 
 ### [Get-ARARole](Get-ARARole.md)
 
-Get operation for ARARole
+Gets one or all ARA roles from the connected ARA file.
 
 ### [Get-ARAScope](Get-ARAScope.md)
 
-Get operation for ARAScope
+{{ Fill in the Synopsis }}
 
 ### [Get-ARASecurity](Get-ARASecurity.md)
 
-Get operation for ARASecurity
+{{ Fill in the Synopsis }}
 
 ### [Get-ARAServiceLevel](Get-ARAServiceLevel.md)
 
-Get operation for ARAServiceLevel
+{{ Fill in the Synopsis }}
 
 ### [Get-ARASoftware](Get-ARASoftware.md)
 
-Get operation for ARASoftware
+Gets one or all ARA software components from the connected ARA file.
 
 ### [Get-ARAStig](Get-ARAStig.md)
 
-Get operation for ARAStig
+Gets one or all ARA STIG (Security Technical Implementation Guide) requirements from the connected ARA file.
 
 ### [Get-ARASupport](Get-ARASupport.md)
 
-Get operation for ARASupport
+{{ Fill in the Synopsis }}
 
 ### [Get-ARASystem](Get-ARASystem.md)
 
-Get operation for ARASystem
+Gets the ARA system metadata (system name, version, customer, RMF provider information).
 
 ### [Get-ARATest](Get-ARATest.md)
 
-Get operation for ARATest
+{{ Fill in the Synopsis }}
 
 ### [New-ARAEnvironment](New-ARAEnvironment.md)
 
-New operation for ARAEnvironment
+Creates an empty Environment object that can be populated with properties and added to the ARA file.
 
 ### [New-ARAFile](New-ARAFile.md)
 
-New operation for ARAFile
+Creates a new ARA file for the connected repository.
 
 ### [New-ARAIacModule](New-ARAIacModule.md)
 
-New operation for ARAIacModule
+Creates a populated object.
 
 ### [New-ARALinkedResource](New-ARALinkedResource.md)
 
-New operation for ARALinkedResource
+Creates an empty LinkedResource object that can be populated with properties.
 
 ### [New-ARAResource](New-ARAResource.md)
 
-New operation for ARAResource
+Creates an empty Resource object that can be populated with properties and added to the ARA file.
 
 ### [New-ARAResourceGroup](New-ARAResourceGroup.md)
 
-New operation for ARAResourceGroup
+Creates an empty ResourceGroup object that can be populated with properties.
 
 ### [New-ARAResourceRole](New-ARAResourceRole.md)
 
-New operation for ARAResourceRole
+Creates an empty ResourceRole object that can be populated with properties.
 
 ### [New-ARAResourceType](New-ARAResourceType.md)
 
-New operation for ARAResourceType
+Creates an empty ResourceType object that can be populated with properties and added to the ARA file.
 
 ### [New-ARARole](New-ARARole.md)
 
-New operation for ARARole
+Creates an empty Role object that can be populated with properties and added to the ARA file.
 
 ### [New-ARASoftware](New-ARASoftware.md)
 
-New operation for ARASoftware
+Creates a populated object.
 
 ### [New-ARAStig](New-ARAStig.md)
 
-New operation for ARAStig
+Creates an empty object.
 
 ### [Remove-ARAArchitectureDiagram](Remove-ARAArchitectureDiagram.md)
 
-Remove operation for ARAArchitectureDiagram
+{{ Fill in the Synopsis }}
 
 ### [Remove-ARABackupRecovery](Remove-ARABackupRecovery.md)
 
-Remove operation for ARABackupRecovery
+{{ Fill in the Synopsis }}
 
 ### [Remove-ARAChangeManagement](Remove-ARAChangeManagement.md)
 
-Remove operation for ARAChangeManagement
+{{ Fill in the Synopsis }}
+
+### [Remove-ARADefinition](Remove-ARADefinition.md)
+
+{{ Fill in the Synopsis }}
 
 ### [Remove-ARAEnvironment](Remove-ARAEnvironment.md)
 
-Remove operation for ARAEnvironment
+Removes an ARA environment from the connected ARA file.
 
 ### [Remove-ARALinkedResource](Remove-ARALinkedResource.md)
 
-Remove operation for ARALinkedResource
+Removes a link between two resources.
 
 ### [Remove-ARAMission](Remove-ARAMission.md)
 
-Remove operation for ARAMission
+{{ Fill in the Synopsis }}
 
 ### [Remove-ARAOperations](Remove-ARAOperations.md)
 
-Remove operation for ARAOperations
+{{ Fill in the Synopsis }}
 
 ### [Remove-ARARequirement](Remove-ARARequirement.md)
 
-Remove operation for ARARequirement
+{{ Fill in the Synopsis }}
 
 ### [Remove-ARAResource](Remove-ARAResource.md)
 
-Remove operation for ARAResource
+Removes an ARA resource.
 
 ### [Remove-ARAResourceType](Remove-ARAResourceType.md)
 
-Remove operation for ARAResourceType
+Removes an ARA resource type from the connected ARA file.
 
 ### [Remove-ARARole](Remove-ARARole.md)
 
-Remove operation for ARARole
+Removes an ARA role.
 
 ### [Remove-ARAScope](Remove-ARAScope.md)
 
-Remove operation for ARAScope
+{{ Fill in the Synopsis }}
 
 ### [Remove-ARASecurity](Remove-ARASecurity.md)
 
-Remove operation for ARASecurity
+{{ Fill in the Synopsis }}
 
 ### [Remove-ARAServiceLevel](Remove-ARAServiceLevel.md)
 
-Remove operation for ARAServiceLevel
+{{ Fill in the Synopsis }}
 
 ### [Remove-ARASoftware](Remove-ARASoftware.md)
 
-Remove operation for ARASoftware
+Removes an ARA software component from the connected ARA file.
 
 ### [Remove-ARAStig](Remove-ARAStig.md)
 
-Remove operation for ARAStig
+Removes an ARA STIG requirement from the connected ARA file.
 
 ### [Remove-ARASupport](Remove-ARASupport.md)
 
-Remove operation for ARASupport
+{{ Fill in the Synopsis }}
 
 ### [Remove-ARATest](Remove-ARATest.md)
 
-Remove operation for ARATest
+{{ Fill in the Synopsis }}
 
 ### [Save-ARAFile](Save-ARAFile.md)
 
-Save operation for ARAFile
+Saves pending changes to the connected ARA file and validates against the JSON schema.
 
 ### [Set-ARAArchitectureDiagram](Set-ARAArchitectureDiagram.md)
 
-Set operation for ARAArchitectureDiagram
+{{ Fill in the Synopsis }}
 
 ### [Set-ARABackupRecovery](Set-ARABackupRecovery.md)
 
-Set operation for ARABackupRecovery
+{{ Fill in the Synopsis }}
 
 ### [Set-ARAChangeManagement](Set-ARAChangeManagement.md)
 
-Set operation for ARAChangeManagement
+{{ Fill in the Synopsis }}
 
 ### [Set-ARADefinition](Set-ARADefinition.md)
 
-Set operation for ARADefinition
+{{ Fill in the Synopsis }}
 
 ### [Set-ARAEnvironment](Set-ARAEnvironment.md)
 
-Set operation for ARAEnvironment
+Updates an existing ARA environment in the connected ARA file.
 
 ### [Set-ARALinkedResource](Set-ARALinkedResource.md)
 
-Set operation for ARALinkedResource
+Updates an existing link between two resources.
 
 ### [Set-ARAMission](Set-ARAMission.md)
 
-Set operation for ARAMission
+{{ Fill in the Synopsis }}
 
 ### [Set-ARAOperations](Set-ARAOperations.md)
 
-Set operation for ARAOperations
+{{ Fill in the Synopsis }}
 
 ### [Set-ARARequirement](Set-ARARequirement.md)
 
-Set operation for ARARequirement
+{{ Fill in the Synopsis }}
 
 ### [Set-ARAResource](Set-ARAResource.md)
 
-Set operation for ARAResource
+Updates an existing ARA resource in the connected ARA file.
 
 ### [Set-ARAResourceType](Set-ARAResourceType.md)
 
-Set operation for ARAResourceType
+Updates an existing ARA resource type in the connected ARA file.
 
 ### [Set-ARARole](Set-ARARole.md)
 
-Set operation for ARARole
+Updates an existing ARA role in the connected ARA file.
 
 ### [Set-ARAScope](Set-ARAScope.md)
 
-Set operation for ARAScope
+{{ Fill in the Synopsis }}
 
 ### [Set-ARASecurity](Set-ARASecurity.md)
 
-Set operation for ARASecurity
+{{ Fill in the Synopsis }}
 
 ### [Set-ARAServiceLevel](Set-ARAServiceLevel.md)
 
-Set operation for ARAServiceLevel
+{{ Fill in the Synopsis }}
 
 ### [Set-ARASoftware](Set-ARASoftware.md)
 
-Set operation for ARASoftware
+Updates an existing ARA software component in the connected ARA file.
 
 ### [Set-ARAStig](Set-ARAStig.md)
 
-Set operation for ARAStig
+Updates an existing ARA STIG requirement in the connected ARA file.
 
 ### [Set-ARASupport](Set-ARASupport.md)
 
-Set operation for ARASupport
+{{ Fill in the Synopsis }}
 
 ### [Set-ARASystem](Set-ARASystem.md)
 
-Set operation for ARASystem
+Updates the ARA system metadata (customer name and RMF provider information).
 
 ### [Set-ARATest](Set-ARATest.md)
 
-Set operation for ARATest
+{{ Fill in the Synopsis }}
 
 ### [Test-ARAFile](Test-ARAFile.md)
 
-Test operation for ARAFile
+Validates the connected ARA file against its JSON schema without saving changes.
 

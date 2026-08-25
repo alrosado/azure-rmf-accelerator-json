@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Remove-ARALinkedResource
 ---
@@ -13,7 +13,7 @@ title: Remove-ARALinkedResource
 
 ## SYNOPSIS
 
-Remove operation for ARALinkedResource
+Removes a link between two resources.
 
 ## SYNTAX
 
@@ -38,15 +38,15 @@ Removes a link between two resources.
 
 ### Example 1
 
-Remove-ARALinkedResource -Environment "MyEnvironment" -ParentResourceGroup "ParentRG" -ParentType "ParentType" -ParentName "ParentName" -ChildResourceGroup "ChildRG" -ChildType "ChildType" -ChildName "ChildName" -LinkType "Dependency"
+PS C:\\> Remove-ARALinkedResource
 
-Deletes the existing link relationship between the specified parent and child resources in the connected ARA file.
+Removes a link between two resources.
 
 ## PARAMETERS
 
 ### -ChildName
 
-The name of the child resource.
+{{ Fill ChildName Description }}
 
 ```yaml
 Type: System.String
@@ -67,7 +67,7 @@ HelpMessage: ''
 
 ### -ChildResourceGroup
 
-The resource group of the child resource.
+{{ Fill ChildResourceGroup Description }}
 
 ```yaml
 Type: System.String
@@ -88,7 +88,7 @@ HelpMessage: ''
 
 ### -ChildType
 
-The type of the child resource.
+{{ Fill ChildType Description }}
 
 ```yaml
 Type: System.String
@@ -109,7 +109,7 @@ HelpMessage: ''
 
 ### -Environment
 
-The environment containing both resources.
+{{ Fill Environment Description }}
 
 ```yaml
 Type: System.String
@@ -130,7 +130,7 @@ HelpMessage: ''
 
 ### -LinkType
 
-The type of the link between the parent and child resources.
+{{ Fill LinkType Description }}
 
 ```yaml
 Type: System.String
@@ -151,7 +151,7 @@ HelpMessage: ''
 
 ### -ParentName
 
-The name of the parent resource.
+{{ Fill ParentName Description }}
 
 ```yaml
 Type: System.String
@@ -172,7 +172,7 @@ HelpMessage: ''
 
 ### -ParentResourceGroup
 
-The resource group of the parent resource.
+{{ Fill ParentResourceGroup Description }}
 
 ```yaml
 Type: System.String
@@ -193,7 +193,7 @@ HelpMessage: ''
 
 ### -ParentType
 
-The type of the parent resource.
+{{ Fill ParentType Description }}
 
 ```yaml
 Type: System.String
@@ -229,21 +229,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Object
 
-{{ Fill in the Description }}
-
-### AzureRMFAccelerator.Core.ARAResult
-
-Result of running a command.
+See command description for output behavior.
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

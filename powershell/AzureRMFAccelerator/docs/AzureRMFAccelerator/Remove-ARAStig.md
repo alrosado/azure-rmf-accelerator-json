@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Remove-ARAStig
 ---
@@ -13,7 +13,7 @@ title: Remove-ARAStig
 
 ## SYNOPSIS
 
-Remove operation for ARAStig
+Removes an ARA STIG requirement from the connected ARA file.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Removes an ARA STIG requirement from the connected ARA file.
 
 ### Example 1
 
-Remove-ARAStig -TargetKey "MyResourceType" -TargetType "resourceType"
+PS C:\\> Remove-ARAStig
 
 Use Save-ARAFile to persist changes.
 
@@ -95,27 +95,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
-
-### AzureRMFAccelerator.Core.ARAResult
-
-Result of running a command.
+See command description for output behavior.
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

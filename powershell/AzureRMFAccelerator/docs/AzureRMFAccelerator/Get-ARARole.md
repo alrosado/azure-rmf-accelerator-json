@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Get-ARARole
 ---
@@ -13,7 +13,7 @@ title: Get-ARARole
 
 ## SYNOPSIS
 
-Get operation for ARARole
+Gets one or all ARA roles from the connected ARA file.
 
 ## SYNTAX
 
@@ -36,10 +36,10 @@ Gets one or all ARA roles from the connected ARA file.
 
 ### Example 1
 
-Get-ARARole -Key "Admin"
+PS C:\\> Get-ARARole
 
 If Key is not provided, returns all roles in the system.
-            Connect-ARAFile must be called first.
+Connect-ARAFile must be called first.
 
 ## PARAMETERS
 
@@ -76,27 +76,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+See command description for output behavior.
 
 ### AzureRMFAccelerator.Core.Role
 
-Represents a role in the system.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

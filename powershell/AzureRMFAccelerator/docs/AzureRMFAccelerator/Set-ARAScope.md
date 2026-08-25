@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Set-ARAScope
 ---
@@ -13,7 +13,7 @@ title: Set-ARAScope
 
 ## SYNOPSIS
 
-Set operation for ARAScope
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -37,22 +37,19 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Updates an existing scope configuration in the connected ARA file.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 
-Set-ARAScope -InScope "Resource1","Resource2" -Description "Updated scope description." -OutOfScope "Resource3" -Constraints "Constraint1" -Assumptions "Assumption1" -Dependencies "Dependency1" -Audit $auditObject
-
-Modifies the existing Scope object in the currently connected ARA file.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Assumptions
 
-The list of assumptions for the scope to update.
-Optional if using the Properties parameter set.
+{{ Fill Assumptions Description }}
 
 ```yaml
 Type: System.String[]
@@ -73,8 +70,7 @@ HelpMessage: ''
 
 ### -Audit
 
-The audit information for the scope to update.
-Optional if using the Properties parameter set.
+{{ Fill Audit Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.Audit
@@ -95,8 +91,7 @@ HelpMessage: ''
 
 ### -Constraints
 
-The list of constraints for the scope to update.
-Optional if using the Properties parameter set.
+{{ Fill Constraints Description }}
 
 ```yaml
 Type: System.String[]
@@ -117,8 +112,7 @@ HelpMessage: ''
 
 ### -Dependencies
 
-The list of dependencies for the scope to update.
-Optional if using the Properties parameter set.
+{{ Fill Dependencies Description }}
 
 ```yaml
 Type: System.String[]
@@ -139,8 +133,7 @@ HelpMessage: ''
 
 ### -Description
 
-The description of the scope to update.
-Optional if using the Properties parameter set.
+{{ Fill Description Description }}
 
 ```yaml
 Type: System.String
@@ -161,8 +154,7 @@ HelpMessage: ''
 
 ### -InScope
 
-The list of things that are in scope.
-Mandatory if using the Properties parameter set.
+{{ Fill InScope Description }}
 
 ```yaml
 Type: System.String[]
@@ -183,8 +175,7 @@ HelpMessage: ''
 
 ### -OutOfScope
 
-The list of things that are out of scope.
-Optional if using the Properties parameter set.
+{{ Fill OutOfScope Description }}
 
 ```yaml
 Type: System.String[]
@@ -205,8 +196,7 @@ HelpMessage: ''
 
 ### -Scope
 
-The Scope object to update.
-If provided, other parameters are ignored.
+{{ Fill Scope Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.Scope
@@ -236,22 +226,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### AzureRMFAccelerator.Core.Scope
 
-Information about the scope of the system being modeled.
+{{ Fill in the Description }}
 
 ## OUTPUTS
 
-### AzureRMFAccelerator.Core.ARAResult
+### System.Object
 
-Result of running a command.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
-
+{{ Fill in the Notes }}
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
+{{ Fill in the related links here }}
+

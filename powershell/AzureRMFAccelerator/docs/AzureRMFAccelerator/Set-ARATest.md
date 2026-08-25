@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Set-ARATest
 ---
@@ -13,7 +13,7 @@ title: Set-ARATest
 
 ## SYNOPSIS
 
-Set operation for ARATest
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -38,22 +38,19 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-The cmdlet to set a test.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 
-Set-ARATest -Id "Test1" -Name "Updated Test" -Description "This is an updated test."
-
-Updates an existing Test object in the currently connected ARA file.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Description
 
-The description of the test to update.
-Optional; if not provided, the existing value is unchanged.
+{{ Fill Description Description }}
 
 ```yaml
 Type: System.String
@@ -74,8 +71,7 @@ HelpMessage: ''
 
 ### -ExpectedValue
 
-The expected value of the test to update.
-Optional; if not provided, the existing value is unchanged.
+{{ Fill ExpectedValue Description }}
 
 ```yaml
 Type: System.String
@@ -96,8 +92,7 @@ HelpMessage: ''
 
 ### -Id
 
-The ID of the test to update.
-Mandatory if using the Properties parameter set.
+{{ Fill Id Description }}
 
 ```yaml
 Type: System.String
@@ -118,8 +113,7 @@ HelpMessage: ''
 
 ### -Name
 
-The name of the test to update.
-Optional; if not provided, the existing value is unchanged.
+{{ Fill Name Description }}
 
 ```yaml
 Type: System.String
@@ -140,8 +134,7 @@ HelpMessage: ''
 
 ### -RoleKey
 
-The role key of the test to update.
-Optional; if not provided, the existing value is unchanged.
+{{ Fill RoleKey Description }}
 
 ```yaml
 Type: System.String
@@ -162,8 +155,7 @@ HelpMessage: ''
 
 ### -Steps
 
-The steps of the test to update.
-Optional; if not provided, the existing value is unchanged.
+{{ Fill Steps Description }}
 
 ```yaml
 Type: System.String[]
@@ -184,8 +176,7 @@ HelpMessage: ''
 
 ### -TargetKey
 
-The target key of the test to update.
-Optional; if not provided, the existing value is unchanged.
+{{ Fill TargetKey Description }}
 
 ```yaml
 Type: System.String
@@ -206,8 +197,7 @@ HelpMessage: ''
 
 ### -TargetType
 
-The target type of the test to update.
-Optional; if not provided, the existing value is unchanged.
+{{ Fill TargetType Description }}
 
 ```yaml
 Type: System.String
@@ -228,8 +218,7 @@ HelpMessage: ''
 
 ### -Test
 
-The complete Test object to update.
-If provided, other parameters are ignored.
+{{ Fill Test Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.Test
@@ -250,8 +239,7 @@ HelpMessage: ''
 
 ### -Type
 
-The type of the test to update.
-Optional; if not provided, the existing value is unchanged.
+{{ Fill Type Description }}
 
 ```yaml
 Type: System.String
@@ -281,22 +269,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### AzureRMFAccelerator.Core.Test
 
-List of tests that are applicable to the requirement.
+{{ Fill in the Description }}
 
 ## OUTPUTS
 
-### AzureRMFAccelerator.Core.ARAResult
+### System.Object
 
-Result of running a command.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
-
+{{ Fill in the Notes }}
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
+{{ Fill in the related links here }}
+

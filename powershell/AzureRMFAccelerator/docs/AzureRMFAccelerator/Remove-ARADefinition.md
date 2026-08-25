@@ -6,21 +6,21 @@ Locale: en-US
 Module Name: AzureRMFAccelerator
 ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
-title: Get-ARASystem
+title: Remove-ARADefinition
 ---
 
-# Get-ARASystem
+# Remove-ARADefinition
 
 ## SYNOPSIS
 
-Gets the ARA system metadata (system name, version, customer, RMF provider information).
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### __AllParameterSets
 
 ```
-Get-ARASystem
+Remove-ARADefinition
 ```
 
 ## ALIASES
@@ -30,16 +30,13 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Gets the ARA system metadata (system name, version, customer, RMF provider information).
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 
-PS C:\\> Get-ARASystem
-
-Returns the SystemInfo object from the currently connected ARA file.
-Connect-ARAFile must be called first to load an ARA file.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -56,17 +53,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Object
 
-See command description for output behavior.
-
-### AzureRMFAccelerator.Core.SystemInfo
-
 {{ Fill in the Description }}
 
 ## NOTES
 
-Generated from XML documentation comments.
-
+{{ Fill in the Notes }}
 
 ## RELATED LINKS
 
-- [Online Version]()
+{{ Fill in the related links here }}
+

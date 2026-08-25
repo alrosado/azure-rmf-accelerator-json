@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Add-ARAStig
 ---
@@ -13,7 +13,7 @@ title: Add-ARAStig
 
 ## SYNOPSIS
 
-Add operation for ARAStig
+Adds a new ARA STIG requirement to the connected ARA file.
 
 ## SYNTAX
 
@@ -43,7 +43,7 @@ Adds a new ARA STIG requirement to the connected ARA file.
 
 ### Example 1
 
-Add-ARAStig -TargetKey "MyResourceType" -TargetType "resourceType" -Name "MyStig" -ApplierRoleKey "MyRole"
+PS C:\\> Add-ARAStig
 
 Supports two parameter sets: provide a Stig object, or provide individual properties.
 
@@ -187,31 +187,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ### AzureRMFAccelerator.Core.Stig
 
-Represents a STIG (Security Technical Implementation Guide) requirement for a resource type.
+Accepted from the pipeline.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
-
-### AzureRMFAccelerator.Core.ARAResult
-
-Result of running a command.
+See command description for output behavior.
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

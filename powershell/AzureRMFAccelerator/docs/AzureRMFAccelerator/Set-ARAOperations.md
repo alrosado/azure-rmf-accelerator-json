@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Set-ARAOperations
 ---
@@ -13,7 +13,7 @@ title: Set-ARAOperations
 
 ## SYNOPSIS
 
-Set operation for ARAOperations
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -30,22 +30,19 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Updates the operations settings in the connected ARA file.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 
-Set-ARAOperations -Operations $operationsObject
-
-Changes are stored in memory until saved using Save-ARAFile.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Operations
 
-The Operations object to update.
-If provided, other parameters are ignored.
+{{ Fill Operations Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.Operations
@@ -75,22 +72,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### AzureRMFAccelerator.Core.Operations
 
-Information about the operations of the system being modeled.
+{{ Fill in the Description }}
 
 ## OUTPUTS
 
-### AzureRMFAccelerator.Core.ARAResult
+### System.Object
 
-Result of running a command.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
-
+{{ Fill in the Notes }}
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
+{{ Fill in the related links here }}
+

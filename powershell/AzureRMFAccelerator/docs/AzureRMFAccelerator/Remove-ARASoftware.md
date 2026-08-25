@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Remove-ARASoftware
 ---
@@ -13,7 +13,7 @@ title: Remove-ARASoftware
 
 ## SYNOPSIS
 
-Remove operation for ARASoftware
+Removes an ARA software component from the connected ARA file.
 
 ## SYNTAX
 
@@ -42,9 +42,9 @@ Removes an ARA software component from the connected ARA file.
 
 ### Example 1
 
-Remove-ARASoftware -Key "MySoftwareKey"
+PS C:\\> Remove-ARASoftware
 
-Deletes the existing Software object from the currently connected ARA file.
+Removes an ARA software component from the connected ARA file.
 
 ## PARAMETERS
 
@@ -122,27 +122,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
-
-### AzureRMFAccelerator.Core.ARAResult
-
-Result of running a command.
+See command description for output behavior.
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

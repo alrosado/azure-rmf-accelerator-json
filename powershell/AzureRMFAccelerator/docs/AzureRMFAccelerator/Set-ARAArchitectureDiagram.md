@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Set-ARAArchitectureDiagram
 ---
@@ -13,7 +13,7 @@ title: Set-ARAArchitectureDiagram
 
 ## SYNOPSIS
 
-Set operation for ARAArchitectureDiagram
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -36,22 +36,19 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Updates an existing architecture diagram in the connected ARA file.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 
-Set-ARAArchitectureDiagram -Name "MyDiagram" -Path "C:\Diagrams\UpdatedDiagram.png" -Description "This is my updated architecture diagram."
-
-Changes are stored in memory until saved using Save-ARAFile.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Description
 
-The description of the architecture diagram to update.
-Optional; if not provided, the existing value is unchanged.
+{{ Fill Description Description }}
 
 ```yaml
 Type: System.String
@@ -72,8 +69,7 @@ HelpMessage: ''
 
 ### -Diagram
 
-The ArchitectureDiagram object to update.
-If provided, other parameters are ignored.
+{{ Fill Diagram Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.ArchitectureDiagram
@@ -94,8 +90,7 @@ HelpMessage: ''
 
 ### -Name
 
-The name of the architecture diagram to update.
-Mandatory if using the Properties parameter set.
+{{ Fill Name Description }}
 
 ```yaml
 Type: System.String
@@ -116,8 +111,7 @@ HelpMessage: ''
 
 ### -Path
 
-The file path of the architecture diagram to update.
-Optional; if not provided, the existing value is unchanged.
+{{ Fill Path Description }}
 
 ```yaml
 Type: System.String
@@ -147,22 +141,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### AzureRMFAccelerator.Core.ArchitectureDiagram
 
-Diagram used to define a component within the architecture of the system.
+{{ Fill in the Description }}
 
 ## OUTPUTS
 
-### AzureRMFAccelerator.Core.ARAResult
+### System.Object
 
-Result of running a command.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
-
+{{ Fill in the Notes }}
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
+{{ Fill in the related links here }}
+

@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Get-ARASoftware
 ---
@@ -13,7 +13,7 @@ title: Get-ARASoftware
 
 ## SYNOPSIS
 
-Get operation for ARASoftware
+Gets one or all ARA software components from the connected ARA file.
 
 ## SYNTAX
 
@@ -42,9 +42,9 @@ Gets one or all ARA software components from the connected ARA file.
 
 ### Example 1
 
-Get-ARASoftware -Key "MySoftwareKey"
+PS C:\\> Get-ARASoftware
 
-Returns the Software object(s) from the currently connected ARA file.
+Gets one or all ARA software components from the connected ARA file.
 
 ## PARAMETERS
 
@@ -164,27 +164,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+See command description for output behavior.
 
 ### AzureRMFAccelerator.Core.Software
 
-Represents a software component or application.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

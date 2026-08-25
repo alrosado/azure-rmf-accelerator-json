@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Set-ARASecurity
 ---
@@ -13,7 +13,7 @@ title: Set-ARASecurity
 
 ## SYNOPSIS
 
-Set operation for ARASecurity
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -38,22 +38,19 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Updates an existing security configuration in the connected ARA file.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 
-Set-ARASecurity -ImpactLevel "High" -Classification "Confidential" -Confidentiality "High" -Integrity "High" -Availability "High" -Controls "Control1,Control2" -Roles $roleObject -Stigs $stigObject
-
-Modifies the existing Security object in the currently connected ARA file.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Availability
 
-The availability of the security to update.
-Optional if using the Properties parameter set.
+{{ Fill Availability Description }}
 
 ```yaml
 Type: System.String
@@ -74,8 +71,7 @@ HelpMessage: ''
 
 ### -Classification
 
-The classification of the security to update.
-Optional if using the Properties parameter set.
+{{ Fill Classification Description }}
 
 ```yaml
 Type: System.String
@@ -96,8 +92,7 @@ HelpMessage: ''
 
 ### -Confidentiality
 
-The confidentiality of the security to update.
-Optional if using the Properties parameter set.
+{{ Fill Confidentiality Description }}
 
 ```yaml
 Type: System.String
@@ -118,8 +113,7 @@ HelpMessage: ''
 
 ### -Controls
 
-The path to the controls file for the security to update.
-Optional if using the Properties parameter set.
+{{ Fill Controls Description }}
 
 ```yaml
 Type: System.String
@@ -140,8 +134,7 @@ HelpMessage: ''
 
 ### -ImpactLevel
 
-The impact level of the security to update.
-Mandatory if using the Properties parameter set.
+{{ Fill ImpactLevel Description }}
 
 ```yaml
 Type: System.String
@@ -162,8 +155,7 @@ HelpMessage: ''
 
 ### -Integrity
 
-The integrity of the security to update.
-Optional if using the Properties parameter set.
+{{ Fill Integrity Description }}
 
 ```yaml
 Type: System.String
@@ -184,8 +176,7 @@ HelpMessage: ''
 
 ### -Roles
 
-The list of roles for the security to update.
-Optional if using the Properties parameter set.
+{{ Fill Roles Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.Role[]
@@ -206,8 +197,7 @@ HelpMessage: ''
 
 ### -Security
 
-The Security object to update.
-If provided, other parameters are ignored.
+{{ Fill Security Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.Security
@@ -228,8 +218,7 @@ HelpMessage: ''
 
 ### -Stigs
 
-The list of STIGs for the security to update.
-Optional if using the Properties parameter set.
+{{ Fill Stigs Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.Stig[]
@@ -259,22 +248,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### AzureRMFAccelerator.Core.Security
 
-Information about the security of the system being modeled.
+{{ Fill in the Description }}
 
 ## OUTPUTS
 
-### AzureRMFAccelerator.Core.ARAResult
+### System.Object
 
-Result of running a command.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
-
+{{ Fill in the Notes }}
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
+{{ Fill in the related links here }}
+

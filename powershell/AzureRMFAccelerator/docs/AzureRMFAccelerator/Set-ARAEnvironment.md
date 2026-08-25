@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Set-ARAEnvironment
 ---
@@ -13,7 +13,7 @@ title: Set-ARAEnvironment
 
 ## SYNOPSIS
 
-Set operation for ARAEnvironment
+Updates an existing ARA environment in the connected ARA file.
 
 ## SYNTAX
 
@@ -43,10 +43,10 @@ Updates an existing ARA environment in the connected ARA file.
 
 ### Example 1
 
-Set-ARAEnvironment -Key "Dev" -Name "Development Updated" -ResourceGroups $updatedResourceGroups -Roles $updatedRoles
+PS C:\\> Set-ARAEnvironment
 
 Supports two parameter sets: provide an Environment object, or provide individual properties.
-            Use Save-ARAFile to persist changes.
+Use Save-ARAFile to persist changes.
 
 ## PARAMETERS
 
@@ -169,40 +169,31 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ### AzureRMFAccelerator.Core.Environment
 
-Represents an environment (e.g.
-dev, staging, production) containing resource groups.
+Accepted from the pipeline.
 
 ### AzureRMFAccelerator.Core.ResourceGroup[]
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ### AzureRMFAccelerator.Core.EnvironmentRole[]
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
-
-### AzureRMFAccelerator.Core.ARAResult
-
-Result of running a command.
+See command description for output behavior.
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Get-ARAResourceType
 ---
@@ -13,7 +13,7 @@ title: Get-ARAResourceType
 
 ## SYNOPSIS
 
-Get operation for ARAResourceType
+Gets one or all ARA resource types from the connected ARA file.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Gets one or all ARA resource types from the connected ARA file.
 
 ### Example 1
 
-Get-ARAResourceType -Key "Microsoft.Compute/virtualMachines"
+PS C:\\> Get-ARAResourceType
 
 If Key is not provided, returns all resource types, optionally filtered by Provider.
 
@@ -96,27 +96,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+See command description for output behavior.
 
 ### AzureRMFAccelerator.Core.ResourceType
 
-Represents a resource type classification.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

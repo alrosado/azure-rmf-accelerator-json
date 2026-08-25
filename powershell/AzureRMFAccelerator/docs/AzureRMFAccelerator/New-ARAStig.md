@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: New-ARAStig
 ---
@@ -13,7 +13,7 @@ title: New-ARAStig
 
 ## SYNOPSIS
 
-New operation for ARAStig
+Creates an empty object.
 
 ## SYNTAX
 
@@ -30,15 +30,15 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Creates an empty Stig object.
+Creates an empty object.
 
 ## EXAMPLES
 
 ### Example 1
 
-New-ARAStig
+PS C:\\> New-ARAStig
 
-Use this to create a template Stig object for piping to Add-ARAStig.
+Creates an empty object.
 
 ## PARAMETERS
 
@@ -55,21 +55,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Object
 
-{{ Fill in the Description }}
+See command description for output behavior.
 
 ### AzureRMFAccelerator.Core.Stig
 
-Represents a STIG (Security Technical Implementation Guide) requirement for a resource type.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

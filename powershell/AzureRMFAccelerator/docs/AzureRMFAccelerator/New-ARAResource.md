@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: New-ARAResource
 ---
@@ -13,7 +13,7 @@ title: New-ARAResource
 
 ## SYNOPSIS
 
-New operation for ARAResource
+Creates an empty Resource object that can be populated with properties and added to the ARA file.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Creates an empty Resource object that can be populated with properties and added
 
 ### Example 1
 
-New-ARAResource
+PS C:\\> New-ARAResource
 
 Use this to create a template Resource object for piping to Add-ARAResource.
 
@@ -55,21 +55,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Object
 
-{{ Fill in the Description }}
+See command description for output behavior.
 
 ### AzureRMFAccelerator.Core.Resource
 
-Represents a cloud resource with roles, software, and relationships.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

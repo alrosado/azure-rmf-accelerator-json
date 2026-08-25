@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Get-ARAStig
 ---
@@ -13,7 +13,7 @@ title: Get-ARAStig
 
 ## SYNOPSIS
 
-Get operation for ARAStig
+Gets one or all ARA STIG (Security Technical Implementation Guide) requirements from the connected ARA file.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Gets one or all ARA STIG (Security Technical Implementation Guide) requirements 
 
 ### Example 1
 
-Get-ARAStig -TargetKey "MyResourceType" -TargetType "resourceType"
+PS C:\\> Get-ARAStig
 
 If TargetKey is not provided, returns all STIGs in the system.
 
@@ -97,27 +97,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+See command description for output behavior.
 
 ### AzureRMFAccelerator.Core.Stig
 
-Represents a STIG (Security Technical Implementation Guide) requirement for a resource type.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

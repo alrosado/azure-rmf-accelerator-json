@@ -404,7 +404,7 @@
                     "properties": {
                         "name": {
                             "$ref": "#/$defs/nonEmptyString",
-                            "description": "Name of the impact level."   
+                            "description": "Name of the impact level."
                         },
                         "confidentiality": {
                             "$ref": "#/$defs/nonEmptyString",
@@ -590,8 +590,78 @@
                                             "type": "array",
                                             "description": "Resources contained within the resource group.",
                                             "items": {
-                                                "$ref": "#/$defs/resource",
+                                                "type": "object",
+                                                "description": "A resource that is part of the system architecture.",
                                                 "properties": {
+                                                    "type": {
+                                                        "$ref": "#/$defs/nonEmptyString",
+                                                        "description": "Type of the resource."
+                                                    },
+                                                    "name": {
+                                                        "$ref": "#/$defs/nonEmptyString",
+                                                        "description": "Name of the resource."
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "description": "Description of the resource."
+                                                    },
+                                                    "connections": {
+                                                        "type": "array",
+                                                        "description": "Network Connections that are defined for the resource. These connections are used to define the ports and protocols between resources.",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "required": [
+                                                                "protocol",
+                                                                "direction"
+                                                            ],
+                                                            "properties": {
+                                                                "port": {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 65535,
+                                                                    "description": "Port number used for the connection.",
+                                                                    "examples": [
+                                                                        22,
+                                                                        80,
+                                                                        443,
+                                                                        445,
+                                                                        3389,
+                                                                        1433,
+                                                                        5432,
+                                                                        6379
+                                                                    ]
+                                                                },
+                                                                "protocol": {
+                                                                    "$ref": "#/$defs/nonEmptyString",
+                                                                    "description": "Network protocol used for the connection.",
+                                                                    "examples": [
+                                                                        "HTTPS",
+                                                                        "TCP",
+                                                                        "UDP",
+                                                                        "SSH",
+                                                                        "SFTP",
+                                                                        "SMB",
+                                                                        "RDP"
+                                                                    ]
+                                                                },
+                                                                "direction": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "Inbound",
+                                                                        "Outbound",
+                                                                        "Bidirectional"
+                                                                    ],
+                                                                    "description": "Direction from the perspective of the resource to something else."
+                                                                },
+                                                                "purpose": {
+                                                                    "type": "string",
+                                                                    "description": "Description of the purpose of the connection."
+                                                                }
+                                                            },
+                                                            "additionalProperties": false
+                                                        },
+                                                        "default": []
+                                                    },
                                                     "iacModule": {
                                                         "type": "object",
                                                         "description": "Infrastructure as Code module that is used to deploy the resource.",
@@ -620,8 +690,78 @@
                                                         "type": "array",
                                                         "description": "Resources that are linked to this resource. This is used to model dependencies between resources. For simplicity, this should be a one way linked relationship. Example: If resource A is linked to resource B, then resource B should not be linked to resource A.",
                                                         "items": {
-                                                            "$ref": "#/$defs/resource",
+                                                            "type": "object",
+                                                            "description": "A linked resource that is part of the system architecture.",
                                                             "properties": {
+                                                                "type": {
+                                                                    "$ref": "#/$defs/nonEmptyString",
+                                                                    "description": "Type of the resource."
+                                                                },
+                                                                "name": {
+                                                                    "$ref": "#/$defs/nonEmptyString",
+                                                                    "description": "Name of the resource."
+                                                                },
+                                                                "description": {
+                                                                    "type": "string",
+                                                                    "description": "Description of the resource."
+                                                                },
+                                                                "connections": {
+                                                                    "type": "array",
+                                                                    "description": "Network Connections that are defined for the resource. These connections are used to define the ports and protocols between resources.",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "required": [
+                                                                            "protocol",
+                                                                            "direction"
+                                                                        ],
+                                                                        "properties": {
+                                                                            "port": {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 65535,
+                                                                                "description": "Port number used for the connection.",
+                                                                                "examples": [
+                                                                                    22,
+                                                                                    80,
+                                                                                    443,
+                                                                                    445,
+                                                                                    3389,
+                                                                                    1433,
+                                                                                    5432,
+                                                                                    6379
+                                                                                ]
+                                                                            },
+                                                                            "protocol": {
+                                                                                "$ref": "#/$defs/nonEmptyString",
+                                                                                "description": "Network protocol used for the connection.",
+                                                                                "examples": [
+                                                                                    "HTTPS",
+                                                                                    "TCP",
+                                                                                    "UDP",
+                                                                                    "SSH",
+                                                                                    "SFTP",
+                                                                                    "SMB",
+                                                                                    "RDP"
+                                                                                ]
+                                                                            },
+                                                                            "direction": {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "Inbound",
+                                                                                    "Outbound",
+                                                                                    "Bidirectional"
+                                                                                ],
+                                                                                "description": "Direction from the perspective of the resource to something else."
+                                                                            },
+                                                                            "purpose": {
+                                                                                "type": "string",
+                                                                                "description": "Description of the purpose of the connection."
+                                                                            }
+                                                                        },
+                                                                        "additionalProperties": false
+                                                                    },
+                                                                    "default": []
+                                                                },
                                                                 "resourceGroup": {
                                                                     "$ref": "#/$defs/nonEmptyString",
                                                                     "description": "Resource group that the resource belongs to."

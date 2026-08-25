@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: New-ARAEnvironment
 ---
@@ -13,7 +13,7 @@ title: New-ARAEnvironment
 
 ## SYNOPSIS
 
-New operation for ARAEnvironment
+Creates an empty Environment object that can be populated with properties and added to the ARA file.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Creates an empty Environment object that can be populated with properties and ad
 
 ### Example 1
 
-New-ARAEnvironment
+PS C:\\> New-ARAEnvironment
 
 Use this to create a template Environment object for piping to Add-ARAEnvironment.
 
@@ -55,22 +55,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Object
 
-{{ Fill in the Description }}
+See command description for output behavior.
 
 ### AzureRMFAccelerator.Core.Environment
 
-Represents an environment (e.g.
-dev, staging, production) containing resource groups.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

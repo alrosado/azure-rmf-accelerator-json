@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Get-ARATest
 ---
@@ -13,7 +13,7 @@ title: Get-ARATest
 
 ## SYNOPSIS
 
-Get operation for ARATest
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -31,22 +31,19 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Gets the test settings from the connected ARA file.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 
-Get-ARATest -Id "Test1"
-
-Returns the Test object(s) from the currently connected ARA file.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Id
 
-The ID of the test to retrieve.
-If not provided, all tests are returned.
+{{ Fill Id Description }}
 
 ```yaml
 Type: System.String
@@ -67,8 +64,7 @@ HelpMessage: ''
 
 ### -RequirementCategory
 
-The requirement category to filter tests by.
-Optional; if not provided, no filtering is applied.
+{{ Fill RequirementCategory Description }}
 
 ```yaml
 Type: System.String
@@ -89,8 +85,7 @@ HelpMessage: ''
 
 ### -RequirementId
 
-The requirement ID to filter tests by.
-Optional; if not provided, no filtering is applied.
+{{ Fill RequirementId Description }}
 
 ```yaml
 Type: System.String
@@ -111,8 +106,7 @@ HelpMessage: ''
 
 ### -RoleKey
 
-The role key of the test to filter by.
-Optional; if not provided, no filtering is applied.
+{{ Fill RoleKey Description }}
 
 ```yaml
 Type: System.String
@@ -133,8 +127,7 @@ HelpMessage: ''
 
 ### -TargetType
 
-The target type of the test to filter by.
-Optional; if not provided, no filtering is applied.
+{{ Fill TargetType Description }}
 
 ```yaml
 Type: System.String
@@ -155,8 +148,7 @@ HelpMessage: ''
 
 ### -Type
 
-The type of the test to filter by.
-Optional; if not provided, no filtering is applied.
+{{ Fill Type Description }}
 
 ```yaml
 Type: System.String
@@ -188,16 +180,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### AzureRMFAccelerator.Core.Test
 
-List of tests that are applicable to the requirement.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
-
+{{ Fill in the Notes }}
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
+{{ Fill in the related links here }}
+

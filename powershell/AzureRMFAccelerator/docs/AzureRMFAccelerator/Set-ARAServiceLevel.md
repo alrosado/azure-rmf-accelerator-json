@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Set-ARAServiceLevel
 ---
@@ -13,7 +13,7 @@ title: Set-ARAServiceLevel
 
 ## SYNOPSIS
 
-Set operation for ARAServiceLevel
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -38,22 +38,19 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Updates an existing service level configuration in the connected ARA file.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 
-Set-ARAServiceLevel -AvailabilityTarget "99.95%" -BusinessHours "8am-6pm" -MaintenanceWindow "Saturdays 1am-3am" -RecoveryTimeObjective "2 hours" -RecoveryPointObjective "30 minutes" -Audit $auditObject
-
-Modifies the existing ServiceLevel object in the currently connected ARA file.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Audit
 
-The audit information for the service level to update.
-Optional if using the Properties parameter set.
+{{ Fill Audit Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.Audit
@@ -74,8 +71,7 @@ HelpMessage: ''
 
 ### -AvailabilityTarget
 
-The availability target for the service level to update.
-Mandatory if using the Properties parameter set.
+{{ Fill AvailabilityTarget Description }}
 
 ```yaml
 Type: System.String
@@ -96,8 +92,7 @@ HelpMessage: ''
 
 ### -BusinessHours
 
-The business hours for the service level to update.
-Optional if using the Properties parameter set.
+{{ Fill BusinessHours Description }}
 
 ```yaml
 Type: System.String
@@ -118,8 +113,7 @@ HelpMessage: ''
 
 ### -MaintenanceWindow
 
-The maintenance window for the service level to update.
-Optional if using the Properties parameter set.
+{{ Fill MaintenanceWindow Description }}
 
 ```yaml
 Type: System.String
@@ -140,8 +134,7 @@ HelpMessage: ''
 
 ### -RecoveryPointObjective
 
-The recovery point objective for the service level to update.
-Optional if using the Properties parameter set.
+{{ Fill RecoveryPointObjective Description }}
 
 ```yaml
 Type: System.String
@@ -162,8 +155,7 @@ HelpMessage: ''
 
 ### -RecoveryTimeObjective
 
-The recovery time objective for the service level to update.
-Optional if using the Properties parameter set.
+{{ Fill RecoveryTimeObjective Description }}
 
 ```yaml
 Type: System.String
@@ -184,8 +176,7 @@ HelpMessage: ''
 
 ### -ServiceLevel
 
-The ServiceLevel object to update.
-If provided, other parameters are ignored.
+{{ Fill ServiceLevel Description }}
 
 ```yaml
 Type: AzureRMFAccelerator.Core.ServiceLevel
@@ -215,23 +206,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### AzureRMFAccelerator.Core.ServiceLevel
 
-Service level objectives for the system.
-This is used to define the service level objectives for the system and to set expectations for users.
+{{ Fill in the Description }}
 
 ## OUTPUTS
 
-### AzureRMFAccelerator.Core.ARAResult
+### System.Object
 
-Result of running a command.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
-
+{{ Fill in the Notes }}
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
+{{ Fill in the related links here }}
+

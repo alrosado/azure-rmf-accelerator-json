@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: New-ARAFile
 ---
@@ -13,7 +13,7 @@ title: New-ARAFile
 
 ## SYNOPSIS
 
-New operation for ARAFile
+Creates a new ARA file for the connected repository.
 
 ## SYNTAX
 
@@ -37,10 +37,10 @@ Creates a new ARA file for the connected repository.
 
 ### Example 1
 
-New-ARAFile -System "MySystem" -Version "1.0" -Customer "MyCustomer" -ImpactLevel "High" -Classification "Confidential"
+PS C:\\> New-ARAFile
 
 Before calling this cmdlet, use Connect-ARAContext to initialize the ARA file repository.
-            The new file is created with the specified system, version, customer, and security settings.
+The new file is created with the specified system, version, customer, and security settings.
 
 ## PARAMETERS
 
@@ -109,7 +109,8 @@ HelpMessage: ''
 
 ### -Schema
 
-The schema to verify this document against.
+Optional custom JSON schema URI for validation.
+If not provided, uses the default schema.
 
 ```yaml
 Type: System.String
@@ -181,28 +182,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+See command description for output behavior.
 
 ### AzureRMFAccelerator.Core.ARAFile
 
-Root container for all ARA data.
-Represents the complete ARA document structure.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

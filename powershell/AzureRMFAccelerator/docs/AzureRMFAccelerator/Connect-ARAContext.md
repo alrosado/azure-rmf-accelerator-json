@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: Connect-ARAContext
 ---
@@ -13,7 +13,7 @@ title: Connect-ARAContext
 
 ## SYNOPSIS
 
-Connect operation for ARAContext
+Initializes the ARA context for a directory where ARA files are stored.
 
 ## SYNTAX
 
@@ -36,12 +36,11 @@ Initializes the ARA context for a directory where ARA files are stored.
 
 ### Example 1
 
-Connect-ARAContext -Path "C:\ARAFiles" -UserObjectId "0DE9C979-BA95-4718-BE6E-2124088E1D44"
+PS C:\\> Connect-ARAContext
 
 This cmdlet creates the internal ARA context object and stores it in the PowerShell session.
-            It must be called first before any other ARA cmdlets.
-After initialization, use Connect-ARAFile
-            to connect to a specific ARA file.
+It must be called first before any other ARA cmdlets.
+After initialization, use Connect-ARAFile to connect to a specific ARA file.
 
 ## PARAMETERS
 
@@ -99,32 +98,27 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ### System.Guid
 
-{{ Fill in the Description }}
+Accepted from the pipeline.
 
 ## OUTPUTS
 
 ### System.Object
 
-{{ Fill in the Description }}
+See command description for output behavior.
 
 ### AzureRMFAccelerator.Core.ARAFile
 
-Root container for all ARA data.
-Represents the complete ARA document structure.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

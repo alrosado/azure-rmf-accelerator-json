@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: New-ARASoftware
 ---
@@ -13,7 +13,7 @@ title: New-ARASoftware
 
 ## SYNOPSIS
 
-New operation for ARASoftware
+Creates a populated object.
 
 ## SYNTAX
 
@@ -31,21 +31,21 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Creates a populated Software object.
+Creates a populated object.
 
 ## EXAMPLES
 
 ### Example 1
 
-New-ARASoftware -Name "MySoftware" -Version "1.0" -Description "This is my software." -Vendor "MyVendor" -Type "Application"
+PS C:\\> New-ARASoftware
 
-Use this to create a template Software object for piping to Add-ARASoftware.
+Creates a populated object.
 
 ## PARAMETERS
 
 ### -Description
 
-Description of the software.
+{{ Fill Description Description }}
 
 ```yaml
 Type: System.String
@@ -66,8 +66,7 @@ HelpMessage: ''
 
 ### -Key
 
-Optional key for the software.
-If not provided, a key will be generated based on the name and version.
+{{ Fill Key Description }}
 
 ```yaml
 Type: System.String
@@ -88,7 +87,7 @@ HelpMessage: ''
 
 ### -Name
 
-Name of the software.
+{{ Fill Name Description }}
 
 ```yaml
 Type: System.String
@@ -109,7 +108,7 @@ HelpMessage: ''
 
 ### -Type
 
-Type of the software (e.g., "Application", "Library", "Service").
+{{ Fill Type Description }}
 
 ```yaml
 Type: System.String
@@ -130,7 +129,7 @@ HelpMessage: ''
 
 ### -Vendor
 
-Vendor of the software.
+{{ Fill Vendor Description }}
 
 ```yaml
 Type: System.String
@@ -151,7 +150,7 @@ HelpMessage: ''
 
 ### -Version
 
-Version of the software.
+{{ Fill Version Description }}
 
 ```yaml
 Type: System.String
@@ -187,21 +186,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Object
 
-{{ Fill in the Description }}
+See command description for output behavior.
 
 ### AzureRMFAccelerator.Core.Software
 
-Represents a software component or application.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()

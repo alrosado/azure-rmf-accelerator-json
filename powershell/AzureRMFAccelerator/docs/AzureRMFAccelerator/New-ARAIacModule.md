@@ -1,10 +1,10 @@
 ---
 document type: cmdlet
-external help file: AzureRMFAccelerator.Module.dll-Help.xml
+external help file: AzureRMFAcceleratorModule.Cmdlet.dll-Help.xml
 HelpUri: ''
 Locale: en-US
 Module Name: AzureRMFAccelerator
-ms.date: 08/18/2026
+ms.date: 08/14/2026
 PlatyPS schema version: 2024-05-01
 title: New-ARAIacModule
 ---
@@ -13,7 +13,7 @@ title: New-ARAIacModule
 
 ## SYNOPSIS
 
-New operation for ARAIacModule
+Creates a populated object.
 
 ## SYNTAX
 
@@ -30,21 +30,21 @@ This cmdlet has the following aliases,
 
 ## DESCRIPTION
 
-Creates an empty IacModule object that can be populated with properties and added to the ARA file.
+Creates a populated object.
 
 ## EXAMPLES
 
 ### Example 1
 
-New-ARAIacModule -Name "MyModule" -Path "C:\Modules\MyModule"
+PS C:\\> New-ARAIacModule
 
-Use this to create a template IacModule object for piping to Add-ARAIacModule.
+Creates a populated object.
 
 ## PARAMETERS
 
 ### -Name
 
-Name of the IaC module.
+{{ Fill Name Description }}
 
 ```yaml
 Type: System.String
@@ -65,9 +65,7 @@ HelpMessage: ''
 
 ### -Path
 
-Path to the IaC module.
-Relative to the root of the ARA file.
-For example, "iac\MyModule".
+{{ Fill Path Description }}
 
 ```yaml
 Type: System.String
@@ -103,21 +101,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Object
 
-{{ Fill in the Description }}
+See command description for output behavior.
 
 ### AzureRMFAccelerator.Core.IacModule
 
-Represents an Infrastructure as Code module reference.
+{{ Fill in the Description }}
 
 ## NOTES
 
-
+Generated from XML documentation comments.
 
 
 ## RELATED LINKS
 
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
-- [Online Version]()
 - [Online Version]()
