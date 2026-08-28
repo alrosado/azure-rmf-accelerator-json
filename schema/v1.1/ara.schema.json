@@ -338,7 +338,8 @@
                                 "description": "Identifier of the requirement.",
                                 "$ref": "#/$defs/nonEmptyString",
                                 "examples": [
-                                    "REQ-001"
+                                    "REQ-001",
+                                    "USER-REQ-002"
                                 ]
                             },
                             "name": {
@@ -366,7 +367,12 @@
                                     "properties": {
                                         "id": {
                                             "description": "Identifier of the test.",
-                                            "$ref": "#/$defs/nonEmptyString"
+                                            "$ref": "#/$defs/nonEmptyString",
+                                            "examples": [
+                                                "TEST-001",
+                                                "UT-TEST-002",
+                                                "ST-TEST-001"
+                                            ]
                                         },
                                         "name": {
                                             "description": "Name of the test.",
@@ -374,7 +380,16 @@
                                         },
                                         "type": {
                                             "description": "Type of the test.",
-                                            "$ref": "#/$defs/nonEmptyString"
+                                            "$ref": "#/$defs/nonEmptyString",
+                                            "examples": [
+                                                "Unit",
+                                                "Integration",
+                                                "System",
+                                                "Acceptance",
+                                                "Regression",
+                                                "Performance",
+                                                "Security"
+                                            ]
                                         },
                                         "description": {
                                             "description": "Description of the test.",
