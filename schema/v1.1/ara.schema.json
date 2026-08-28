@@ -150,10 +150,22 @@
             "properties": {
                 "name": {
                     "$ref": "#/$defs/nonEmptyString",
-                    "description": "Name of the system being modeled."
+                    "pattern": "^[^<>:\"/\\\\|?*\\x00-\\x1F]+$",
+                    "description": "Name of the system being modeled.",
+                    "examples": [
+                        "Foo",
+                        "Death Star",
+                        "MacGuffin"
+                    ]
                 },
                 "version": {
                     "$ref": "#/$defs/nonEmptyString",
+                    "pattern": "^[^<>:\"/\\\\|?*\\x00-\\x1F]+$",
+                    "examples": [
+                        "1.0.0",
+                        "1.1.0",
+                        "2.0.3"
+                    ],
                     "description": "Version of the system being modeled."
                 },
                 "customer": {
@@ -166,7 +178,10 @@
                     "properties": {
                         "name": {
                             "$ref": "#/$defs/nonEmptyString",
-                            "description": "Name of the RMF provider."
+                            "description": "Name of the RMF provider.",
+                            "examples": [
+                                "eMASS"
+                            ]
                         },
                         "systemId": {
                             "$ref": "#/$defs/nonEmptyString",
