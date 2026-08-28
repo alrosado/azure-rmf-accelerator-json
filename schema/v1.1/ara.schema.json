@@ -321,11 +321,25 @@
                         "properties": {
                             "category": {
                                 "$ref": "#/$defs/nonEmptyString",
-                                "description": "Category of the requirements."
+                                "description": "Category of the requirements.",
+                                "examples": [
+                                    "Functional",
+                                    "Non-Functional",
+                                    "Business",
+                                    "User",
+                                    "System/Technical",
+                                    "Regulatory",
+                                    "Compliance",
+                                    "Interface",
+                                    "Data"                                    
+                                ]
                             },
                             "id": {
                                 "description": "Identifier of the requirement.",
-                                "$ref": "#/$defs/nonEmptyString"
+                                "$ref": "#/$defs/nonEmptyString",
+                                "examples": [
+                                    "REQ-001"
+                                ]
                             },
                             "name": {
                                 "description": "Name of the requirement.",
@@ -419,7 +433,13 @@
                     "properties": {
                         "name": {
                             "$ref": "#/$defs/nonEmptyString",
-                            "description": "Name of the impact level."
+                            "description": "Name of the impact level.",
+                            "examples": [
+                                "IL2",
+                                "IL4",
+                                "IL5",
+                                "IL6"
+                            ]
                         },
                         "confidentiality": {
                             "$ref": "#/$defs/nonEmptyString",
@@ -455,7 +475,13 @@
                 },
                 "classification": {
                     "$ref": "#/$defs/nonEmptyString",
-                    "description": "Default system-wide information classification or handling designation."
+                    "description": "Default system-wide information classification or handling designation.",
+                    "examples": [
+                        "Public",
+                        "Unclassified",
+                        "CUI",
+                        "Secret"
+                    ]
                 },
                 "controls": {
                     "$ref": "#/$defs/nonEmptyString",
