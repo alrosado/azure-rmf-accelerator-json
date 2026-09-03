@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://raw.githubusercontent.com/alrosado/azure-rmf-accelerator-json/refs/heads/main/schema/v1.1/artifacts/manifest.schema.json",
+    "$id": "https://raw.githubusercontent.com/alrosado/azure-rmf-accelerator-json/refs/heads/main/schema/v1/artifacts/manifest.schema.json",
     "title": "Azure RMF Accelerator manifest schema",
     "version": "1.1.0",
     "description": "Schema for the Azure RMF Accelerator manifest.",

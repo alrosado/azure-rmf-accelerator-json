@@ -1,430 +1,1184 @@
 {
-    "$schema": "https://json-schema.org/draft-07/schema#",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$id": "https://raw.githubusercontent.com/alrosado/azure-rmf-accelerator-json/refs/heads/main/schema/v1/ara.schema.json",
     "title": "Azure RMF Accelerator schema",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Canonical schema for Azure RMF Accelerator artifact generation.",
     "type": "object",
-    "properties": {
-        "system": {
+    "$defs": {
+        "nonEmptyString": {
             "type": "string",
-            "description": "Name of the system being modeled."
+            "minLength": 1
         },
-        "version": {
-            "type": "string",
-            "description": "Version of the system being modeled."
-        },
-        "customer": {
-            "type": "string",
-            "description": "Name of the customer for which this system is being modeled."
-        },
-        "roles": {
+        "resourceRoles": {
             "type": "array",
-            "description": "List of roles that are defined for the system. These roles are used to define access to resources in the system.",
-            "uniqueItems": true,
+            "description": "Roles that have access to the resource group or resource.",
             "items": {
                 "type": "object",
                 "properties": {
-                    "name": {
-                        "type": "string",
-                        "description": "Name of the role"
-                    },
                     "key": {
-                        "type": "string",
-                        "description": "Key identifier of the role. This is used in other parts of the json file to link the role to specific access."
+                        "$ref": "#/$defs/nonEmptyString",
+                        "description": "Key identifier of the role that has access to the resource group or resource."
                     },
-                    "group": {
-                        "type": "string",
-                        "description": "Name of the group that is primarily linked to this role."
-                    },
-                    "active": {
-                        "type": "boolean",
-                        "description": "Whether the role is currently active."
-                    },
-                    "description": {
-                        "type": "string",
-                        "description": "Description about what the purpose of the role is"
-                    },
-                    "members": {
+                    "icamRoles": {
                         "type": "array",
-                        "description": "Initial members of the role. Not required; this is only in the case that a customer needs an explicit list of users defined early.",
                         "items": {
-                            "type": "string"
-                        }
-                    }
+                            "$ref": "#/$defs/nonEmptyString"
+                        },
+                        "description": "Name of the ICAM system roles that are assigned to the role for access to the resource group or resource."
+                    },
+                    "additionalProperties": false
                 },
                 "additionalProperties": false,
                 "uniqueItems": true,
                 "required": [
-                    "name",
                     "key",
-                    "group",
-                    "active",
-                    "description"
+                    "icamRoles"
                 ]
             }
         },
-        "environments": {
-            "type": "array",
-            "description": "Environments contained within the system.",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "key": {
-                        "type": "string",
-                        "description": "Key identifier of the environment. This is used in other parts of the json file to link resources to specific environments."
+        "resource": {
+            "type": "object",
+            "description": "A resource that is part of the system architecture.",
+            "properties": {
+                "type": {
+                    "$ref": "#/$defs/nonEmptyString",
+                    "description": "Type of the resource."
+                },
+                "name": {
+                    "$ref": "#/$defs/nonEmptyString",
+                    "description": "Name of the resource."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource."
+                },
+                "connections": {
+                    "type": "array",
+                    "description": "Network Connections that are defined for the resource. These connections are used to define the ports and protocols between resources.",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "protocol",
+                            "direction"
+                        ],
+                        "properties": {
+                            "port": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 65535,
+                                "description": "Port number used for the connection.",
+                                "examples": [
+                                    22,
+                                    80,
+                                    443,
+                                    445,
+                                    3389,
+                                    1433,
+                                    5432,
+                                    6379
+                                ]
+                            },
+                            "protocol": {
+                                "$ref": "#/$defs/nonEmptyString",
+                                "description": "Network protocol used for the connection.",
+                                "examples": [
+                                    "HTTPS",
+                                    "TCP",
+                                    "UDP",
+                                    "SSH",
+                                    "SFTP",
+                                    "SMB",
+                                    "RDP"
+                                ]
+                            },
+                            "direction": {
+                                "type": "string",
+                                "enum": [
+                                    "Inbound",
+                                    "Outbound",
+                                    "Bidirectional"
+                                ],
+                                "description": "Direction from the perspective of the resource to something else."
+                            },
+                            "purpose": {
+                                "type": "string",
+                                "description": "Description of the purpose of the connection."
+                            }
+                        },
+                        "additionalProperties": false
                     },
-                    "resourceGroups": {
-                        "type": "array",
-                        "description": "Resource groups contained within the environment.",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "name": {
-                                    "type": "string",
-                                    "description": "Name of the resource group"
-                                },
-                                "roles": {
-                                    "type": "array",
-                                    "description": "Roles that have access to the resource group.",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "additionalProperties": false,
-                                            "role": {
-                                                "type": "string",
-                                                "description": "Key identifier of the role that has access to the resource group."
-                                            },
-                                            "icamRole": {
-                                                "type": "string",
-                                                "description": "Name of the ICAM system role that is assigned to the role for access to the resource group."
-                                            },
-                                            "scope": {
-                                                "type": "string",
-                                                "description": "Scope of the role assignment for access to the resource group. Examples: 'Resource', 'Database', 'VM'."
-                                            }
+                    "default": []
+                }
+            }
+        },
+        "audit": {
+            "type": "object",
+            "description": "Auditing information about a component of the system being modeled.",
+            "properties": {
+                "updatedBy": {
+                    "$ref": "#/$defs/nonEmptyString",
+                    "description": "Name of the person or system that last updated the component."
+                },
+                "updatedOn": {
+                    "$ref": "#/$defs/nonEmptyString",
+                    "format": "date-time",
+                    "description": "Date and time when the component was last updated."
+                },
+                "aiUsed": {
+                    "type": "boolean",
+                    "description": "Indicates whether AI was used to generate or modify the component."
+                }
+            },
+            "required": [
+                "updatedBy",
+                "updatedOn",
+                "aiUsed"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "properties": {
+        "$schema": {
+            "type": "string",
+            "description": "The schema to verify this document against.",
+            "format": "uri-reference"
+        },
+        "system": {
+            "type": "object",
+            "description": "Information about the system being modeled.",
+            "properties": {
+                "name": {
+                    "$ref": "#/$defs/nonEmptyString",
+                    "pattern": "^[^<>:\"/\\\\|?*\\x00-\\x1F]+$",
+                    "description": "Name of the system being modeled.",
+                    "examples": [
+                        "Foo",
+                        "Death Star",
+                        "MacGuffin"
+                    ]
+                },
+                "version": {
+                    "$ref": "#/$defs/nonEmptyString",
+                    "pattern": "^[^<>:\"/\\\\|?*\\x00-\\x1F]+$",
+                    "examples": [
+                        "1.0.0",
+                        "1.1.0",
+                        "2.0.3"
+                    ],
+                    "description": "Version of the system being modeled."
+                },
+                "customer": {
+                    "$ref": "#/$defs/nonEmptyString",
+                    "description": "Name of the customer for which this system is being modeled."
+                },
+                "rmfProvider": {
+                    "type": "object",
+                    "description": "Information about the RMF provider for the system being modeled.",
+                    "properties": {
+                        "name": {
+                            "$ref": "#/$defs/nonEmptyString",
+                            "description": "Name of the RMF provider.",
+                            "examples": [
+                                "eMASS"
+                            ]
+                        },
+                        "systemId": {
+                            "$ref": "#/$defs/nonEmptyString",
+                            "description": "System identifier of the RMF provider. This is used in other parts of the json file to link the provider to specific access."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "uniqueItems": true,
+                    "required": [
+                        "name",
+                        "systemId"
+                    ]
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "name",
+                "version",
+                "customer"
+            ]
+        },
+        "definition": {
+            "type": "object",
+            "description": "Information about the definition of the system being modeled.",
+            "properties": {
+                "mission": {
+                    "type": "object",
+                    "description": "Information about the mission of the system being modeled.",
+                    "properties": {
+                        "purpose": {
+                            "$ref": "#/$defs/nonEmptyString",
+                            "description": "Purpose of the system being modeled."
+                        },
+                        "problemStatement": {
+                            "type": "string",
+                            "description": "Problem statement of the system being modeled."
+                        },
+                        "outcomes": {
+                            "type": "array",
+                            "description": "Outcomes of the system being modeled.",
+                            "items": {
+                                "type": "string"
+                            },
+                            "uniqueItems": true,
+                            "default": []
+                        },
+                        "strategicAlignment": {
+                            "type": "array",
+                            "description": "Strategic alignment of the system being modeled.",
+                            "items": {
+                                "type": "string"
+                            },
+                            "uniqueItems": true,
+                            "default": []
+                        },
+                        "audit": {
+                            "$ref": "#/$defs/audit"
+                        }
+                    },
+                    "required": [
+                        "purpose"
+                    ],
+                    "additionalProperties": false
+                },
+                "scope": {
+                    "type": "object",
+                    "description": "Information about the scope of the system being modeled.",
+                    "properties": {
+                        "description": {
+                            "type": "string",
+                            "description": "Description of the scope of the system being modeled."
+                        },
+                        "inScope": {
+                            "type": "array",
+                            "description": "List of items that are in scope for the system being modeled.",
+                            "items": {
+                                "$ref": "#/$defs/nonEmptyString"
+                            },
+                            "minItems": 1,
+                            "uniqueItems": true
+                        },
+                        "outOfScope": {
+                            "type": "array",
+                            "description": "List of items that are out of scope for the system being modeled.",
+                            "items": {
+                                "type": "string"
+                            },
+                            "uniqueItems": true,
+                            "default": []
+                        },
+                        "constraints": {
+                            "type": "array",
+                            "description": "List of constraints that are applicable to the system being modeled.",
+                            "items": {
+                                "type": "string"
+                            },
+                            "uniqueItems": true,
+                            "default": []
+                        },
+                        "assumptions": {
+                            "type": "array",
+                            "description": "List of assumptions that are applicable to the system being modeled.",
+                            "items": {
+                                "type": "string"
+                            },
+                            "uniqueItems": true,
+                            "default": []
+                        },
+                        "dependencies": {
+                            "type": "array",
+                            "description": "List of dependencies that are applicable to the system being modeled.",
+                            "items": {
+                                "type": "string"
+                            },
+                            "uniqueItems": true,
+                            "default": []
+                        },
+                        "audit": {
+                            "$ref": "#/$defs/audit"
+                        }
+                    },
+                    "required": [
+                        "inScope"
+                    ],
+                    "additionalProperties": false
+                },
+                "requirements": {
+                    "type": "array",
+                    "description": "List of requirements that are applicable to the system being modeled.",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "category",
+                            "id",
+                            "name"
+                        ],
+                        "properties": {
+                            "category": {
+                                "$ref": "#/$defs/nonEmptyString",
+                                "description": "Category of the requirements.",
+                                "examples": [
+                                    "Functional",
+                                    "Non-Functional",
+                                    "Business",
+                                    "User",
+                                    "System/Technical",
+                                    "Regulatory",
+                                    "Compliance",
+                                    "Interface",
+                                    "Data"                                    
+                                ]
+                            },
+                            "id": {
+                                "description": "Identifier of the requirement.",
+                                "$ref": "#/$defs/nonEmptyString",
+                                "examples": [
+                                    "REQ-001",
+                                    "USER-REQ-002"
+                                ]
+                            },
+                            "name": {
+                                "description": "Name of the requirement.",
+                                "$ref": "#/$defs/nonEmptyString"
+                            },
+                            "description": {
+                                "description": "Description of the requirement.",
+                                "$ref": "#/$defs/nonEmptyString"
+                            },
+                            "priority": {
+                                "description": "Priority of the requirement.",
+                                "type": "string"
+                            },
+                            "tests": {
+                                "type": "array",
+                                "description": "List of tests that are applicable to the requirement.",
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "id",
+                                        "name",
+                                        "type"
+                                    ],
+                                    "properties": {
+                                        "id": {
+                                            "description": "Identifier of the test.",
+                                            "$ref": "#/$defs/nonEmptyString",
+                                            "examples": [
+                                                "TEST-001",
+                                                "UT-TEST-002",
+                                                "ST-TEST-001"
+                                            ]
                                         },
-                                        "additionalProperties": false,
-                                        "uniqueItems": true,
-                                        "required": [
-                                            "role",
-                                            "icamRole"
-                                        ]
-                                    }
+                                        "name": {
+                                            "description": "Name of the test.",
+                                            "$ref": "#/$defs/nonEmptyString"
+                                        },
+                                        "type": {
+                                            "description": "Type of the test.",
+                                            "$ref": "#/$defs/nonEmptyString",
+                                            "examples": [
+                                                "Unit",
+                                                "Integration",
+                                                "System",
+                                                "Acceptance",
+                                                "Regression",
+                                                "Performance",
+                                                "Security"
+                                            ]
+                                        },
+                                        "description": {
+                                            "description": "Description of the test.",
+                                            "type": "string"
+                                        },
+                                        "targetType": {
+                                            "type": "string",
+                                            "description": "Type of target. This is either resourceType, software, resource, or role.",
+                                            "enum": [
+                                                "resourceType",
+                                                "software",
+                                                "resource",
+                                                "role"
+                                            ]
+                                        },
+                                        "targetKey": {
+                                            "description": "Key of the target.",
+                                            "type": "string"
+                                        },
+                                        "steps": {
+                                            "description": "Steps involved in the test.",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "default": []
+                                        },
+                                        "roleKey": {
+                                            "description": "Key of the role that is responsible for executing the test.",
+                                            "type": "string"
+                                        },
+                                        "expectedValue": {
+                                            "description": "Expected value of the test.",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "additionalProperties": false
                                 },
-                                "resources": {
-                                    "type": "array",
-                                    "description": "Resources contained within the resource group.",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "type": {
-                                                "type": "string",
-                                                "description": "Type of the resource."
-                                            },
-                                            "name": {
-                                                "type": "string",
-                                                "description": "Name of the resource."
-                                            },
-                                            "description": {
-                                                "type": "string",
-                                                "description": "Description of the resource."
-                                            },
-                                            "iacModule": {
+                                "default": []
+                            }
+                        },
+                        "uniqueItems": true,
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "security": {
+            "type": "object",
+            "description": "Information about the security of the system being modeled.",
+            "properties": {
+                "impactLevel": {
+                    "type": "object",
+                    "description": "Impact level of the system being modeled. This is used to determine the security controls that are applicable to the system.",
+                    "properties": {
+                        "name": {
+                            "$ref": "#/$defs/nonEmptyString",
+                            "description": "Name of the impact level.",
+                            "examples": [
+                                "IL2",
+                                "IL4",
+                                "IL5",
+                                "IL6"
+                            ]
+                        },
+                        "confidentiality": {
+                            "$ref": "#/$defs/nonEmptyString",
+                            "description": "Confidentiality impact level of the system being modeled.",
+                            "enum": [
+                                "low",
+                                "moderate",
+                                "high"
+                            ]
+                        },
+                        "integrity": {
+                            "$ref": "#/$defs/nonEmptyString",
+                            "description": "Integrity impact level of the system being modeled.",
+                            "enum": [
+                                "low",
+                                "moderate",
+                                "high"
+                            ]
+                        },
+                        "availability": {
+                            "$ref": "#/$defs/nonEmptyString",
+                            "description": "Availability impact level of the system being modeled.",
+                            "enum": [
+                                "low",
+                                "moderate",
+                                "high"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "name"
+                    ]
+                },
+                "classification": {
+                    "$ref": "#/$defs/nonEmptyString",
+                    "description": "Default system-wide information classification or handling designation.",
+                    "examples": [
+                        "Public",
+                        "Unclassified",
+                        "CUI",
+                        "Secret"
+                    ]
+                },
+                "controls": {
+                    "$ref": "#/$defs/nonEmptyString",
+                    "format": "uri-reference",
+                    "description": "Location of controls json object. This is relative to the root of the repository."
+                },
+                "roles": {
+                    "type": "array",
+                    "description": "List of roles that are defined for the system. These roles are used to define access to resources in the system.",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "$ref": "#/$defs/nonEmptyString",
+                                "description": "Name of the role"
+                            },
+                            "key": {
+                                "$ref": "#/$defs/nonEmptyString",
+                                "description": "Key identifier of the role. This is used in other parts of the json file to link the role to specific access."
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Description about what the purpose of the role is"
+                            }
+                        },
+                        "additionalProperties": false,
+                        "uniqueItems": true,
+                        "required": [
+                            "name",
+                            "key"
+                        ]
+                    }
+                },
+                "stigs": {
+                    "type": "array",
+                    "description": "STIGs that are applicable to this system.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "targetKey": {
+                                "$ref": "#/$defs/nonEmptyString",
+                                "description": "Unique identifier for object that this STIG applies to. This can be a resource type key or software key."
+                            },
+                            "targetType": {
+                                "$ref": "#/$defs/nonEmptyString",
+                                "description": "Type of target. This is either resourceType or software.",
+                                "enum": [
+                                    "resourceType",
+                                    "software"
+                                ]
+                            },
+                            "stig": {
+                                "$ref": "#/$defs/nonEmptyString",
+                                "description": "Identifier for the STIG that is applicable within this system."
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Description on why the STIG is applicable within this system."
+                            },
+                            "applierRoleKey": {
+                                "$ref": "#/$defs/nonEmptyString",
+                                "description": "Key identifier of the role that is responsible for applying this STIG."
+                            }
+                        },
+                        "additionalProperties": false,
+                        "uniqueItems": true,
+                        "required": [
+                            "targetKey",
+                            "targetType",
+                            "stig",
+                            "applierRoleKey"
+                        ]
+                    }
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "impactLevel",
+                "classification",
+                "roles",
+                "stigs"
+            ]
+        },
+        "architecture": {
+            "type": "object",
+            "description": "Information about the architecture of the system being modeled.",
+            "properties": {
+                "diagrams": {
+                    "type": "array",
+                    "description": "List of architecture diagrams that are defined for the system. These diagrams are used to define the architecture of the system.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "$ref": "#/$defs/nonEmptyString",
+                                "description": "Name of the diagram."
+                            },
+                            "path": {
+                                "$ref": "#/$defs/nonEmptyString",
+                                "format": "uri-reference",
+                                "description": "Path to the diagram file. This is relative to the root of the repository."
+                            },
+                            "description": {
+                                "$ref": "#/$defs/nonEmptyString",
+                                "description": "Description of the diagram."
+                            }
+                        },
+                        "additionalProperties": false,
+                        "uniqueItems": true,
+                        "required": [
+                            "name",
+                            "path",
+                            "description"
+                        ]
+                    }
+                },
+                "environments": {
+                    "type": "array",
+                    "description": "Environments contained within the system.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "key": {
+                                "$ref": "#/$defs/nonEmptyString",
+                                "description": "Key identifier of the environment. This is used in other parts of the json file to link resources to specific environments."
+                            },
+                            "name": {
+                                "$ref": "#/$defs/nonEmptyString",
+                                "description": "Name of the environment."
+                            },
+                            "resourceGroups": {
+                                "type": "array",
+                                "description": "Resource groups contained within the environment.",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "$ref": "#/$defs/nonEmptyString",
+                                            "description": "Name of the resource group."
+                                        },
+                                        "roles": {
+                                            "$ref": "#/$defs/resourceRoles",
+                                            "description": "Role assignments at the resource group level."
+                                        },
+                                        "resources": {
+                                            "type": "array",
+                                            "description": "Resources contained within the resource group.",
+                                            "items": {
                                                 "type": "object",
-                                                "description": "Infrastructure as Code module that is used to deploy the resource.",
+                                                "description": "A resource that is part of the system architecture.",
                                                 "properties": {
-                                                    "name": {
-                                                        "type": "string",
-                                                        "description": "Name of the IaC module"
+                                                    "type": {
+                                                        "$ref": "#/$defs/nonEmptyString",
+                                                        "description": "Type of the resource."
                                                     },
-                                                    "path": {
+                                                    "name": {
+                                                        "$ref": "#/$defs/nonEmptyString",
+                                                        "description": "Name of the resource."
+                                                    },
+                                                    "description": {
                                                         "type": "string",
-                                                        "description": "Path to the IaC module. This is relative to the root of the repository."
+                                                        "description": "Description of the resource."
+                                                    },
+                                                    "connections": {
+                                                        "type": "array",
+                                                        "description": "Network Connections that are defined for the resource. These connections are used to define the ports and protocols between resources.",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "required": [
+                                                                "protocol",
+                                                                "direction"
+                                                            ],
+                                                            "properties": {
+                                                                "port": {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 65535,
+                                                                    "description": "Port number used for the connection.",
+                                                                    "examples": [
+                                                                        22,
+                                                                        80,
+                                                                        443,
+                                                                        445,
+                                                                        3389,
+                                                                        1433,
+                                                                        5432,
+                                                                        6379
+                                                                    ]
+                                                                },
+                                                                "protocol": {
+                                                                    "$ref": "#/$defs/nonEmptyString",
+                                                                    "description": "Network protocol used for the connection.",
+                                                                    "examples": [
+                                                                        "HTTPS",
+                                                                        "TCP",
+                                                                        "UDP",
+                                                                        "SSH",
+                                                                        "SFTP",
+                                                                        "SMB",
+                                                                        "RDP"
+                                                                    ]
+                                                                },
+                                                                "direction": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "Inbound",
+                                                                        "Outbound",
+                                                                        "Bidirectional"
+                                                                    ],
+                                                                    "description": "Direction from the perspective of the resource to something else."
+                                                                },
+                                                                "purpose": {
+                                                                    "type": "string",
+                                                                    "description": "Description of the purpose of the connection."
+                                                                }
+                                                            },
+                                                            "additionalProperties": false
+                                                        },
+                                                        "default": []
+                                                    },
+                                                    "iacModule": {
+                                                        "type": "object",
+                                                        "description": "Infrastructure as Code module that is used to deploy the resource.",
+                                                        "properties": {
+                                                            "name": {
+                                                                "type": "string",
+                                                                "description": "Name of the IaC module"
+                                                            },
+                                                            "path": {
+                                                                "type": "string",
+                                                                "description": "Path to the IaC module. This is relative to the root of the repository."
+                                                            }
+                                                        },
+                                                        "additionalProperties": false,
+                                                        "required": [
+                                                            "name",
+                                                            "path"
+                                                        ]
+                                                    },
+                                                    "inBoundary": {
+                                                        "type": "boolean",
+                                                        "default": true,
+                                                        "description": "Whether the resource is inside the system authorization boundary. Omission is interpreted as true."
+                                                    },
+                                                    "linkedResources": {
+                                                        "type": "array",
+                                                        "description": "Resources that are linked to this resource. This is used to model dependencies between resources. For simplicity, this should be a one way linked relationship. Example: If resource A is linked to resource B, then resource B should not be linked to resource A.",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "description": "A linked resource that is part of the system architecture.",
+                                                            "properties": {
+                                                                "type": {
+                                                                    "$ref": "#/$defs/nonEmptyString",
+                                                                    "description": "Type of the resource."
+                                                                },
+                                                                "name": {
+                                                                    "$ref": "#/$defs/nonEmptyString",
+                                                                    "description": "Name of the resource."
+                                                                },
+                                                                "description": {
+                                                                    "type": "string",
+                                                                    "description": "Description of the resource."
+                                                                },
+                                                                "connections": {
+                                                                    "type": "array",
+                                                                    "description": "Network Connections that are defined for the resource. These connections are used to define the ports and protocols between resources.",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "required": [
+                                                                            "protocol",
+                                                                            "direction"
+                                                                        ],
+                                                                        "properties": {
+                                                                            "port": {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 65535,
+                                                                                "description": "Port number used for the connection.",
+                                                                                "examples": [
+                                                                                    22,
+                                                                                    80,
+                                                                                    443,
+                                                                                    445,
+                                                                                    3389,
+                                                                                    1433,
+                                                                                    5432,
+                                                                                    6379
+                                                                                ]
+                                                                            },
+                                                                            "protocol": {
+                                                                                "$ref": "#/$defs/nonEmptyString",
+                                                                                "description": "Network protocol used for the connection.",
+                                                                                "examples": [
+                                                                                    "HTTPS",
+                                                                                    "TCP",
+                                                                                    "UDP",
+                                                                                    "SSH",
+                                                                                    "SFTP",
+                                                                                    "SMB",
+                                                                                    "RDP"
+                                                                                ]
+                                                                            },
+                                                                            "direction": {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "Inbound",
+                                                                                    "Outbound",
+                                                                                    "Bidirectional"
+                                                                                ],
+                                                                                "description": "Direction from the perspective of the resource to something else."
+                                                                            },
+                                                                            "purpose": {
+                                                                                "type": "string",
+                                                                                "description": "Description of the purpose of the connection."
+                                                                            }
+                                                                        },
+                                                                        "additionalProperties": false
+                                                                    },
+                                                                    "default": []
+                                                                },
+                                                                "resourceGroup": {
+                                                                    "$ref": "#/$defs/nonEmptyString",
+                                                                    "description": "Resource group that the resource belongs to."
+                                                                },
+                                                                "linkType": {
+                                                                    "$ref": "#/$defs/nonEmptyString",
+                                                                    "description": "The type of relationship linked to this resource. Examples: 'Child', 'Database', 'Networking', 'Logging', 'Depends on', 'Uses', 'Is used by', etc.",
+                                                                    "enum": [
+                                                                        "Child",
+                                                                        "Database",
+                                                                        "Networking",
+                                                                        "Logging",
+                                                                        "Depends on",
+                                                                        "Uses",
+                                                                        "Is used by"
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "additionalProperties": false,
+                                                            "uniqueItems": true,
+                                                            "required": [
+                                                                "resourceGroup",
+                                                                "type",
+                                                                "name",
+                                                                "linkType"
+                                                            ]
+                                                        }
+                                                    },
+                                                    "friendlyName": {
+                                                        "type": "string",
+                                                        "description": "Friendly name of the resource. This is used in documentation and other places where a more human-readable name is desired."
+                                                    },
+                                                    "roles": {
+                                                        "$ref": "#/$defs/resourceRoles",
+                                                        "description": "Role assignments for this resource.",
+                                                        "items": {
+                                                            "properties": {
+                                                                "scope": {
+                                                                    "type": "string",
+                                                                    "description": "Scope of the role assignment for access to the resource. Examples: 'Resource', 'Database', 'VM'.",
+                                                                    "enum": [
+                                                                        "Resource",
+                                                                        "Database",
+                                                                        "VM"
+                                                                    ]
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "software": {
+                                                        "type": "array",
+                                                        "description": "Key identifiers of the software that are used in the resource. This is used to track what software is being used in the resource and what version.",
+                                                        "items": {
+                                                            "$ref": "#/$defs/nonEmptyString"
+                                                        }
                                                     }
                                                 },
                                                 "additionalProperties": false,
+                                                "uniqueItems": true,
                                                 "required": [
-                                                    "name",
-                                                    "path"
+                                                    "type",
+                                                    "name"
                                                 ]
-                                            },
-                                            "active": {
-                                                "type": "boolean",
-                                                "description": "Whether the resource is currently active."
-                                            },
-                                            "linkedResources": {
-                                                "type": "array",
-                                                "description": "Resources that are linked to this resource. This is used to model dependencies between resources. For simplicity, this should be a one way linked relationship. Example: If resource A is linked to resource B, then resource B should not be linked to resource A.",
-                                                "items": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "resourceGroup": {
-                                                            "type": "string",
-                                                            "description": "Resource group that the resource belongs to."
-                                                        },
-                                                        "type": {
-                                                            "type": "string",
-                                                            "description": "Type of the resource."
-                                                        },
-                                                        "name": {
-                                                            "type": "string",
-                                                            "description": "Name of the resource."
-                                                        },
-                                                        "linkType": {
-                                                            "type": "string",
-                                                            "description": "The type of relationship linked to this resource. Examples: 'Child', 'Database', 'Networking', 'Logging', 'Depends on', 'Uses', 'Is used by', etc.",
-                                                            "enum": [
-                                                                "Child",
-                                                                "Database",
-                                                                "Networking",
-                                                                "Logging",
-                                                                "Depends on",
-                                                                "Uses",
-                                                                "Is used by"
-                                                            ]
-                                                        },
-                                                        "description": {
-                                                            "type": "string",
-                                                            "description": "Description of the relationship to this resource."
-                                                        },
-                                                        "active": {
-                                                            "type": "boolean",
-                                                            "description": "Whether the link to this resource is currently active."
-                                                        }
-                                                    },
-                                                    "additionalProperties": false,
-                                                    "uniqueItems": true,
-                                                    "required": [
-                                                        "resourceGroup",
-                                                        "type",
-                                                        "name",
-                                                        "linkType",
-                                                        "active"
-                                                    ]
-                                                }
-                                            },
-                                            "friendlyName": {
-                                                "type": "string",
-                                                "description": "Friendly name of the resource. This is used in documentation and other places where a more human-readable name is desired."
-                                            },
-                                            "roles": {
-                                                "type": "array",
-                                                "description": "Roles that have access to the resource.",
-                                                "items": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "role": {
-                                                            "type": "string",
-                                                            "description": "Key identifier of the role that has access to the resource."
-                                                        },
-                                                        "icamRole": {
-                                                            "type": "string",
-                                                            "description": "Name of the ICAM system role that is assigned to the role for access to the resource."
-                                                        },
-                                                        "scope": {
-                                                            "type": "string",
-                                                            "description": "Scope of the role assignment for access to the resource. Examples: 'Resource', 'Database', 'VM'."
-                                                        }
-                                                    },
-                                                    "additionalProperties": false,
-                                                    "uniqueItems": true,
-                                                    "required": [
-                                                        "role",
-                                                        "icamRole"
-                                                    ]
-                                                }
-                                            },
-                                            "software": {
-                                                "type": "array",
-                                                "description": "Software that is used in the resource. This is used to track what software is being used in the resource and what version.",
-                                                "items": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "name": {
-                                                            "type": "string",
-                                                            "description": "Name of the software"
-                                                        },
-                                                        "version": {
-                                                            "type": "string",
-                                                            "description": "Version of the software being used in this solution"
-                                                        },
-                                                        "description": {
-                                                            "type": "string",
-                                                            "description": "Description of the software being used in this solution"
-                                                        }
-                                                    },
-                                                    "additionalProperties": false,
-                                                    "uniqueItems": true,
-                                                    "required": [
-                                                        "name",
-                                                        "version"
-                                                    ]
-                                                }
                                             }
-                                        },
-                                        "additionalProperties": false,
-                                        "uniqueItems": true,
-                                        "required": [
-                                            "type",
-                                            "name",
-                                            "description",
-                                            "active"
-                                        ]
-                                    }
+                                        }
+                                    },
+                                    "additionalProperties": false,
+                                    "uniqueItems": true,
+                                    "required": [
+                                        "name",
+                                        "roles",
+                                        "resources"
+                                    ]
                                 }
                             },
-                            "additionalProperties": false,
-                            "uniqueItems": true,
-                            "required": [
-                                "name",
-                                "roles",
-                                "resources"
-                            ]
-                        }
-                    }
-                },
-                "additionalProperties": false,
-                "uniqueItems": true,
-                "required": [
-                    "key",
-                    "resourceGroups"
-                ]
-            }
-        },
-        "software": {
-            "type": "array",
-            "description": "List of software used in the system. This is used to track what software is being used in the system and what version.",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "key": {
-                        "type": "string",
-                        "description": "Unique identifier of the software and version. This is used in other parts of the json file to link the software to specific resources."
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "Name of the software"
-                    },
-                    "version": {
-                        "type": "string",
-                        "description": "Version of the software being used in this solution"
-                    },
-                    "description": {
-                        "type": "string",
-                        "description": "Description of the software being used in this solution"
-                    },
-                    "type": {
-                        "type": "string",
-                        "description": "Type of software. Examples: Application, Library, etc."
-                    }
-                },
-                "additionalProperties": false,
-                "uniqueItems": true,
-                "required": [
-                    "key",
-                    "name",
-                    "version",
-                    "description"
-                ]
-            }
-        },
-        "stigs": {
-            "type": "array",
-            "description": "STIGs that are applicable to this system.",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "targetKey": {
-                        "type": "string",
-                        "description": "Unique identifier for object that this STIG applies to. This can be a resource type key or software key."
-                    },
-                    "targetType": {
-                        "type": "string",
-                        "description": "Type of target. This is either resourceType or software.",
-                        "enum": [
-                            "resourceType",
-                            "software"
+                            "roles": {
+                                "type": "array",
+                                "description": "Roles that have access to the environment",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "key": {
+                                            "$ref": "#/$defs/nonEmptyString",
+                                            "description": "Key identifier of the role that has access to the resource group or resource."
+                                        },
+                                        "group": {
+                                            "type": "string",
+                                            "description": "Name of the group that is primarily linked to this role."
+                                        },
+                                        "icamRoles": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/$defs/nonEmptyString"
+                                            },
+                                            "description": "Name of the ICAM system roles that are assigned to the role for access to the environment."
+                                        },
+                                        "additionalProperties": false
+                                    },
+                                    "additionalProperties": false,
+                                    "uniqueItems": true,
+                                    "required": [
+                                        "key",
+                                        "group"
+                                    ]
+                                }
+                            }
+                        },
+                        "additionalProperties": false,
+                        "uniqueItems": true,
+                        "required": [
+                            "key",
+                            "resourceGroups"
                         ]
-                    },
-                    "stig": {
-                        "type": "string",
-                        "description": "Identifier for the STIG that is applicable within this system."
-                    },
-                    "description": {
-                        "type": "string",
-                        "description": "Description on why the STIG is applicable within this system."
-                    },
-                    "applier": {
-                        "type": "string",
-                        "description": "Key identifier of the role that is responsible for applying this STIG."
                     }
                 },
-                "additionalProperties": false,
-                "uniqueItems": true,
-                "required": [
-                    "targetKey",
-                    "targetType",
-                    "stig",
-                    "applier"
-                ]
-            }
+                "software": {
+                    "type": "array",
+                    "description": "List of software used in the system. This is used to track what software is being used in the system and what version.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "key": {
+                                "type": "string",
+                                "description": "Unique identifier of the software and version. This is used in other parts of the json file to link the software to specific resources."
+                            },
+                            "name": {
+                                "type": "string",
+                                "description": "Name of the software."
+                            },
+                            "version": {
+                                "type": "string",
+                                "description": "Version of the software being used in this solution."
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Description of the software being used in this solution."
+                            },
+                            "type": {
+                                "type": "string",
+                                "description": "Type of software. Examples: Application, Library, etc."
+                            },
+                            "vendor": {
+                                "description": "Vendor of the software. This is used to track what vendor is providing the software.",
+                                "type": "string"
+                            }
+                        },
+                        "additionalProperties": false,
+                        "uniqueItems": true,
+                        "required": [
+                            "key",
+                            "name",
+                            "version"
+                        ]
+                    }
+                },
+                "resourceTypes": {
+                    "type": "array",
+                    "description": "Information about the resource types used within this system.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "key": {
+                                "type": "string",
+                                "description": "Unique resource type name from provider."
+                            },
+                            "provider": {
+                                "type": "string",
+                                "description": "Provider of the resource type. This is used to track what provider is providing the resource type.",
+                                "examples": [
+                                    "AzureUSGovernment",
+                                    "AWS",
+                                    "Microsoft",
+                                    "Google",
+                                    "Citrix",
+                                    "VMWare",
+                                    "Linux"
+                                ]
+                            },
+                            "friendlyName": {
+                                "type": "string",
+                                "description": "Friendly name of the resource type."
+                            }
+                        },
+                        "additionalProperties": false,
+                        "uniqueItems": true,
+                        "required": [
+                            "key",
+                            "provider"
+                        ]
+                    }
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "environments",
+                "software",
+                "resourceTypes"
+            ]
         },
-        "resourceTypes": {
-            "type": "array",
-            "description": "Friendly names of official resource type names used within this system. This is also used to track what resource types are being used in the system.",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "key": {
-                        "type": "string",
-                        "description": "Official resource type name"
+        "operations": {
+            "type": "object",
+            "description": "Information about the operations of the system being modeled.",
+            "properties": {
+                "serviceLevels": {
+                    "type": "object",
+                    "description": "Service level objectives for the system. This is used to define the service level objectives for the system and to set expectations for users.",
+                    "properties": {
+                        "availabilityTarget": {
+                            "description": "Target availability for the system. This is used to determine the availability of the system and to set expectations for users.",
+                            "$ref": "#/$defs/nonEmptyString"
+                        },
+                        "businessHours": {
+                            "description": "Business hours for the system. This is used to determine when the system is expected to be available and when maintenance can be performed.",
+                            "type": "string"
+                        },
+                        "maintenanceWindow": {
+                            "description": "Maintenance window for the system. This is used to schedule maintenance activities.",
+                            "type": "string"
+                        },
+                        "recoveryTimeObjective": {
+                            "description": "Recovery Time Objective for the system. This is the target time to recover the system after a disruption.",
+                            "type": "string"
+                        },
+                        "recoveryPointObjective": {
+                            "description": "Recovery Point Objective for the system. This is the target point in time to which data must be restored after a disruption.",
+                            "type": "string"
+                        },
+                        "audit": {
+                            "$ref": "#/$defs/audit"
+                        }
                     },
-                    "friendlyName": {
-                        "type": "string",
-                        "description": "Friendly name of the resource type"
-                    }
+                    "required": [
+                        "availabilityTarget"
+                    ],
+                    "additionalProperties": false
                 },
-                "additionalProperties": false,
-                "uniqueItems": true,
-                "required": [
-                    "key",
-                    "friendlyName"
-                ]
-            }
+                "backupRecovery": {
+                    "type": "object",
+                    "description": "Backup and recovery strategy for the system. This is used to define the backup and recovery strategy for the system and to set expectations for users.",
+                    "properties": {
+                        "strategy": {
+                            "description": "Backup and recovery strategy for the system. This is used to define the backup and recovery strategy for the system and to set expectations for users.",
+                            "$ref": "#/$defs/nonEmptyString"
+                        },
+                        "backupFrequency": {
+                            "description": "Backup frequency for the system. This is used to determine how often backups are performed.",
+                            "$ref": "#/$defs/nonEmptyString"
+                        },
+                        "retention": {
+                            "description": "Retention period for backups. This is used to determine how long backups are retained.",
+                            "type": "string"
+                        },
+                        "restoreTestFrequency": {
+                            "description": "Frequency of restore tests for backups. This is used to determine how often restore tests are performed.",
+                            "type": "string"
+                        },
+                        "responsibleRoleKey": {
+                            "description": "Key of the role that is responsible for backup and recovery activities.",
+                            "type": "string"
+                        },
+                        "audit": {
+                            "$ref": "#/$defs/audit"
+                        }
+                    },
+                    "required": [
+                        "strategy",
+                        "backupFrequency"
+                    ],
+                    "additionalProperties": false
+                },
+                "support": {
+                    "type": "object",
+                    "description": "Support model for the system. This is used to define the support model for the system and to set expectations for users.",
+                    "properties": {
+                        "supportModel": {
+                            "description": "Support model for the system. This is used to define the support model for the system and to set expectations for users.",
+                            "$ref": "#/$defs/nonEmptyString"
+                        },
+                        "serviceOwnerRoleKey": {
+                            "description": "Key of the role that is responsible for the overall service of the system.",
+                            "type": "string"
+                        },
+                        "technicalOwnerRoleKey": {
+                            "description": "Key of the role that is responsible for the technical aspects of the system.",
+                            "type": "string"
+                        },
+                        "securityContactRoleKey": {
+                            "description": "Key of the role that is responsible for security aspects of the system.",
+                            "type": "string"
+                        },
+                        "escalationPath": {
+                            "description": "Escalation path for support issues. This is used to define the escalation path for support issues and to set expectations for users.",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "default": []
+                        },
+                        "documentationStore": {
+                            "description": "Location of the documentation for the system. This is used to provide documentation for the system and to set expectations for users.",
+                            "format": "uri-reference",
+                            "type": "string"
+                        },
+                        "audit": {
+                            "$ref": "#/$defs/audit"
+                        }
+                    },
+                    "required": [
+                        "supportModel"
+                    ],
+                    "additionalProperties": false
+                },
+                "changeManagement": {
+                    "type": "object",
+                    "description": "Change management process for the system. This is used to define the change management process for the system and to set expectations for users.",
+                    "properties": {
+                        "process": {
+                            "description": "Change management process for the system. This is used to define the change management process for the system and to set expectations for users.",
+                            "type": "string"
+                        },
+                        "approvalAuthorityRoleKey": {
+                            "description": "Key of the role that is responsible for approving changes to the system.",
+                            "type": "string"
+                        },
+                        "sourceRepository": {
+                            "description": "Source code repository for the system. This is used to define the source code repository for the system and to set expectations for users.",
+                            "type": "string",
+                            "format": "uri-reference"
+                        },
+                        "deploymentMethod": {
+                            "description": "Deployment method for the system. This is used to define the deployment method for the system and to set expectations for users.",
+                            "type": "string"
+                        },
+                        "configurationBaseline": {
+                            "description": "Configuration baseline for the system. This is used to define the configuration baseline for the system and to set expectations for users.",
+                            "type": "string"
+                        },
+                        "audit": {
+                            "$ref": "#/$defs/audit"
+                        }
+                    },
+                    "required": [
+                        "process",
+                        "approvalAuthorityRoleKey"
+                    ],
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false
         },
-        "strings": {
-            "type": "array",
-            "description": "Strings used in the system. This is used to track what strings are being used in the system and what version.",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "key": {
-                        "type": "string",
-                        "description": "Key for the string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "description": "Value of the string"
-                    }
-                },
-                "additionalProperties": false,
-                "uniqueItems": true,
-                "required": [
-                    "key",
-                    "value"
-                ]
-            }
+        "artifactManifest": {
+            "$ref": "#/$defs/nonEmptyString",
+            "format": "uri-reference",
+            "description": "Path to the artifact manifest file. This is relative to the root of the repository. The artifact manifest is used to define the artifacts that are produced by the system and to set expectations for users."
         }
     },
+    "additionalProperties": false,
     "required": [
+        "$schema",
         "system",
-        "version",
-        "customer",
-        "roles",
-        "environments",
-        "software",
-        "stigs",
-        "resourceTypes"
+        "security",
+        "architecture"
     ]
 }
