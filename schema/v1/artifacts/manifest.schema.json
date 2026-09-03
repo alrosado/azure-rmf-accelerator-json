@@ -49,11 +49,13 @@
                         "description": "Auditing information about a component of the system being modeled.",
                         "properties": {
                             "updatedBy": {
-                                "$ref": "#/$defs/nonEmptyString",
+                                "type": "string",
+                                "minLength": 1,
                                 "description": "Name of the person or system that last updated the component."
                             },
                             "updatedOn": {
-                                "$ref": "#/$defs/nonEmptyString",
+                                "type": "string",
+                                "minLength": 1,
                                 "format": "date-time",
                                 "description": "Date and time when the component was last updated."
                             },
