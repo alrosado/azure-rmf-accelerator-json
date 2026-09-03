@@ -29,7 +29,12 @@
                         "description": "The URI of the artifact JSON file for generating the artifact.",
                         "format": "uri-reference"
                     },
-                    "template": {
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the artifact.",
+                        "minLength": 1
+                    },
+                    "templateUri": {
                         "type": "string",
                         "description": "The URI of the template file.",
                         "format": "uri-reference"
