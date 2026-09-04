@@ -9,7 +9,7 @@
         "https://json-schema.org/draft/2020-12/vocab/format-annotation": true
     },
     "title": "Artifact Content Schema",
-    "$comment": "1.1.0",
+    "$comment": "1.0.0",
     "description": "Meta-schema that defines the structure and validation rules for artifact generation schemas. This schema ensures artifact schemas conform to the required pattern for defining artifact type, output format, data properties, and generation settings.",
     "type": "object",
     "properties": {
