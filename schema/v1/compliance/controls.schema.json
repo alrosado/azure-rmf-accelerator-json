@@ -1,0 +1,53 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://raw.githubusercontent.com/alrosado/azure-rmf-accelerator-json/refs/heads/main/schema/v1/compliance/controls.schema.json",
+    "title": "Azure RMF Accelerator Controls schema",
+    "version": "1.0.0",
+    "description": "Canonical schema for Azure RMF Accelerator controls generation.",
+    "type": "object",
+    "properties": {
+        "$schema": {
+            "type": "string",
+            "description": "The schema to verify this document against.",
+            "format": "uri-reference"
+        },
+        "system": {
+            "type": "string",
+            "description": "The system associated with the artifact manifest."
+        },
+        "version": {
+            "type": "string",
+            "description": "The system version associated with the artifact manifest."
+        },
+        "controlReference": {
+            "type": "string"
+        },
+        "controls": {
+            "type": "array",
+            "description": "Controls for this system.",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "text": {
+                        "type": "string"
+                    },
+                    "discussion": {
+                        "type": "string"
+                    }
+                }
+            }
+        }        
+    },
+    "additionalProperties": false,
+    "required": [
+        "$schema",
+        "system",
+        "version"
+    ]
+}

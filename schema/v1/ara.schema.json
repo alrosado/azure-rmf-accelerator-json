@@ -2,7 +2,7 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$id": "https://raw.githubusercontent.com/alrosado/azure-rmf-accelerator-json/refs/heads/main/schema/v1/ara.schema.json",
     "title": "Azure RMF Accelerator schema",
-    "version": "1.1.0",
+    "version": "1.0.0",
     "description": "Canonical schema for Azure RMF Accelerator artifact generation.",
     "type": "object",
     "$defs": {
@@ -498,7 +498,7 @@
                         "Secret"
                     ]
                 },
-                "controls": {
+                "controlCollectionUri": {
                     "$ref": "#/$defs/nonEmptyString",
                     "format": "uri-reference",
                     "description": "Location of controls json object. This is relative to the root of the repository."
@@ -595,7 +595,7 @@
                                 "$ref": "#/$defs/nonEmptyString",
                                 "description": "Name of the diagram."
                             },
-                            "path": {
+                            "uri": {
                                 "$ref": "#/$defs/nonEmptyString",
                                 "format": "uri-reference",
                                 "description": "Path to the diagram file. This is relative to the root of the repository."
@@ -726,7 +726,7 @@
                                                                 "type": "string",
                                                                 "description": "Name of the IaC module"
                                                             },
-                                                            "path": {
+                                                            "uri": {
                                                                 "type": "string",
                                                                 "description": "Path to the IaC module. This is relative to the root of the repository."
                                                             }
@@ -1116,7 +1116,7 @@
                             },
                             "default": []
                         },
-                        "documentationStore": {
+                        "documentationStoreUri": {
                             "description": "Location of the documentation for the system. This is used to provide documentation for the system and to set expectations for users.",
                             "format": "uri-reference",
                             "type": "string"
@@ -1142,7 +1142,7 @@
                             "description": "Key of the role that is responsible for approving changes to the system.",
                             "type": "string"
                         },
-                        "sourceRepository": {
+                        "sourceRepositoryUri": {
                             "description": "Source code repository for the system. This is used to define the source code repository for the system and to set expectations for users.",
                             "type": "string",
                             "format": "uri-reference"
@@ -1168,7 +1168,7 @@
             },
             "additionalProperties": false
         },
-        "artifactManifest": {
+        "artifactManifestUri": {
             "$ref": "#/$defs/nonEmptyString",
             "format": "uri-reference",
             "description": "Path to the artifact manifest file. This is relative to the root of the repository. The artifact manifest is used to define the artifacts that are produced by the system and to set expectations for users."
