@@ -734,7 +734,7 @@
                                                         "additionalProperties": false,
                                                         "required": [
                                                             "name",
-                                                            "path"
+                                                            "uri"
                                                         ]
                                                     },
                                                     "inBoundary": {
