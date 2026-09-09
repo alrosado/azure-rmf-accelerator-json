@@ -609,7 +609,7 @@
                         "uniqueItems": true,
                         "required": [
                             "name",
-                            "path",
+                            "uri",
                             "description"
                         ]
                     }
