@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/alrosado/azure-rmf-accelerator-json/refs/heads/main/schema/v1/artifacts/artifactContent.schema.json",
+  "$id": "https://raw.githubusercontent.com/alrosado/azure-rmf-accelerator-json/refs/heads/main/schema/v1/artifacts/artifact/ppsm.schema.json",
+  "title": "Ports, Protocols, and Services Management (PPSM) Schema",
+  "$comment": "1.0.0",
+  "description": "Schema for defining and generating Ports, Protocols, and Services Management content as CSV data.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "The schema to verify this document against.",
+      "format": "uri-reference"
+    },
+    "$id": {
+      "type": "string",
+      "description": "A unique identifier for the schema."
+    },
+    "$comment": {
+      "type": "string",
+      "description": "Comments from schema authors to readers or maintainers of the schema."
+    },
+    "title": {
+      "type": "string",
+      "description": "The title of the artifact when generated."
+    },
+    "artifactType": {
+      "type": "string",
+      "description": "The type of the artifact to be generated.",
+      "enum": [
+        "ppsm"
+      ]
+    },
+    "outputType": {
+      "type": "string",
+      "description": "The output type of the artifact when generated.",
+      "enum": [
+        "csv"
+      ]
+    },
+    "order": {
+      "type": "array",
+      "description": "The order of data properties when generated.",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "enum": [
+          "Letter",
+          "Flow Direction",
+          "Port",
+          "Function",
+          "Service"
+        ]
+      }
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "Letter": {
+            "type": "string",
+            "description": "The PPSM letter or identifier associated with the traffic flow."
+          },
+          "Flow Direction": {
+            "type": "string",
+            "description": "The direction of the traffic flow, such as inbound, outbound, or both."
+          },
+          "Port": {
+            "type": "string",
+            "description": "The port, port range, and protocol for the traffic flow."
+          },
+          "Function": {
+            "type": "string",
+            "description": "The function enabled by the listed port, protocol, and service."
+          },
+          "Service": {
+            "type": "string",
+            "description": "The service or system communication supported by the traffic flow."
+          }
+        },
+        "required": [
+          "Flow Direction",
+          "Port",
+          "Function",
+          "Service"
+        ]
+      },
+      "minItems": 0,
+      "uniqueItems": true,
+      "description": "Data to use for artifact generation."
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "title",
+    "outputType",
+    "data"
+  ]
+}
