@@ -1,0 +1,112 @@
+{
+  "$schema": "https://raw.githubusercontent.com/alrosado/azure-rmf-accelerator-json/refs/heads/main/schema/v1/artifacts/artifactContent.schema.json",
+  "$id": "https://raw.githubusercontent.com/alrosado/azure-rmf-accelerator-json/refs/heads/main/schema/v1/artifacts/artifact/srtm.schema.json",
+  "title": "Security Requirements Traceability Matrix (SRTM) Schema",
+  "$comment": "1.0.0",
+  "description": "Schema for defining and generating Security Requirements Traceability Matrix content as CSV data.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "The schema to verify this document against.",
+      "format": "uri-reference"
+    },
+    "$id": {
+      "type": "string",
+      "description": "A unique identifier for the schema."
+    },
+    "$comment": {
+      "type": "string",
+      "description": "Comments from schema authors to readers or maintainers of the schema."
+    },
+    "title": {
+      "type": "string",
+      "description": "The title of the artifact when generated."
+    },
+    "artifactType": {
+      "type": "string",
+      "description": "The type of the artifact to be generated.",
+      "enum": [
+        "srtm"
+      ]
+    },
+    "outputType": {
+      "type": "string",
+      "description": "The output type of the artifact when generated.",
+      "enum": [
+        "csv"
+      ]
+    },
+    "order": {
+      "type": "array",
+      "description": "The order of data properties when generated.",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "enum": [
+          "Hardware Name",
+          "Operating System",
+          "Installed Software",
+          "Applicable STIGS",
+          "NESSUS",
+          "SCAP/STIG CHKLST",
+          "Notes"
+        ]
+      }
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "Hardware Name": {
+            "type": "string",
+            "description": "The hardware asset name."
+          },
+          "Operating System": {
+            "type": "string",
+            "description": "The operating system installed on the hardware asset."
+          },
+          "Installed Software": {
+            "type": "string",
+            "description": "Software installed on the hardware asset."
+          },
+          "Applicable STIGS": {
+            "type": "string",
+            "description": "STIGs applicable to the hardware, operating system, or installed software."
+          },
+          "NESSUS": {
+            "type": "string",
+            "description": "Nessus scan evidence, result, or reference for the asset."
+          },
+          "SCAP/STIG CHKLST": {
+            "type": "string",
+            "description": "SCAP or STIG checklist evidence, result, or reference for the asset."
+          },
+          "Notes": {
+            "type": "string",
+            "description": "Additional notes for the SRTM row."
+          }
+        },
+        "required": [
+          "Hardware Name",
+          "Operating System",
+          "Installed Software",
+          "Applicable STIGS"
+        ]
+      },
+      "minItems": 0,
+      "uniqueItems": true,
+      "description": "Data to use for artifact generation."
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "title",
+    "outputType",
+    "data"
+  ]
+}
